@@ -5,7 +5,6 @@ import Related from "./Related";
 
 function WatchLayout() {
   const anime = JSON.parse(localStorage.getItem("anime") || "{}");
-  // console.log(anime, "layout");
   return (
     <>
       <AnimeInfoHeader />

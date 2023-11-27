@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { useCategoryContext } from "../context/CategoryContext";
 
 const Chip = ({ text, selected, setSelected }) => {
-  // Use useEffect to handle updates to selected state
-
   const { setPageNumber } = useCategoryContext();
 
   const handlePage = () => {
@@ -18,7 +16,6 @@ const Chip = ({ text, selected, setSelected }) => {
       setSelected(text);
     }
   }, [selected, setSelected, text]);
-  // pageNumber
   return (
     <button
       onClick={handlePage}

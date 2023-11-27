@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"; // If using React Router
+import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
