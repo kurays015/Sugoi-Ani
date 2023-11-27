@@ -28,7 +28,11 @@ function AnimeInfo() {
             className="w-full h-auto rounded-lg"
           />
           <Link
-            to={`/watch/${singleAnimeData.episodes[0].id}`}
+            to={
+              singleAnimeData.episodes.length
+                ? `/watch/${singleAnimeData.episodes[0]?.id}`
+                : "/NoEpisode"
+            }
             className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 text-center"
           >
             Watch Now
@@ -86,9 +90,17 @@ function AnimeInfo() {
           </ul>
         </div>
       </section>
-      <Related relations={singleAnimeData.relations} />
-      <Recommendations recommendations={singleAnimeData.recommendations} />
-      <div className="text-center">Made by Christ 💜</div>
+      {singleAnimeData.relations.length ? (
+        <Related relations={singleAnimeData.relations} />
+      ) : (
+        ""
+      )}
+      {singleAnimeData.recommendations.length ? (
+        <Recommendations recommendations={singleAnimeData.recommendations} />
+      ) : (
+        ""
+      )}
+      <div className="text-center text-[#777777]">Made by Christ 💜</div>
     </main>
   );
 }

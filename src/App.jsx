@@ -11,6 +11,8 @@ import WatchEpisode from "./components/WatchEpisode";
 import SearchResult from "./components/SearchResult";
 import AnimeLayout from "./components/AnimeLayout";
 import WatchLayout from "./components/WatchLayout";
+import NoEpisode from "./components/NoEpisode";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
       <Route path="/watch" element={<WatchLayout />}>
         <Route path=":episodeId" element={<WatchEpisode />} />
       </Route>
+      <Route path="/NoEpisode" element={<NoEpisode />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

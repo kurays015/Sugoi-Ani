@@ -4,8 +4,9 @@ function AnimeEpisodes() {
   const anime = JSON.parse(localStorage.getItem("anime") || "{}");
 
   return (
-    <aside className="p-2 bg-[#1C1C1C] max-w-[300px] h-[500px] overflow-y-auto custom-sm:mx-auto custom-sm:w-full">
+    <aside className="p-2 bg-[#1C1C1C] max-w-[300px] h-[500px] overflow-y-auto custom-sm:mx-auto custom-sm:w-full custom-sm:max-w-full">
       <div className="flex flex-col">
+        <h4 className="text-[#c6c6c6] font-semibold my-1">Episodes:</h4>
         {anime?.episodes.map((episode, index) => (
           <Link
             to={`/watch/${episode.id}`}

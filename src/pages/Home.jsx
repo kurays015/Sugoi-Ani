@@ -8,7 +8,7 @@ import { FaGithub } from "react-icons/fa";
 function Home() {
   return (
     <>
-      <div className="cover-img bg-cover bg-center bg-no-repeat text-white relative block min-h-[600px] text-center py-[30px] custom-sm:py-0">
+      <div className="cover-img bg-cover bg-center bg-no-repeat text-white relative block min-h-[600px] text-center py-[30px] custom-sm:py-0 custom-sm:min-h-[500px]">
         <div className="flex items-center justify-center text-center absolute bottom-3 left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <Link
             to="recent"

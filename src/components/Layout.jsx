@@ -7,6 +7,9 @@ function Layout() {
       <CategoriesHeader />
       <Outlet />
       <Pagination />
+      <div className="text-center text-xs text-[#777777]">
+        Made by Christ 💜
+      </div>
     </>
   );
 }
