@@ -2,6 +2,7 @@ function QualitySettings({
   qualities,
   showQualitySettings,
   setShowQualitySettings,
+  setSelectedQuality,
 }) {
   return (
     <div

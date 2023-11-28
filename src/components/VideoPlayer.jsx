@@ -55,6 +55,7 @@ function VideoPlayer({ qualities }) {
         qualities={qualities}
         showQualitySettings={showQualitySettings}
         setShowQualitySettings={setShowQualitySettings}
+        setSelectedQuality={setSelectedQuality}
       />
     </div>
   );
