@@ -32,6 +32,9 @@ export default {
         // "custom-md": "768px",
         "custom-lg": "1024px",
       },
+      colors: {
+        customPurple: "#5A2E98", // Define your custom color
+      },
     },
   },
   plugins: [],

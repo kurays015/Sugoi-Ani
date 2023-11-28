@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function AnimeEpisodes() {
-  const anime = JSON.parse(localStorage.getItem("anime") || "{}");
-  const [isSelected, setIsSelected] = useState(null);
+  const anime = JSON.parse(localStorage.getItem("anime") || "[]");
+  const [isAlreadySelected, setIsAlreadySelected] = useState({});
+  const [currentEpisode, setCurrentEpisode] = useState(null);
 
   const selectedEpisode = id => {
-    setIsSelected(id || null);
+    setIsAlreadySelected(prev => ({ ...prev, [id]: true }));
+    setCurrentEpisode(id);
   };
 
   return (
@@ -20,8 +22,9 @@ function AnimeEpisodes() {
             key={episode.id}
             className={`${
               index % 2 === 0 ? "bg-[#0F0F0F]" : "bg-[#171717]"
-            } flex gap-2 p-3 text-[#777777] text-xs ${
-              isSelected === episode.id ? "bg-[#5A2E98]" : ""
+            } flex gap-2 p-3 text-[#777777] text-xs
+           ${isAlreadySelected[episode.id] ? "bg-[#1F1232]" : ""} ${
+              currentEpisode === episode.id ? "bg-customPurple" : ""
             }`}
           >
             <div className="font-semibold">{episode.number}. </div>
