@@ -20,12 +20,12 @@ function AnimeInfo() {
     return <Error error={error} message="Oops! something went wrong!" />;
   return (
     <main className=" bg-[#242424] py-5 ">
-      <section className="bg-[#1C1C1C] max-w-[85%] mx-auto my-8 flex gap-8 border border-slate-600 rounded-3xl custom-sm:max-w-[100%] custom-sm:p-2  border-none custom-sm:rounded-none custom-sm:flex custom-sm:flex-col custom-sm:text-center custom-sm:my-0">
+      <section className="bg-[#1C1C1C] max-w-[85%] mx-auto my-8 flex gap-8 border border-slate-600 rounded-3xl custom-sm:max-w-[100%] custom-sm:p-2  border-none custom-sm:rounded-none custom-sm:flex custom-sm:flex-col custom-sm:text-center custom-sm:my-0 ">
         <div className="flex flex-col gap-[1.5em] w-64 custom-sm:w-full custom-sm:text-center custom-600px:items-center">
           <img
             src={singleAnimeData.image}
             alt={singleAnimeData.title.english}
-            className="w-full h-auto rounded-lg"
+            className="w-full h-auto rounded-lg lg:w-[50%]"
           />
           <Link
             to={
@@ -42,15 +42,15 @@ function AnimeInfo() {
           <h1 className="text-3xl font-semibold mb-4 text-white custom-sm:text-md">
             {singleAnimeData.title.romaji}
           </h1>
-          <p className="text-sm italic text-gray-400 mb-6 custom-sm:text-xs">
+          <p className="text-sm italic text-gray-400 mb-6 custom-sm:text-xs md:text-sm">
             Alias: {singleAnimeData.title.english},
             {singleAnimeData.title.romaji}, {singleAnimeData.title.native}
           </p>
-          <p className="text-lg leading-7 text-gray-300 mb-6 custom-sm:text-xs custom-sm:leading-5">
+          <p className="text-lg leading-7 text-gray-300 mb-6 custom-sm:text-xs custom-sm:leading-5 md:text-base md:leading-8">
             {singleAnimeData.description}
           </p>
           <div className="text-xs text-gray-400">
-            <div className="grid grid-cols-2 gap-2 custom-sm:text-[.7rem]">
+            <div className="grid grid-cols-2 gap-2 custom-sm:text-[.7rem] md:text-base md:gap-5">
               <div>Type: {singleAnimeData.type}</div>
               <div>Country of Origin: {singleAnimeData.countryOfOrigin}</div>
               <div>Season: {singleAnimeData.season}</div>
@@ -81,10 +81,10 @@ function AnimeInfo() {
           </div>
           <hr className="border-gray-600 my-2" />
           <ul className="flex items-center gap-3">
-            <p className="text-gray-200 text-xs custom-sm:text-[.7rem]">
-              Genres:{" "}
+            <p className="text-gray-200 text-xs custom-sm:text-[.7rem] md:text-base">
+              Genres:
             </p>
-            <p className="text-[#d6f1c9] text-xs custom-sm:text-[.7rem]">
+            <p className="text-[#d6f1c9] text-xs custom-sm:text-[.7rem] md:text-sm">
               {singleAnimeData.genres.map(genre => genre).join(", ")}
             </p>
           </ul>
