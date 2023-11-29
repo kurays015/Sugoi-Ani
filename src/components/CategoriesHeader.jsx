@@ -13,7 +13,7 @@ function CategoriesHeader() {
   const categories = ["Recent", "Popular", "Trending"];
 
   return (
-    <header className="flex flex-col items-center justify-center py-6 gap-[1em]">
+    <header className="flex flex-col items-center justify-center py-6 gap-[1em] custom-sm:px-[2em] custom-sm:pb-3">
       <div className="h-[100px]">
         <Link className="text-white" to="/">
           <img src={uzaki} className="h-full" />

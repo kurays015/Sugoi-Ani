@@ -4,7 +4,7 @@ export function SkeletonItem() {
   return (
     <div className="animate-pulseAnimation">
       <div>
-        <Skeleton height="300px" width="100%" />
+        <Skeleton height="160px" width="100%" />
       </div>
       <h5 className="text-white">
         <Skeleton width={100} />
