@@ -7,12 +7,11 @@ function AnimeInfoHeader() {
   const [showNav, setShowNav] = useState(false);
 
   return (
-    <header className="bg-[#1C1C1C] relative py-3 px-16 flex items-center justify-between gap-2 custom-sm:px-3 ">
+    <header className="bg-[#1C1C1C] relative py-3 px-16 flex items-center justify-between gap-2 custom-sm:px-3 custom-sm:gap-5">
       <Link to="/" className="custom-sm:hidden md:block">
         <img src="/images/uzaki.png" className="w-[80px]" alt="logo" />
       </Link>
-      <SearchForm />
-      <nav className="custom-sm:hidden md:block">
+      <nav className="custom-sm:hidden md:block md:order-3">
         <ul className="flex gap-[1em]">
           <li>
             <Link
@@ -44,6 +43,8 @@ function AnimeInfoHeader() {
       <div className="text-[1.5rem] custom-sm:text-[#777777] md:hidden">
         <GiHamburgerMenu onClick={() => setShowNav(prev => !prev)} />
       </div>
+      <SearchForm />
+
       <Link to="/" className="md:hidden">
         <img src="/images/uzaki.png" className="w-[80px]" alt="logo" />
       </Link>

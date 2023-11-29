@@ -1,10 +1,11 @@
 import { useRef, useEffect, useState } from "react";
 import Hls from "hls.js";
-import { TbRewindBackward10, TbRewindForward10 } from "react-icons/tb";
+import { FcDownload } from "react-icons/fc";
 import { IoSettingsOutline } from "react-icons/io5";
 import QualitySettings from "./QualitySettings";
+import { Link } from "react-router-dom";
 
-function VideoPlayer({ qualities }) {
+function VideoPlayer({ qualities, downloadSrc }) {
   const [selectedQuality, setSelectedQuality] = useState("default");
   const [showQualitySettings, setShowQualitySettings] = useState(false);
   const videoRef = useRef(null);
@@ -50,7 +51,15 @@ function VideoPlayer({ qualities }) {
         />
       </div>
       <video controls ref={videoRef} className="w-full h-full"></video>
-      <p className="text-center text-[#777777]">Thanks for watching!</p>
+      <div className="text-center text-[#777777] p-1">
+        <p>Thanks for watching!</p>
+        <span className=" px-2 rounded-[3px] text-xs flex flex-col items-center justify-center">
+          You can also download it here
+          <Link to={downloadSrc} target="blank">
+            <FcDownload className="text-2xl" />
+          </Link>
+        </span>
+      </div>
       <QualitySettings
         qualities={qualities}
         showQualitySettings={showQualitySettings}

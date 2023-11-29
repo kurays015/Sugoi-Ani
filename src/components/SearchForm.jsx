@@ -5,7 +5,7 @@ function SearchForm() {
   const { titleRef, handleSubmit } = useSearchContext();
   return (
     <form
-      className="bg-[#141414] flex items-center gap-[.5em] w-[500px] text-[#aaa] rounded-md overflow-hidden py-1 px-3 custom-sm:w-full md:flex"
+      className="bg-[#141414] flex items-center gap-[.5em] w-[500px] text-[#aaa] rounded-md overflow-hidden py-1 px-3 custom-sm:w-full md:flex md:order-2"
       onSubmit={handleSubmit}
     >
       <button className="p-[7px]">

@@ -18,7 +18,12 @@ function WatchEpisode() {
       </div>
     );
   if (isError) return <Error error={error} />;
-  return <VideoPlayer qualities={videoSources?.sources} />;
+  return (
+    <VideoPlayer
+      qualities={videoSources?.sources}
+      downloadSrc={videoSources?.download}
+    />
+  );
 }
 
 export default WatchEpisode;

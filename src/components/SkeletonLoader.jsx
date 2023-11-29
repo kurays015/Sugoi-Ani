@@ -6,9 +6,6 @@ export function SkeletonItem() {
       <div>
         <Skeleton height="160px" width="100%" />
       </div>
-      <h5 className="text-white">
-        <Skeleton width={100} />
-      </h5>
     </div>
   );
 }
