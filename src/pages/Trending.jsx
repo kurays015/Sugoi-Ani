@@ -1,7 +1,6 @@
 import useFetchAnimeCategories from "../hooks/useFetchAnimeCategories";
-import SkeletonLoader from "../components/SkeletonLoader";
-import Card from "../components/Card";
-import { useCategoryContext } from "../context/CategoryContext";
+import GridCardContainer from "../components/GridCardContainer";
+import { useCategoryContext } from "../hooks/useCategoryContext";
 
 function Trending() {
   const { pageNumber, itemsPerPage } = useCategoryContext();
@@ -17,11 +16,7 @@ function Trending() {
 
   const animes = trendingAnime?.results || [];
 
-  return (
-    <div className="grid gridRes gap-[1em] max-w-[1000px] mx-auto p-[2em] custom-sm:grid-cols-2">
-      {isLoading ? <SkeletonLoader /> : <Card animes={animes} />}
-    </div>
-  );
+  return <GridCardContainer isLoading={isLoading} animes={animes} />;
 }
 
 export default Trending;

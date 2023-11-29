@@ -1,4 +1,4 @@
-import { useCategoryContext } from "../context/CategoryContext";
+import { useCategoryContext } from "../hooks/useCategoryContext";
 
 function Pagination() {
   const { pageNumber, setPageNumber } = useCategoryContext();

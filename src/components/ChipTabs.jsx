@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useCategoryContext } from "../context/CategoryContext";
+import { useCategoryContext } from "../hooks/useCategoryContext";
 
 const Chip = ({ text, selected, setSelected }) => {
   const { setPageNumber } = useCategoryContext();

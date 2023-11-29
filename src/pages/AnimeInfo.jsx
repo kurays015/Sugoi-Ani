@@ -1,8 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import useAnimeInfo from "../hooks/useAnimeInfo";
-import SkeletonLoader from "./SkeletonLoader";
-import Recommendations from "./Recommendations";
-import Related from "./Related";
+import SkeletonLoader from "../components/SkeletonLoader";
+import Recommendations from "../components/Recommendations";
+import Related from "../components/Related";
 import { useEffect } from "react";
 function AnimeInfo() {
   const { id } = useParams();
@@ -16,8 +16,8 @@ function AnimeInfo() {
   }, [singleAnimeData]);
 
   if (isLoading) return <SkeletonLoader />;
-  if (isError) return <Error error={error} />;
-
+  if (isError)
+    return <Error error={error} message="Oops! something went wrong!" />;
   return (
     <main className="text-white bg-[#242424] py-5 ">
       <section className="bg-[#1C1C1C] max-w-[85%] mx-auto my-8 p-8 flex gap-8 border border-slate-600 rounded-3xl custom-sm:max-w-[100%] custom-sm:p-2  border-none custom-sm:rounded-none custom-sm:flex custom-sm:flex-col custom-sm:text-center custom-sm:my-0">

@@ -4,7 +4,7 @@ import AnimeEpisodes from "./AnimeEpisodes";
 import Related from "./Related";
 
 function WatchLayout() {
-  const anime = JSON.parse(localStorage.getItem("anime") || "{}");
+  const anime = JSON.parse(localStorage.getItem("anime") || "[]");
   return (
     <>
       <AnimeInfoHeader />

@@ -11,7 +11,7 @@ function AnimeEpisodes() {
     localStorage.getItem("currentEpisode")
   );
   const [isAlreadySelected, setIsAlreadySelected] = useState(
-    isAlreadySelectedLocalStorage || "{}"
+    isAlreadySelectedLocalStorage || "[]"
   );
   const [currentEpisode, setCurrentEpisode] = useState(
     currentEpisodeLocalStorage || null

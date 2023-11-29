@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import useWatchEpisode from "../hooks/useWatchEpisode";
-import VideoPlayer from "./VideoPlayer";
-import Error from "./Error";
+import VideoPlayer from "../components/VideoPlayer";
+import Error from "../components/Error";
 function WatchEpisode() {
   const { episodeId } = useParams();
   const {

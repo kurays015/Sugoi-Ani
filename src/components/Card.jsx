@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { CiPlay1 } from "react-icons/ci";
+import { titleHandler } from "../utils/titleHandler";
 
 function Card({ animes }) {
   return (
@@ -23,7 +24,7 @@ function Card({ animes }) {
             alt={anime.title.english}
           />
           <div className="absolute bottom-0 bg-customBlack w-full text-center p-3 custom-sm:p-1 text-xs">
-            <h5 className="text-white ">{anime.title.english}</h5>
+            <h5 className="text-white ">{titleHandler(anime.title)}</h5>
           </div>
         </div>
       ))}

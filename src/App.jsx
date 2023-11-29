@@ -6,8 +6,8 @@ import Home from "./pages/Home";
 import Popular from "./pages/Popular";
 import Trending from "./pages/Trending";
 import RecentEpisodes from "./pages/RecentEpisodes";
-import AnimeInfo from "./components/AnimeInfo";
-import WatchEpisode from "./components/WatchEpisode";
+import AnimeInfo from "./pages/AnimeInfo";
+import WatchEpisode from "./pages/WatchEpisode";
 import SearchResult from "./components/SearchResult";
 import AnimeLayout from "./components/AnimeLayout";
 import WatchLayout from "./components/WatchLayout";
@@ -24,10 +24,10 @@ function App() {
         <Route path="popular" element={<Popular />} />
         <Route path="trending" element={<Trending />} />
         <Route path="recent" element={<RecentEpisodes />} />
+        <Route path=":title" element={<SearchResult />} />
       </Route>
 
       <Route element={<AnimeLayout />}>
-        <Route path=":title" element={<SearchResult />} />
         <Route path="info/:id" element={<AnimeInfo />} />
       </Route>
 

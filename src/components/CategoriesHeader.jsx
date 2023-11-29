@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
-import { useAuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 //react icons
 import ChipTabs from "./ChipTabs";
 import uzaki from "/images/uzaki.png";

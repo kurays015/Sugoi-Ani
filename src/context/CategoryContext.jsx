@@ -1,10 +1,6 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
-const CategoryContext = createContext();
-
-export function useCategoryContext() {
-  return useContext(CategoryContext);
-}
+export const CategoryContext = createContext();
 
 export function CategoryContextProvider({ children }) {
   const [pageNumber, setPageNumber] = useState(1);
