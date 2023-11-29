@@ -9,8 +9,8 @@ export function SearchContextProvider({ children }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    titleRef.current.value = "";
     navigate(`/${titleRef.current.value}`);
+    titleRef.current.value = "";
   }
 
   const value = { titleRef, handleSubmit };
