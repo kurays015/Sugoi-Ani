@@ -5,7 +5,7 @@ function SearchForm() {
   const { titleRef, handleSubmit } = useSearchContext();
   return (
     <form
-      className="bg-[#141414] flex items-center gap-[.5em] w-[500px] text-[#aaa] rounded-md overflow-hidden py-1 px-3 custom-sm:w-full md:flex md:order-2"
+      className="bg-[#141414] flex items-center text-[#aaa] rounded-md overflow-hidden custom-sm:w-full md:w-[50%] md:flex md:order-2"
       onSubmit={handleSubmit}
     >
       <button className="p-[7px]">
@@ -15,7 +15,7 @@ function SearchForm() {
         ref={titleRef}
         type="search"
         placeholder="Search anime..."
-        className="py-[5px] pl-[8px] placeholder:text-xs w-full outline-none bg-[#141414] "
+        className="py-[5px] pl-[8px] placeholder:text-[.7em] w-full outline-none bg-[#141414] "
       />
     </form>
   );

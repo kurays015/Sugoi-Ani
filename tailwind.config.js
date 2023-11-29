@@ -29,8 +29,7 @@ export default {
       },
       screens: {
         "custom-sm": "320px",
-        // "custom-md": "768px",
-        "custom-lg": "1024px",
+        "custom-sl": "425px",
       },
       colors: {
         customPurple: "#5A2E98", // Define your custom color

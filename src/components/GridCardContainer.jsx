@@ -2,7 +2,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import Card from "./Card";
 function GridCardContainer({ isLoading, animes }) {
   return (
-    <div className="grid gridRes gap-[1em] max-w-[1000px] mx-auto p-[2em] custom-sm:grid-cols-2">
+    <div className="grid gridRes gap-[1em] max-w-[1000px] mx-auto p-[2em] custom-sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5">
       {isLoading ? <SkeletonLoader /> : <Card animes={animes} />}
     </div>
   );
