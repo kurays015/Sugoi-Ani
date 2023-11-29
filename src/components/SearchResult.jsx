@@ -12,9 +12,14 @@ function SearchResult() {
 
   console.log(data?.results);
   return (
-    <div className="grid gridRes gap-[1em] max-w-[1000px] mx-auto p-[2em] custom-sm:grid-cols-2">
-      {isLoading ? <SkeletonLoader /> : <Card animes={searchedAnime} />}
-    </div>
+    <>
+      {searchedAnime.length === 0 && (
+        <p className=" text-center text-violet-300">Anime not found...</p>
+      )}
+      <div className="grid gridRes gap-[1em] max-w-[1000px] mx-auto p-[2em] custom-sm:grid-cols-2">
+        {isLoading ? <SkeletonLoader /> : <Card animes={searchedAnime} />}
+      </div>
+    </>
   );
 }
 
