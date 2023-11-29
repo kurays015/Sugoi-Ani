@@ -23,8 +23,8 @@ function Card({ animes }) {
             className="h-full w-full"
             alt={anime.title.english}
           />
-          <div className="absolute bottom-0 bg-customBlack w-full text-center custom-sm:p-1 custom-sl:py-3">
-            <h5 className="text-white custom-sm:text-xs custom-sl:text-sm md:text-base">
+          <div className="absolute bottom-0 bg-customBlack w-full text-center custom-sm:p-1.5 ">
+            <h5 className="text-white custom-sm:text-xs custom-sl:text-sm ">
               {titleHandler(anime.title)}
             </h5>
           </div>

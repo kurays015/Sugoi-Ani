@@ -19,13 +19,16 @@ function AnimeInfo() {
   if (isError)
     return <Error error={error} message="Oops! something went wrong!" />;
   return (
-    <main className=" bg-[#242424] py-5 ">
-      <section className="bg-[#1C1C1C] max-w-[85%] mx-auto my-8 flex gap-8 border border-slate-600 rounded-3xl custom-sm:max-w-[100%] custom-sm:p-2  border-none custom-sm:rounded-none custom-sm:flex custom-sm:flex-col custom-sm:text-center custom-sm:my-0 ">
-        <div className="flex flex-col gap-[1.5em] w-64 custom-sm:w-full custom-sm:text-center custom-600px:items-center">
+    <main className=" bg-[#242424] py-5 custom-sm:px-2 md:px-14 md:py-12 lg:px-28 xl:px-48 ">
+      <section
+        className="rounded-md bg-[#1C1C1C] max-w-[85%] mx-auto my-8 flex gap-8  custom-sm:max-w-[100%]  custom-sm:flex 
+   custom-sm:flex-col custom-sm:text-center custom-sm:my-0 lg:flex-row lg:p-6 overflow-hidden"
+      >
+        <div className="flex flex-col gap-[1.5em] w-64 custom-sm:w-full custom-sm:text-center custom-sm:items-center lg:w-[30%] ">
           <img
             src={singleAnimeData.image}
             alt={singleAnimeData.title.english}
-            className="w-full h-auto rounded-lg lg:w-[50%]"
+            className="w-full "
           />
           <Link
             to={
@@ -33,12 +36,12 @@ function AnimeInfo() {
                 ? `/watch/${singleAnimeData.episodes[0]?.id}`
                 : "/NoEpisode"
             }
-            className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 text-center custom-600px::w-[20%]"
+            className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 text-center "
           >
             Watch Now
           </Link>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 custom-sm:p-3 md:p-5">
           <h1 className="text-3xl font-semibold mb-4 text-white custom-sm:text-md">
             {singleAnimeData.title.romaji}
           </h1>

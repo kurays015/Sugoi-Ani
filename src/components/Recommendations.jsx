@@ -2,7 +2,7 @@ import Card from "./Card";
 
 function Recommendations({ recommendations }) {
   return (
-    <div className="max-w-[85%] mx-auto my-8 custom-sm:mx-4 custom-sm:my-5 custom-sm:max-w-full">
+    <div className="max-w-[85%] mx-auto my-8 custom-sm:max-w-full">
       <h1 className="mb-[1em] text-2xl font-medium text-[#aaa]">
         Recommendations
       </h1>
