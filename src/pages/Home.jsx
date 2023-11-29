@@ -8,7 +8,10 @@ import { FaGithub } from "react-icons/fa";
 function Home() {
   return (
     <>
-      <div className="cover-img bg-cover bg-center bg-no-repeat text-white relative block min-h-[600px] text-center py-[30px] custom-sm:py-0 custom-sm:min-h-[500px]">
+      <div
+        style={{ backgroundImage: "url(/images/aniwave-cover.jpg)" }}
+        className="bg-cover bg-center bg-no-repeat text-white relative block min-h-[600px] text-center py-[30px] custom-sm:py-0 custom-sm:min-h-[500px]"
+      >
         <div className="flex items-center justify-center text-center absolute bottom-3 left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <Link
             to="recent"
@@ -17,7 +20,10 @@ function Home() {
             Watch Anime <MdOutlineArrowRightAlt className="text-5xl" />
           </Link>
         </div>
-        <div className="welcome-img bg-contain bg-center bg-no-repeat min-h-[450px] flex justify-center"></div>
+        <div
+          style={{ backgroundImage: "url(/images/animegirl.png)" }}
+          className="bg-contain bg-center bg-no-repeat h-[550px] flex justify-center"
+        ></div>
       </div>
       <div className="text-center flex flex-col items-center justify-center">
         <div className="flex items-center gap-[1em]">

@@ -19,9 +19,9 @@ function AnimeInfo() {
   if (isError)
     return <Error error={error} message="Oops! something went wrong!" />;
   return (
-    <main className="text-white bg-[#242424] py-5 ">
-      <section className="bg-[#1C1C1C] max-w-[85%] mx-auto my-8 p-8 flex gap-8 border border-slate-600 rounded-3xl custom-sm:max-w-[100%] custom-sm:p-2  border-none custom-sm:rounded-none custom-sm:flex custom-sm:flex-col custom-sm:text-center custom-sm:my-0">
-        <div className="flex flex-col gap-[1.5em] w-64 custom-sm:w-full custom-sm:text-center">
+    <main className=" bg-[#242424] py-5 ">
+      <section className="bg-[#1C1C1C] max-w-[85%] mx-auto my-8 flex gap-8 border border-slate-600 rounded-3xl custom-sm:max-w-[100%] custom-sm:p-2  border-none custom-sm:rounded-none custom-sm:flex custom-sm:flex-col custom-sm:text-center custom-sm:my-0">
+        <div className="flex flex-col gap-[1.5em] w-64 custom-sm:w-full custom-sm:text-center custom-600px:items-center">
           <img
             src={singleAnimeData.image}
             alt={singleAnimeData.title.english}
@@ -33,7 +33,7 @@ function AnimeInfo() {
                 ? `/watch/${singleAnimeData.episodes[0]?.id}`
                 : "/NoEpisode"
             }
-            className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 text-center"
+            className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 text-center custom-600px::w-[20%]"
           >
             Watch Now
           </Link>

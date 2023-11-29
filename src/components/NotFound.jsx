@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-      <div className="bg-[#242424] p-8 rounded-lg shadow-lg text-center">
+      <div className="bg-[#242424] p-8 rounded-lg shadow-lg text-center max-w-[80%]">
         <img
           src="/images/notfound.jpeg"
           alt="Not Found"
-          className="mx-auto mb-8"
-          style={{ maxWidth: "300px" }}
+          className="mx-auto mb-8 w-full"
         />
         <h1 className="text-4xl font-bold mb-4 text-gray-300">
           404 - Not Found
