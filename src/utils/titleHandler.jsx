@@ -1,4 +1,4 @@
-export function titleHandler(title) {
+export default function titleHandler(title) {
   if (title.english) {
     return title.english;
   } else if (title.romaji) {

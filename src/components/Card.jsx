@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { CiPlay1 } from "react-icons/ci";
-import { titleHandler } from "../utils/titleHandler";
+import titleHandler from "../utils/titleHandler";
 
 function Card({ animes }) {
   return (

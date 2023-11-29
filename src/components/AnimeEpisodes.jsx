@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import titleHandler from "../utils/titleHandler";
 
 function AnimeEpisodes() {
   const anime = JSON.parse(localStorage.getItem("anime") || "[]");
@@ -31,8 +32,11 @@ function AnimeEpisodes() {
 
   return (
     <aside className="p-2 bg-[#1C1C1C] max-w-[300px] h-[500px] overflow-y-auto custom-sm:mx-auto custom-sm:w-full custom-sm:max-w-full">
+      <h1 className="text-[#c6c6c6] my-4 font-bold">
+        {titleHandler(anime.title)}
+      </h1>
       <div className="flex flex-col">
-        <h4 className="text-[#c6c6c6] font-semibold my-1">Episodes:</h4>
+        <h4 className="text-[#777777] font-semibold my-1">Episodes:</h4>
         {anime?.episodes.map((episode, index) => (
           <Link
             to={`/watch/${episode.id}`}
