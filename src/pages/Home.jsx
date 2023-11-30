@@ -10,9 +10,9 @@ function Home() {
     <>
       <div
         style={{ backgroundImage: "url(/images/aniwave-cover.jpg)" }}
-        className="bg-cover bg-center bg-no-repeat text-white relative block text-center py-[30px] custom-sm:py-0 custom-sm:min-h-[500px] custom-500px:min-h-[600px]"
+        className="bg-cover bg-center bg-no-repeat text-white relative block text-center py-[30px] custom-sm:py-0 custom-sm:min-h-[500px] "
       >
-        <div className="flex items-center justify-center text-center absolute bottom-3 left-[50%] -translate-x-[50%] -translate-y-[50%]">
+        <div className="flex items-center justify-center text-center absolute bottom-3 left-[50%] -translate-x-[50%] -translate-y-[50%] custom-500px:-translate-y-[0]">
           <Link
             to="recent"
             className=" bg-[#7248BD] w-[250px] rounded-[50px] flex items-center justify-center gap-[.5em] text-[1.2rem] py-[.7em] custom-sm:z-50"
