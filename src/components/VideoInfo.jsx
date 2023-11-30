@@ -3,7 +3,7 @@ import { FcDownload } from "react-icons/fc";
 import { Link } from "react-router-dom";
 function VideoInfo({ downloadSrc }) {
   return (
-    <div className="text-center text-[#777777] p-1">
+    <div className="text-center text-[#777777] p-1 custom-xxl:absolute custom-xxl:w-full">
       <p>Thanks for watching!</p>
       <span className=" px-2 rounded-[3px] text-xs flex flex-col items-center justify-center">
         You can also download it here

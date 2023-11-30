@@ -10,7 +10,7 @@ function Home() {
     <>
       <div
         style={{ backgroundImage: "url(/images/aniwave-cover.jpg)" }}
-        className="bg-cover bg-center bg-no-repeat text-white relative block min-h-[600px] text-center py-[30px] custom-sm:py-0 custom-sm:min-h-[500px]"
+        className="bg-cover bg-center bg-no-repeat text-white relative block text-center py-[30px] custom-sm:py-0 custom-sm:min-h-[500px] custom-500px:min-h-[600px]"
       >
         <div className="flex items-center justify-center text-center absolute bottom-3 left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <Link
@@ -22,7 +22,7 @@ function Home() {
         </div>
         <div
           style={{ backgroundImage: "url(/images/animegirl.png)" }}
-          className="bg-contain bg-center bg-no-repeat h-[550px] flex justify-center"
+          className="bg-contain bg-center bg-no-repeat h-[550px] flex justify-center custom-xxl:h-[500px]"
         ></div>
       </div>
       <div className="text-center flex flex-col items-center justify-center">

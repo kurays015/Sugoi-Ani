@@ -39,8 +39,12 @@ function VideoPlayer({ qualities, downloadSrc }) {
   };
 
   return (
-    <div className="relative group w-[800px] custom-sm:w-full group">
-      <video controls ref={videoRef} className="w-full h-full"></video>
+    <div className="relative group custom-sm:w-full group xl:w-full  custom-xxl:w-[50%]">
+      <video
+        controls
+        ref={videoRef}
+        className="w-full h-full custom-xxl:w-[800px]"
+      ></video>
       <QualitySettings
         qualities={qualities}
         showQualitySettings={showQualitySettings}
