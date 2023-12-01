@@ -32,7 +32,7 @@ function Signup() {
 
     try {
       const { data: credentials } = await axios.post(
-        "https://sugoiserver.vercel.app/user/signup",
+        "https://sugoiserver.onrender.com/user/signup",
 
         {
           email,
