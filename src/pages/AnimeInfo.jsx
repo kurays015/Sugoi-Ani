@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import useAnimeInfo from "../hooks/useAnimeInfo";
 import SkeletonLoader from "../components/SkeletonLoader";
 import Recommendations from "../components/Recommendations";
@@ -18,6 +18,7 @@ function AnimeInfo() {
   if (isLoading) return <SkeletonLoader />;
   if (isError)
     return <Error error={error} message="Oops! something went wrong!" />;
+
   return (
     <main className=" bg-[#242424] py-5 custom-sm:px-2 md:px-14 md:py-12 lg:px-28 xl:px-48 ">
       <section

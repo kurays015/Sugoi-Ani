@@ -5,8 +5,9 @@ import Related from "./Related";
 
 function WatchLayout() {
   const anime = JSON.parse(localStorage.getItem("anime") || "[]");
+
   return (
-    <>
+    <main className="relative">
       <AnimeInfoHeader />
       <div
         className="flex items-start
@@ -22,7 +23,7 @@ function WatchLayout() {
         {anime.relations.length && <Related relations={anime.relations} />}
       </div>
       <div className="text-center text-[#777777]">Made by Christ 💜</div>
-    </>
+    </main>
   );
 }
 

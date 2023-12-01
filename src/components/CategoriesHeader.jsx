@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
-import useLogout from "../hooks/useLogout";
-import { useAuthContext } from "../hooks/useAuthContext";
 //react icons
 import ChipTabs from "./ChipTabs";
 import uzaki from "/images/uzaki.png";
 import SearchForm from "./SearchForm";
 
 function CategoriesHeader() {
-  const { logout } = useLogout();
-  const { user } = useAuthContext();
+
 
   const categories = ["Recent", "Popular", "Trending"];
 

@@ -1,7 +1,7 @@
 import Layout from "./components/Layout";
 import { Routes, Route } from "react-router-dom";
-// import Login from "./pages/Login";
-// import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Popular from "./pages/Popular";
 import Trending from "./pages/Trending";
@@ -13,13 +13,15 @@ import AnimeLayout from "./components/AnimeLayout";
 import WatchLayout from "./components/WatchLayout";
 import NoEpisode from "./components/NoEpisode";
 import NotFound from "./components/NotFound";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
+  const { user } = useAuthContext();
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      {/* <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} /> */}
+      <Route path="/user/login" element={<Login />} />
+      <Route path="/user/signup" element={<Signup />} />
       <Route element={<Layout />}>
         <Route path="popular" element={<Popular />} />
         <Route path="trending" element={<Trending />} />
@@ -31,7 +33,7 @@ function App() {
         <Route path="info/:id" element={<AnimeInfo />} />
       </Route>
 
-      <Route path="/watch" element={<WatchLayout />}>
+      <Route path="/watch" element={user ? <WatchLayout /> : <Login />}>
         <Route path=":episodeId" element={<WatchEpisode />} />
       </Route>
       <Route path="/NoEpisode" element={<NoEpisode />} />
