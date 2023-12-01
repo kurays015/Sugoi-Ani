@@ -19,7 +19,7 @@ function Login() {
 
     try {
       const { data: credentials } = await axios.post(
-        "https://sugoiserver.vercel.app/user/login",
+        "https://sugoiserver.onrender.com/user/login",
         {
           email,
           password,
