@@ -19,7 +19,7 @@ function Login() {
 
     try {
       const { data: credentials } = await axios.post(
-        "http://localhost:3000/user/login",
+        "https://sugoiserver.vercel.app/user/login",
         {
           email,
           password,
