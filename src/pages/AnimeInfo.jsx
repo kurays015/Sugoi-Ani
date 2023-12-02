@@ -1,4 +1,4 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import useAnimeInfo from "../hooks/useAnimeInfo";
 import SkeletonLoader from "../components/SkeletonLoader";
 import Recommendations from "../components/Recommendations";

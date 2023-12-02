@@ -5,7 +5,7 @@ import "./index.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
 import { BrowserRouter } from "react-router-dom";
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { CategoryContextProvider } from "./context/CategoryContext.jsx";
 import { SearchContextProvider } from "./context/SearchContext.jsx";
 

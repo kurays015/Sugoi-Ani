@@ -2,7 +2,7 @@ function QualitySettings({
   qualities,
   showQualitySettings,
   setShowQualitySettings,
-  setSelectedQuality,
+  handleQualityClick,
 }) {
   return (
     <div
@@ -16,7 +16,9 @@ function QualitySettings({
       {qualities.map((qualityOption, index) => (
         <button
           key={qualityOption.quality}
-          onClick={() => setSelectedQuality(qualityOption.quality)}
+          onClick={() =>
+            handleQualityClick(qualityOption.quality, qualityOption.url)
+          }
           className={`text-[#777777] px-2 text-xs ${
             index % 2 === 0 ? "bg-[#0F0F0F]" : "bg-[#171717]"
           }`}

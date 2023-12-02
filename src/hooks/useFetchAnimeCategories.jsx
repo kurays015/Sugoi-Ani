@@ -1,19 +1,17 @@
 import anime from "../api/axios";
-import { useQuery } from "react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 const useFetchAnimeCategories = (endpoint, pageNumber, itemsPerPage) => {
-  return useQuery(
-    ["animes", { pageNumber, itemsPerPage }],
-    async () => {
+  return useQuery({
+    queryKey: ["anime", { pageNumber, itemsPerPage }],
+    queryFn: async () => {
       const { data } = await anime.get(
         `/${endpoint}?page=${pageNumber}&perPage=${itemsPerPage}`
       );
       return data;
     },
-    {
-      keepPreviousData: true,
-    }
-  );
+    keepPreviousData: true,
+  });
 };
 
 export default useFetchAnimeCategories;

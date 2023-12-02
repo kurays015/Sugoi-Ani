@@ -8,30 +8,34 @@ function VideoPlayer({ qualities, downloadSrc }) {
   const [selectedQuality, setSelectedQuality] = useState("default");
   const [showQualitySettings, setShowQualitySettings] = useState(false);
   const videoRef = useRef(null);
-
   let hls = null;
 
   useEffect(() => {
-    loadSource();
-  }, [selectedQuality]);
+    const defaultSource = qualities.find(q => q.quality === selectedQuality);
+    if (defaultSource) {
+      loadSource(defaultSource.url);
+    }
+  }, [qualities, selectedQuality]);
 
-  const loadSource = () => {
-    const selectedSource = qualities.find(q => q.quality === selectedQuality);
-    if (!selectedSource || !videoRef.current) return;
-
-    const src = selectedSource.url;
+  const loadSource = selectedSourceUrl => {
+    if (!selectedSourceUrl || !videoRef.current) return;
 
     if (Hls.isSupported()) {
       if (hls) {
         hls.destroy();
       }
       hls = new Hls();
-      hls.loadSource(src);
+      hls.loadSource(selectedSourceUrl);
       hls.attachMedia(videoRef.current);
-      // videoRef.current.autoplay = true; // Set autoPlay attribute for HLS playback
     } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
-      videoRef.current.src = src;
+      videoRef.current.src = selectedSourceUrl;
     }
+  };
+
+  const handleQualityClick = (quality, sourceUrl) => {
+    setSelectedQuality(quality);
+    setShowQualitySettings(false);
+    loadSource(sourceUrl);
   };
 
   const handleQualitySettings = () => {
@@ -49,7 +53,7 @@ function VideoPlayer({ qualities, downloadSrc }) {
         qualities={qualities}
         showQualitySettings={showQualitySettings}
         setShowQualitySettings={setShowQualitySettings}
-        setSelectedQuality={setSelectedQuality}
+        handleQualityClick={handleQualityClick}
       />
       <div
         className={`absolute top-2 right-2 text-white z-10 opacity-0 group-hover:opacity-100 ${
