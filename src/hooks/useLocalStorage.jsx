@@ -12,9 +12,3 @@ export const useLocalStorage = (key, initialValue) => {
 
   return [value, setValue];
 };
-
-// useEffect(() => {
-//   if (singleAnimeData) {
-//     localStorage.setItem("anime", JSON.stringify(singleAnimeData));
-//   }
-// }, [singleAnimeData]);

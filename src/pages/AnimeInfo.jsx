@@ -4,6 +4,7 @@ import SkeletonLoader from "../components/SkeletonLoader";
 import Recommendations from "../components/Recommendations";
 import Related from "../components/Related";
 import { useEffect } from "react";
+import titleHandler from "../utils/titleHandler";
 function AnimeInfo() {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useAnimeInfo(id);
@@ -44,7 +45,7 @@ function AnimeInfo() {
         </div>
         <div className="flex-1 custom-sm:p-3 md:p-5">
           <h1 className="text-3xl font-semibold mb-4 text-white custom-sm:text-md">
-            {singleAnimeData.title.romaji}
+            {titleHandler(singleAnimeData.title)}
           </h1>
           <p className="text-sm italic text-gray-400 mb-6 custom-sm:text-xs md:text-sm">
             Alias: {singleAnimeData.title.english},

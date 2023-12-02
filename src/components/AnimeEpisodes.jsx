@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import titleHandler from "../utils/titleHandler";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 function AnimeEpisodes() {
@@ -19,10 +18,7 @@ function AnimeEpisodes() {
   };
 
   return (
-    <aside className="p-2 bg-[#1C1C1C]  h-[500px] overflow-y-auto custom-sm:mx-auto custom-sm:w-full custom-sm:order-2 xl:w-[300px] xl:-order-1 custom-xxl:mx-0 ">
-      <h1 className="text-[#c6c6c6] my-4 font-bold">
-        {titleHandler(anime.title)}
-      </h1>
+    <aside className="p-2 bg-[#1C1C1C]   overflow-y-auto custom-sm:mx-auto custom-sm:h-[500px] custom-sm:w-full custom-sm:order-2 xl:w-[300px] xl:-order-1 custom-xxl:mx-0">
       <div className="flex flex-col">
         <h4 className="text-[#777777] font-semibold my-1">Episodes:</h4>
         {anime?.episodes.map((episode, index) => (

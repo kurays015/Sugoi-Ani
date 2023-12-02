@@ -43,7 +43,7 @@ function VideoPlayer({ qualities, downloadSrc }) {
   };
 
   return (
-    <div className="relative group custom-sm:w-full group xl:w-full  custom-xxl:w-[50%]">
+    <div className="relative group custom-sm:w-full group xl:w-full  custom-xxl:w-[40%]">
       <video
         controls
         ref={videoRef}
