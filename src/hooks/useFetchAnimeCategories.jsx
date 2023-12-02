@@ -1,5 +1,5 @@
 import anime from "../api/axios";
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const useFetchAnimeCategories = (endpoint, pageNumber, itemsPerPage) => {
   return useQuery({

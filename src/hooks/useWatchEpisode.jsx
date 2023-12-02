@@ -1,8 +1,8 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import anime from "../api/axios";
 
 const useWatchEpisode = id => {
-  const { data, isLoading, isError, error } = useQuery({
+  return useQuery({
     queryKey: ["episodeId", id],
     queryFn: async () => {
       const { data } = await anime.get(`/watch/${id}`);
@@ -10,7 +10,6 @@ const useWatchEpisode = id => {
     },
     keepPreviousData: true,
   });
-  return { data, isLoading, isError, error };
 };
 
 export default useWatchEpisode;
