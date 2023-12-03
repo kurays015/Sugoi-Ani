@@ -3,21 +3,29 @@ import { useRef } from "react";
 import axios from "axios";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { FaEye } from "react-icons/fa";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Login() {
   const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { dispatch, error, setError, showPassword, setShowPassword } =
-    useAuthContext();
+  const {
+    dispatch,
+    error,
+    setError,
+    showPassword,
+    setShowPassword,
+    isPending,
+    setIsPending,
+  } = useAuthContext();
   const anime = JSON.parse(localStorage.getItem("anime") || "[]");
 
   async function handleLogin(e) {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-
     try {
+      setIsPending(true);
       const { data: credentials } = await axios.post(
         "https://sugoiserver.onrender.com/user/login",
         {
@@ -29,11 +37,10 @@ function Login() {
         sessionStorage.setItem("user", JSON.stringify(credentials));
         dispatch({ type: "LOGIN", payload: credentials });
         navigate(`/watch/${anime.episodes[0]?.id}`);
-      } else {
-        console.log(credentials);
       }
     } catch (err) {
       setError(err.response.data.error);
+      setIsPending(false);
       console.log(err.response.data.error);
     }
   }
@@ -87,9 +94,13 @@ function Login() {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-indigo-800 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition-all ease-in-out duration-300 w-full"
+            className="bg-indigo-800 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition-all ease-in-out duration-300 w-full flex items-center justify-center"
           >
-            Login
+            {isPending ? (
+              <ClipLoader color="#36d7b7" size={15} speedMultiplier={0.3} />
+            ) : (
+              "Login"
+            )}
           </button>
         </div>
       </form>

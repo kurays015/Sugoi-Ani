@@ -3,7 +3,7 @@ import anime from "../api/axios";
 
 const useSearch = (title, pageNumber) => {
   return useQuery({
-    queryKey: ["title", title],
+    queryKey: ["title", { title }],
     queryFn: async () => {
       const { data } = await anime.get(`/${title}?page=${pageNumber}`);
       return data;

@@ -3,7 +3,7 @@ import anime from "../api/axios";
 
 const useWatchEpisode = id => {
   return useQuery({
-    queryKey: ["episodeId", id],
+    queryKey: ["episodeId", { id }],
     queryFn: async () => {
       const { data } = await anime.get(`/watch/${id}`);
       return data;

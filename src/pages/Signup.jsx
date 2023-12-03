@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import axios from "axios";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { FaEye } from "react-icons/fa";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Signup() {
   const navigate = useNavigate();
@@ -17,6 +18,8 @@ function Signup() {
     setShowPassword,
     showConfirmPassword,
     setShowConfirmPassword,
+    isPending,
+    setIsPending,
   } = useAuthContext();
 
   async function handleSignup(e) {
@@ -31,6 +34,7 @@ function Signup() {
     }
 
     try {
+      setIsPending(true);
       const { data: credentials } = await axios.post(
         "https://sugoiserver.onrender.com/user/signup",
 
@@ -43,11 +47,10 @@ function Signup() {
         sessionStorage.setItem("user", JSON.stringify(credentials));
         dispatch({ type: "LOGIN", payload: credentials });
         navigate("/");
-      } else {
-        console.log(credentials);
       }
     } catch (err) {
       setError(err.response.data.error);
+      setIsPending(false);
       console.log(err.response.data.error);
     }
   }
@@ -119,9 +122,9 @@ function Signup() {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-indigo-800 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition-all ease-in-out duration-300 w-full "
+            className="bg-indigo-800 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition-all ease-in-out duration-300 w-full flex items-center justify-center"
           >
-            Signup
+            {isPending ? <ClipLoader color="#36d7b7" size={15} /> : "Signup"}
           </button>
         </div>
       </form>

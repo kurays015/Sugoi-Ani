@@ -18,6 +18,7 @@ export function AuthContextProvider({ children }) {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
@@ -37,6 +38,8 @@ export function AuthContextProvider({ children }) {
     setShowPassword,
     showConfirmPassword,
     setShowConfirmPassword,
+    isPending,
+    setIsPending,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
