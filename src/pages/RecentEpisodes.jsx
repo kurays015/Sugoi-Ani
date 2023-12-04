@@ -14,12 +14,12 @@ function RecentEpisodes() {
 
   if (isError) return <Error error={error} />;
 
-  const filter = recentEpisodes?.results.filter(
-    anime => anime.id !== "102404" && anime.id !== "1939"
-  );
-  const animes = filter || [];
+  const filteredAnime =
+    recentEpisodes?.results.filter(
+      anime => anime.id !== "102404" && anime.id !== "1939"
+    ) || [];
 
-  return <GridCardContainer isLoading={isLoading} animes={animes} />;
+  return <GridCardContainer isLoading={isLoading} animes={filteredAnime} />;
 }
 
 export default RecentEpisodes;

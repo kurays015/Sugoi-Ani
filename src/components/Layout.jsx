@@ -3,14 +3,11 @@ import CategoriesHeader from "./CategoriesHeader";
 import Pagination from "./Pagination";
 function Layout() {
   return (
-    <>
+    <main className="bg-[#242424]">
       <CategoriesHeader />
       <Outlet />
       <Pagination />
-      <div className="text-center text-xs text-[#777777]">
-        Made by Christ 💜
-      </div>
-    </>
+    </main>
   );
 }
 

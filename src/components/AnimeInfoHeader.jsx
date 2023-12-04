@@ -7,7 +7,7 @@ function AnimeInfoHeader() {
   const [showNav, setShowNav] = useState(false);
 
   return (
-    <header className="bg-[#1C1C1C] relative py-3 px-16 flex items-center justify-between gap-2 custom-sm:px-3 custom-sm:gap-5">
+    <header className="bg-[#1C1C1C] relative py-3 px-16 flex items-center justify-between gap-2 custom-sm:px-3 custom-sm:gap-5 custom-xxl:px-10">
       <Link to="/" className="custom-sm:hidden md:block">
         <img src="/images/uzaki.png" className="w-[80px]" alt="logo" />
       </Link>

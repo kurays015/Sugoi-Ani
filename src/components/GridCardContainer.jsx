@@ -1,4 +1,5 @@
 import SkeletonLoader from "./SkeletonLoader";
+
 import Card from "./Card";
 function GridCardContainer({ isLoading, animes }) {
   return (

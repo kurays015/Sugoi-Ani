@@ -6,6 +6,6 @@ export default function titleHandler(title) {
   } else if (title?.usePreferred) {
     return title.usePreferred;
   } else {
-    return "Unknown title";
+    return "Unknown";
   }
 }

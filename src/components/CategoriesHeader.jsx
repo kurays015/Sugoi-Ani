@@ -5,8 +5,6 @@ import uzaki from "/images/uzaki.png";
 import SearchForm from "./SearchForm";
 
 function CategoriesHeader() {
-
-
   const categories = ["Recent", "Popular", "Trending"];
 
   return (
@@ -16,7 +14,7 @@ function CategoriesHeader() {
           <img src={uzaki} className="h-full" />
         </Link>
       </div>
-      <nav className="">
+      <nav>
         <ChipTabs categories={categories} />
       </nav>
       <SearchForm />
