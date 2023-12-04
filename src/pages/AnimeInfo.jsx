@@ -1,10 +1,12 @@
 import { useParams, Link } from "react-router-dom";
 import useAnimeInfo from "../hooks/useAnimeInfo";
-import SkeletonLoader from "../components/SkeletonLoader";
 import Recommendations from "../components/Recommendations";
 import Related from "../components/Related";
 import { useEffect } from "react";
 import titleHandler from "../utils/titleHandler";
+import { Skeleton } from "@chakra-ui/react";
+import { AnimeInfoSkeleton } from "../components/SkeletonLoader";
+
 function AnimeInfo() {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useAnimeInfo(id);
@@ -16,9 +18,15 @@ function AnimeInfo() {
     }
   }, [singleAnimeData]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <AnimeInfoSkeleton />;
   if (isError)
     return <Error error={error} message="Oops! something went wrong!" />;
+  if (!singleAnimeData)
+    return (
+      <h1 className="text-white text-2xl">
+        Something went wrong, try reloading the page.
+      </h1>
+    );
 
   return (
     <main className="bg-[#242424] py-5 custom-sm:px-2 md:px-14 md:py-12 lg:px-28 xl:px-48 ">

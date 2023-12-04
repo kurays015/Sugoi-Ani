@@ -22,7 +22,7 @@ function Home() {
         </div>
         <div
           style={{ backgroundImage: "url(/images/animegirl.png)" }}
-          className="bg-contain bg-center bg-no-repeat h-[550px] flex justify-center custom-xxl:h-[500px]"
+          className="bg-contain bg-center bg-no-repeat h-[450px] flex justify-center custom-xxl:h-[500px]"
         ></div>
       </div>
       <div className="text-center flex flex-col items-center justify-center">

@@ -1,4 +1,3 @@
-// import Skeleton from "react-loading-skeleton";
 import { Card, Skeleton, SkeletonText } from "@chakra-ui/react";
 
 export function SkeletonItem() {
@@ -19,10 +18,20 @@ export function SkeletonItem() {
   );
 }
 
-function SkeletonLoader() {
+export function AnimeInfoSkeleton() {
+  return (
+    <main className="bg-[#242424] flex flex-col gap-8 pt-5 h-[100vh]  md:py-12 custom-sm:px-2 custom md:px-14 lg:px-28 xl:px-48  ">
+      <section className="rounded-md bg-[#1C1C1C] max-w-[85%] mx-auto flex gap-8 custom-sm:max-w-[100%] custom-sm:h-[500px] custom-sm:justify-center custom-sm:flex custom-sm:flex-col custom-sm:text-center custom-sm:items-center lg:flex-row overflow-hidden w-full">
+        <Skeleton w="100%" h="100%" />
+      </section>
+      <Skeleton h="20px" w="100%" mx="auto" mt="8" />
+      <Skeleton h="20px" w="100%" mx="auto" mt="4" />
+    </main>
+  );
+}
+
+export function AnimeCategoriesSkeleton() {
   return Array.from({ length: 20 }).map((_, index) => (
     <SkeletonItem key={index} />
   ));
 }
-
-export default SkeletonLoader;
