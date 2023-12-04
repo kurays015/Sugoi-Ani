@@ -1,8 +1,10 @@
-# React + Vite
+# Sugoi Anime
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features:
+1. You can watch
+2. You can search and see anime info
+<br>  
 
-Currently, two official plugins are available:
+Anime rankings, filter by genres, and add to favorites will be added soon.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
