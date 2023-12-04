@@ -14,7 +14,7 @@ function WatchEpisode() {
     error,
   } = useWatchEpisode(episodeId);
 
-  if (!isLoading) return <VideoSkeleton />;
+  if (isLoading) return <VideoSkeleton />;
   if (!videoSources)
     return <h1 className="text-white text-2xl">Something went wrong!</h1>;
   if (isError) return <Error error={error} />;
