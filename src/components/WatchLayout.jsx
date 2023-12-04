@@ -16,11 +16,11 @@ function WatchLayout() {
       >
         <AnimeEpisodes />
         <Outlet />
-        <div className="text-gray-600 flex justify-center my-5 gap-3 md:gap-10 md:my-10 xl:gap-3 xl:my-0 custom-xxl:justify-start custom-xxl:w-[40%]">
+        <div className="text-gray-600 w-full flex justify-center my-5 gap-3 md:gap-10 md:my-10 xl:gap-3 xl:my-0 custom-xxl:justify-start custom-xxl:w-[40%]">
           <img
             src={anime.image}
             alt={anime.title.english}
-            className="custom-sm:w-[30%] custom-xxl:w-[30%]"
+            className="h-[20%] custom-sm:w-[30%]  custom-xxl:w-[30%]"
           />
           <div className="text-[#777777]">
             <h5 className="mb-2 md:mb-5 md:text-2xl">

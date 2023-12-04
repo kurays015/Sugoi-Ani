@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 import useWatchEpisode from "../hooks/useWatchEpisode";
 import VideoPlayer from "../components/VideoPlayer";
 import Error from "../components/Error";
+import { Skeleton } from "@chakra-ui/react";
+import { VideoSkeleton } from "../components/SkeletonLoader";
+
 function WatchEpisode() {
   const { episodeId } = useParams();
   const {
@@ -11,13 +14,11 @@ function WatchEpisode() {
     error,
   } = useWatchEpisode(episodeId);
 
-  if (isLoading)
-    return (
-      <div className="text-white text-2xl text-center w-full">
-        Wait lang... uwu!
-      </div>
-    );
+  if (!isLoading) return <VideoSkeleton />;
+  if (!videoSources)
+    return <h1 className="text-white text-2xl">Something went wrong!</h1>;
   if (isError) return <Error error={error} />;
+
   return (
     <VideoPlayer
       qualities={videoSources?.sources}
