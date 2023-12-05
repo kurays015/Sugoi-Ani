@@ -46,7 +46,7 @@ function Login() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900 custom-sm:p-3">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 custom-sm:p-3">
       <form
         className="p-5 max-w-md w-full bg-gray-800 rounded-md"
         onSubmit={handleLogin}
@@ -104,6 +104,10 @@ function Login() {
           </button>
         </div>
       </form>
+      <h5 className="text-white text-xs text-center my-5">
+        Logging in and signing up will take some time, due to the server issue.
+        Try to reload. Aayusin ko pa wait lang. hahaha
+      </h5>
     </div>
   );
 }
