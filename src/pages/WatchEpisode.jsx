@@ -16,7 +16,11 @@ function WatchEpisode() {
 
   if (isLoading) return <VideoSkeleton />;
   if (!videoSources)
-    return <h1 className="text-white text-2xl">Something went wrong!</h1>;
+    return (
+      <h1 className="text-white text-2xl">
+        Something went wrong! It's either the anime has no data or server error
+      </h1>
+    );
   if (isError) return <Error error={error} />;
 
   return (

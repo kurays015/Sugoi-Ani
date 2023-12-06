@@ -6,7 +6,6 @@ import titleHandler from "../utils/titleHandler";
 
 function WatchLayout() {
   const anime = JSON.parse(localStorage.getItem("anime") || "[]");
-  console.log(anime);
   return (
     <main className="relative">
       <AnimeInfoHeader />
@@ -28,11 +27,11 @@ function WatchLayout() {
             </h5>
             <div className="grid grid-cols-2 text-xs gap-1 md:gap-3 md:text-sm">
               <div>
-                from: {anime.startDate.year}-{anime.startDate.month}-
+                From: {anime.startDate.year}-{anime.startDate.month}-
                 {anime.startDate.day}
               </div>
               <div>
-                to: {anime.endDate.year}-{anime.endDate.month}-
+                To: {anime.endDate.year}-{anime.endDate.month}-
                 {anime.endDate.day}
               </div>
               <div>Popularity: {anime.popularity}</div>
@@ -43,8 +42,7 @@ function WatchLayout() {
               <div>Rating: {anime.rating}</div>
               <div>Total Episodes: {anime.totalEpisodes}</div>
               <div>
-                Studios:
-                {anime.studios.map(studio => studio).join(", ")}
+                Studios: {anime.studios.map(studio => studio).join(", ")}
               </div>
               <div>Duration: {anime.duration}</div>
               <div className="custom-sm:hidden">

@@ -3,7 +3,7 @@ import { useRef } from "react";
 import axios from "axios";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { FaEye } from "react-icons/fa";
-import ClipLoader from "react-spinners/ClipLoader";
+import { Spinner } from "@chakra-ui/react";
 
 function Login() {
   const navigate = useNavigate();
@@ -93,11 +93,14 @@ function Login() {
         </div>
         <div className="text-center">
           <button
+            disabled={isPending}
             type="submit"
-            className="bg-indigo-800 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition-all ease-in-out duration-300 w-full flex items-center justify-center"
+            className={`bg-indigo-800 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition-all ease-in-out duration-300 w-full flex items-center justify-center ${
+              isPending ? "opacity-50" : ""
+            }`}
           >
             {isPending ? (
-              <ClipLoader color="#36d7b7" size={15} speedMultiplier={0.3} />
+              <Spinner color="violet" speed="2s" size="xs" />
             ) : (
               "Login"
             )}
@@ -105,8 +108,8 @@ function Login() {
         </div>
       </form>
       <h5 className="text-white text-xs text-center my-5">
-        Logging in and signing up will take some time, due to the server issue.
-        Try to reload. Aayusin ko pa wait lang. hahaha
+        Logging in and signing up may sometimes take longer due to server
+        issues. Please try reloading the page Aayusin ko pa wait lang. hahaha
       </h5>
     </div>
   );

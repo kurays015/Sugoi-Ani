@@ -4,8 +4,8 @@ import Recommendations from "../components/Recommendations";
 import Related from "../components/Related";
 import { useEffect } from "react";
 import titleHandler from "../utils/titleHandler";
-import { Skeleton } from "@chakra-ui/react";
 import { AnimeInfoSkeleton } from "../components/SkeletonLoader";
+import handleNavigate from "../utils/handleNavigate";
 
 function AnimeInfo() {
   const { id } = useParams();
@@ -24,7 +24,8 @@ function AnimeInfo() {
   if (!singleAnimeData)
     return (
       <h1 className="text-white text-2xl">
-        Something went wrong, try reloading the page.
+        Something went wrong! It's either the anime has no data or server error,
+        try reloading the page.
       </h1>
     );
 
@@ -41,11 +42,7 @@ function AnimeInfo() {
             className="w-full "
           />
           <Link
-            to={
-              singleAnimeData.episodes.length
-                ? `/watch/${singleAnimeData.episodes[0]?.id}`
-                : "/NoEpisode"
-            }
+            to={handleNavigate(singleAnimeData)}
             className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 text-center "
           >
             Watch Now
@@ -82,7 +79,7 @@ function AnimeInfo() {
               <div>Rating: {singleAnimeData.rating}</div>
               <div>Total Episodes: {singleAnimeData.totalEpisodes}</div>
               <div>
-                Studios:
+                Studios:{" "}
                 {singleAnimeData.studios.map(studio => studio).join(", ")}
               </div>
               <div>Duration: {singleAnimeData.duration}</div>

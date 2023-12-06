@@ -1,5 +1,5 @@
 import Layout from "./components/Layout";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
@@ -17,6 +17,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
   const { user } = useAuthContext();
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -33,9 +34,14 @@ function App() {
         <Route path="info/:id" element={<AnimeInfo />} />
       </Route>
 
-      <Route path="/watch" element={user ? <WatchLayout /> : <Login />}>
+      {/* private/protected route - need to fix this bacause every reload it redirect to login page*/}
+      <Route
+        path="/watch"
+        element={user ? <WatchLayout /> : <Navigate to="/user/login" />}
+      >
         <Route path=":episodeId" element={<WatchEpisode />} />
       </Route>
+
       <Route path="/NoEpisode" element={<NoEpisode />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
