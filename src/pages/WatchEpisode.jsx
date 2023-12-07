@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
 import useWatchEpisode from "../hooks/useWatchEpisode";
 import VideoPlayer from "../components/VideoPlayer";
-import Error from "../components/Error";
-import { Skeleton } from "@chakra-ui/react";
+import { EpisodeError, ApiError } from "../components/Errors";
 import { VideoSkeleton } from "../components/SkeletonLoader";
 
 function WatchEpisode() {
@@ -15,13 +14,8 @@ function WatchEpisode() {
   } = useWatchEpisode(episodeId);
 
   if (isLoading) return <VideoSkeleton />;
-  if (!videoSources)
-    return (
-      <h1 className="text-white text-2xl">
-        Something went wrong! It's either the anime has no data or server error
-      </h1>
-    );
-  if (isError) return <Error error={error} />;
+  if (!videoSources) return <EpisodeError />;
+  if (isError) return <ApiError error={error} />;
 
   return (
     <VideoPlayer

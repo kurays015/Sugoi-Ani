@@ -5,11 +5,13 @@ import Related from "../components/Related";
 import { useEffect } from "react";
 import titleHandler from "../utils/titleHandler";
 import { AnimeInfoSkeleton } from "../components/SkeletonLoader";
-import handleNavigate from "../utils/handleNavigate";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { SingleAnimeDataError, ApiError } from "../components/Errors";
 
 function AnimeInfo() {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useAnimeInfo(id);
+  const { user } = useAuthContext();
   const singleAnimeData = data || null;
 
   useEffect(() => {
@@ -19,15 +21,8 @@ function AnimeInfo() {
   }, [singleAnimeData]);
 
   if (isLoading) return <AnimeInfoSkeleton />;
-  if (isError)
-    return <Error error={error} message="Oops! something went wrong!" />;
-  if (!singleAnimeData)
-    return (
-      <h1 className="text-white text-2xl">
-        Something went wrong! It's either the anime has no data or server error,
-        try reloading the page.
-      </h1>
-    );
+  if (isError) return <ApiError error={error} />;
+  if (!singleAnimeData) return <SingleAnimeDataError />;
 
   return (
     <main className="bg-[#242424] py-5 custom-sm:px-2 md:px-14 md:py-12 lg:px-28 xl:px-48 ">
@@ -42,7 +37,9 @@ function AnimeInfo() {
             className="w-full "
           />
           <Link
-            to={handleNavigate(singleAnimeData)}
+            to={
+              user ? `/watch/${singleAnimeData.episodes[0]?.id}` : "/user/login"
+            }
             className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 text-center "
           >
             Watch Now

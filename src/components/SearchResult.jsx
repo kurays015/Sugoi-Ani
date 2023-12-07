@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useSearch from "../hooks/useSearch";
 import GridCardContainer from "./GridCardContainer";
 import { useCategoryContext } from "../hooks/useCategoryContext";
+import { ApiError, SearchError } from "./Errors";
 
 function SearchResult() {
   const { title } = useParams();
@@ -10,6 +11,9 @@ function SearchResult() {
   const searchedAnime = data?.results || [];
   const searchResult = !isLoading && searchedAnime.length === 0;
   const isSearching = isLoading && searchedAnime.length === 0;
+
+  if (isError) return <ApiError error={error} />;
+  if (!searchedAnime) return <SearchError />;
 
   return (
     <>

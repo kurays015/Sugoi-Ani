@@ -1,6 +1,7 @@
 import useFetchAnimeCategories from "../hooks/useFetchAnimeCategories";
 import { useCategoryContext } from "../hooks/useCategoryContext";
 import GridCardContainer from "../components/GridCardContainer";
+import { ApiError } from "../components/Errors";
 
 function Popular() {
   const { pageNumber, itemsPerPage } = useCategoryContext();
@@ -12,7 +13,7 @@ function Popular() {
     error,
   } = useFetchAnimeCategories("popular", pageNumber, itemsPerPage);
 
-  if (isError) return <Error error={error} />;
+  if (isError) return <ApiError error={error} />;
 
   const animes = popularAnime?.results || [];
 

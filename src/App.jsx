@@ -11,7 +11,6 @@ import WatchEpisode from "./pages/WatchEpisode";
 import SearchResult from "./components/SearchResult";
 import AnimeLayout from "./components/AnimeLayout";
 import WatchLayout from "./components/WatchLayout";
-import NoEpisode from "./components/NoEpisode";
 import NotFound from "./components/NotFound";
 import { useAuthContext } from "./hooks/useAuthContext";
 
@@ -42,7 +41,6 @@ function App() {
         <Route path=":episodeId" element={<WatchEpisode />} />
       </Route>
 
-      <Route path="/NoEpisode" element={<NoEpisode />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
