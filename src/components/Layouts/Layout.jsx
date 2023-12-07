@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import CategoriesHeader from "./CategoriesHeader";
-import Pagination from "./Pagination";
+import CategoriesHeader from "../CategoriesHeader";
+import Pagination from "../Pagination";
 function Layout() {
   return (
     <main className="bg-[#242424]">

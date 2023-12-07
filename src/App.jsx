@@ -1,5 +1,5 @@
-import Layout from "./components/Layout";
 import { Routes, Route, Navigate } from "react-router-dom";
+//components
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
@@ -9,10 +9,13 @@ import RecentEpisodes from "./pages/RecentEpisodes";
 import AnimeInfo from "./pages/AnimeInfo";
 import WatchEpisode from "./pages/WatchEpisode";
 import SearchResult from "./components/SearchResult";
-import AnimeLayout from "./components/AnimeLayout";
-import WatchLayout from "./components/WatchLayout";
 import NotFound from "./components/NotFound";
+//hooks
 import { useAuthContext } from "./hooks/useAuthContext";
+//layouts component
+import Layout from "./components/Layouts/Layout";
+import AnimeLayout from "./components/Layouts/AnimeLayout";
+import WatchLayout from "./components/Layouts/WatchLayout";
 
 function App() {
   const { user } = useAuthContext();
