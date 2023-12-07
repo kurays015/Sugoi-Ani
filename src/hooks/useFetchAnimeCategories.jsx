@@ -10,7 +10,6 @@ const useFetchAnimeCategories = (endpoint, pageNumber, itemsPerPage) => {
       );
       return data;
     },
-    keepPreviousData: true,
   });
 };
 

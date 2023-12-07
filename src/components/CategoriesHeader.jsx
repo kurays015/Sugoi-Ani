@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 //react icons
-import ChipTabs from "./ChipTabs";
 import uzaki from "/images/uzaki.png";
 import SearchForm from "./SearchForm";
 
@@ -15,7 +14,23 @@ function CategoriesHeader() {
         </Link>
       </div>
       <nav>
-        <ChipTabs categories={categories} />
+        <ul className="flex gap-5">
+          {categories.map(category => (
+            <NavLink key={category} to={category.toLowerCase()}>
+              {({ isActive }) => (
+                <span
+                  className={`${
+                    isActive
+                      ? "bg-[#6735AE] text-white"
+                      : "text-slate-300 hover:text-slate-200 hover:bg-slate-700"
+                  } text-sm transition-colors px-2.5 py-2 rounded-md relative z-10 `}
+                >
+                  {category}
+                </span>
+              )}
+            </NavLink>
+          ))}
+        </ul>
       </nav>
       <SearchForm />
     </header>

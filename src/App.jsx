@@ -25,6 +25,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/user/login" element={<Login />} />
       <Route path="/user/signup" element={<Signup />} />
+
       <Route element={<Layout />}>
         <Route path="popular" element={<Popular />} />
         <Route path="trending" element={<Trending />} />
@@ -39,7 +40,9 @@ function App() {
       {/* private/protected route - need to fix this bacause every reload it redirect to login page*/}
       <Route
         path="/watch"
-        element={user ? <WatchLayout /> : <Navigate to="/user/login" />}
+        element={
+          user ? <WatchLayout /> : <Navigate to="/user/login" replace={true} />
+        }
       >
         <Route path=":episodeId" element={<WatchEpisode />} />
       </Route>
