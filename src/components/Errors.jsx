@@ -34,11 +34,3 @@ export function SearchError() {
     </h1>
   );
 }
-
-export function CategoryError() {
-  return (
-    <h1 className="text-white text-center">
-      No anime data found, try again later.
-    </h1>
-  );
-}

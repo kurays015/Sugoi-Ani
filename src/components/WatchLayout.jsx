@@ -6,6 +6,7 @@ import titleHandler from "../utils/titleHandler";
 
 function WatchLayout() {
   const anime = JSON.parse(localStorage.getItem("anime") || "[]");
+
   return (
     <main className="relative">
       <AnimeInfoHeader />

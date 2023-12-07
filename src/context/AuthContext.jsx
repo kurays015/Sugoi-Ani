@@ -18,6 +18,7 @@ export function AuthContextProvider({ children }) {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
@@ -40,6 +41,8 @@ export function AuthContextProvider({ children }) {
     setShowConfirmPassword,
     isPending,
     setIsPending,
+    showLoginPassword,
+    setShowLoginPassword,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

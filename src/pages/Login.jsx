@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import axios from "axios";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Spinner } from "@chakra-ui/react";
 
 function Login() {
@@ -13,10 +13,10 @@ function Login() {
     dispatch,
     error,
     setError,
-    showPassword,
-    setShowPassword,
     isPending,
     setIsPending,
+    showLoginPassword,
+    setShowLoginPassword,
   } = useAuthContext();
   const anime = JSON.parse(localStorage.getItem("anime") || "[]");
 
@@ -39,6 +39,7 @@ function Login() {
         navigate(`/watch/${anime.episodes[0]?.id}`);
       }
     } catch (err) {
+      console.log(err);
       setError(err.response.data.error);
       setIsPending(false);
       console.log(err.response.data.error);
@@ -72,16 +73,20 @@ function Login() {
           </label>
           <input
             ref={passwordRef}
-            type={`${showPassword ? "text" : "password"}`}
+            type={`${showLoginPassword ? "text" : "password"}`}
             placeholder="Enter your password"
             id="password"
             className="w-full py-2 px-3 bg-gray-700 text-white rounded-md outline-none"
           />
-          <div className="absolute right-2 top-[57%]">
-            <FaEye
-              className="text-gray-400"
-              onClick={() => setShowPassword(prev => !prev)}
-            />
+          <div
+            className="absolute right-2 top-[57%]"
+            onClick={() => setShowLoginPassword(prev => !prev)}
+          >
+            {showLoginPassword ? (
+              <FaEye className="text-gray-400" />
+            ) : (
+              <FaEyeSlash className="text-gray-400" />
+            )}
           </div>
         </div>
         {error && <p className="text-red-500 mb-4">{error}</p>}
@@ -91,16 +96,16 @@ function Login() {
             Sign Up
           </Link>
         </div>
-        <div className="text-center">
+        <div className="flex justify-center min-h-[40px]">
           <button
             disabled={isPending}
             type="submit"
-            className={`bg-indigo-800 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition-all ease-in-out duration-300 w-full flex items-center justify-center ${
+            className={`bg-indigo-800 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition-all ease-in-out duration-300 w-[50%] flex items-center justify-center ${
               isPending ? "opacity-50" : ""
             }`}
           >
             {isPending ? (
-              <Spinner color="violet" speed="2s" size="xs" />
+              <Spinner color="white" speed="2s" size="xs" />
             ) : (
               "Login"
             )}
@@ -109,7 +114,8 @@ function Login() {
       </form>
       <h5 className="text-white text-xs text-center my-5">
         Logging in and signing up may sometimes take longer due to server
-        issues. Please try reloading the page Aayusin ko pa wait lang. hahaha
+        issues. Please wait or try reloading the page Aayusin ko pa wait lang.
+        hahaha
       </h5>
     </div>
   );
