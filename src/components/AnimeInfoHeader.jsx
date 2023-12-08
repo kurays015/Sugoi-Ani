@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import MobileAnimeInfoHeader from "./MobileAnimeInfoHeader";
-import useCategories from "../hooks/useCategories";
+import { useCategories } from "../hooks/useCategories";
 
 function AnimeInfoHeader() {
   const categories = useCategories();
@@ -14,7 +14,7 @@ function AnimeInfoHeader() {
           {categories.map(category => (
             <li key={category}>
               <Link
-                to={category.toLowerCase()}
+                to={`/${category.toLowerCase()}`}
                 className="text-[#AAAAAA] transition-all duration-300 ease-in-out hover:text-[#A885DA]"
               >
                 {category}

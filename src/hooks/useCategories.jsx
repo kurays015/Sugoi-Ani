@@ -1,3 +1,3 @@
-export default function useCategories() {
+export function useCategories() {
   return ["Recent", "Popular", "Trending"];
 }
