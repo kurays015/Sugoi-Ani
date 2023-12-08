@@ -7,7 +7,6 @@ import {
   DrawerCloseButton,
   useDisclosure,
   Button,
-  Flex,
   Box,
 } from "@chakra-ui/react";
 import { FaLongArrowAltLeft } from "react-icons/fa";
@@ -18,7 +17,7 @@ function AddToFavorites() {
   const btnRef = useRef();
 
   return (
-    <Flex justifyContent="flex-end">
+    <>
       <Box position="absolute" top="5px" right="5px">
         <Button
           ref={btnRef}
@@ -45,7 +44,7 @@ function AddToFavorites() {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </Flex>
+    </>
   );
 }
 
