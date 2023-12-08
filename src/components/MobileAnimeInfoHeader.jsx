@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import { GiHamburgerMenu } from "react-icons/gi";
+import useCategories from "../hooks/useCategories";
 
 function MobileAnimeInfoHeader() {
   const [showNav, setShowNav] = useState(false);
+  const categories = useCategories();
 
   return (
     <>
@@ -21,24 +23,16 @@ function MobileAnimeInfoHeader() {
           showNav ? "custom-sm:flex" : "custom-sm:hidden"
         }`}
       >
-        <Link
-          to="/recent"
-          className="text-[#AAAAAA] transition-all duration-300 ease-in-out hover:text-[#A885DA]"
-        >
-          Recent
-        </Link>
-        <Link
-          to="/popular"
-          className="text-[#AAAAAA] transition-all duration-300 ease-in-out hover:text-[#A885DA]"
-        >
-          Popular
-        </Link>
-        <Link
-          to="/trending"
-          className="text-[#AAAAAA] transition-all duration-300 ease-in-out hover:text-[#A885DA]"
-        >
-          Trending
-        </Link>
+        {categories.map(category => (
+          <li key={category}>
+            <Link
+              to={category.toLowerCase()}
+              className="text-[#AAAAAA] transition-all duration-300 ease-in-out hover:text-[#A885DA]"
+            >
+              {category}
+            </Link>
+          </li>
+        ))}
       </ul>
     </>
   );
