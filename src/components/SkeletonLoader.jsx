@@ -50,9 +50,16 @@ export function VideoSkeleton() {
           xxl: "300px",
           "2xxl": "350px",
         }}
+        startColor="#7A5EB9"
+        endColor="#7A5EB9"
         w="100%"
         mx="auto"
         mt="4"
+      />
+      <img
+        src="/images/pika.gif"
+        alt="pikachu loader"
+        className="absolute top-[50%] left-[50%] -translate-x-[50%] w-[60px]"
       />
     </div>
   );
