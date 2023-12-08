@@ -1,3 +1,3 @@
-export function useCategories() {
+export const useCategories = () => {
   return ["Recent", "Popular", "Trending"];
-}
+};

@@ -83,9 +83,9 @@ function Login() {
             onClick={() => setShowLoginPassword(prev => !prev)}
           >
             {showLoginPassword ? (
-              <FaEye className="text-gray-400" />
+              <FaEye className="text-gray-400 cursor-pointer" />
             ) : (
-              <FaEyeSlash className="text-gray-400" />
+              <FaEyeSlash className="text-gray-400 cursor-pointer" />
             )}
           </div>
         </div>

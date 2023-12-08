@@ -2,24 +2,11 @@ import { Link } from "react-router-dom";
 import { CiPlay1 } from "react-icons/ci";
 import titleHandler from "../utils/titleHandler";
 import { GoHeartFill, GoHeart } from "react-icons/go";
-import { useState } from "react";
+import { useFavorites } from "../hooks/useFavorites";
 
 function Card({ animes }) {
-  const [addToFavorites, setAddToFavorites] = useState({});
-  const [favorites, setFavorites] = useState([]);
-
-  const handleAddToFavorite = (id, img, title) => {
-    setAddToFavorites(prev => ({ ...prev, [id]: true }));
-    setFavorites([...favorites, { img, title }]);
-  };
-  const handleRemoveToFavorites = id => {
-    setAddToFavorites(prev => ({ ...prev, [id]: false }));
-    setFavorites(prevFavorites =>
-      prevFavorites.filter(favorite => favorite.id !== id)
-    );
-  };
-
-  console.log(favorites);
+  const { handleAddToFavorite, handleRemoveToFavorites, addToFavorites } =
+    useFavorites();
 
   return (
     <>

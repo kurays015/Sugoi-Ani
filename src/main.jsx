@@ -8,6 +8,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { CategoryContextProvider } from "./context/CategoryContext.jsx";
 import { SearchContextProvider } from "./context/SearchContext.jsx";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { FavoriteContextProvider } from "./context/FavoriteContext.jsx";
 
 const queryClient = new QueryClient();
 
@@ -31,15 +32,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <AuthContextProvider>
           <SearchContextProvider>
-            <CategoryContextProvider>
-              <ChakraProvider
-                theme={theme}
-                resetCSS={false}
-                disableGlobalStyle={true}
-              >
-                <App />
-              </ChakraProvider>
-            </CategoryContextProvider>
+            <FavoriteContextProvider>
+              <CategoryContextProvider>
+                <ChakraProvider
+                  theme={theme}
+                  resetCSS={false}
+                  disableGlobalStyle={true}
+                >
+                  <App />
+                </ChakraProvider>
+              </CategoryContextProvider>
+            </FavoriteContextProvider>
           </SearchContextProvider>
         </AuthContextProvider>
       </BrowserRouter>

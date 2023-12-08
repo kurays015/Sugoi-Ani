@@ -1,5 +1,5 @@
 import { useContext } from "react";
 import { SearchContext } from "../context/SearchContext";
-export function useSearchContext() {
+export const useSearchContext = () => {
   return useContext(SearchContext);
-}
+};

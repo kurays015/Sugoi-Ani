@@ -92,9 +92,9 @@ function Signup() {
             onClick={() => setShowPassword(prev => !prev)}
           >
             {showPassword ? (
-              <FaEye className="text-gray-400" />
+              <FaEye className="text-gray-400 cursor-pointer" />
             ) : (
-              <FaEyeSlash className="text-gray-400" />
+              <FaEyeSlash className="text-gray-400 cursor-pointer" />
             )}
           </div>
         </div>
@@ -114,9 +114,9 @@ function Signup() {
             onClick={() => setShowConfirmPassword(prev => !prev)}
           >
             {showConfirmPassword ? (
-              <FaEye className="text-gray-400" />
+              <FaEye className="text-gray-400 cursor-pointer" />
             ) : (
-              <FaEyeSlash className="text-gray-400" />
+              <FaEyeSlash className="text-gray-400 cursor-pointer" />
             )}
           </div>
         </div>
