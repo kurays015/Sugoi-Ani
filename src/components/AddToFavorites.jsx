@@ -35,6 +35,7 @@ function AddToFavorites() {
         placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
+        transitionDuration={300}
       >
         <DrawerOverlay />
         <DrawerContent>
