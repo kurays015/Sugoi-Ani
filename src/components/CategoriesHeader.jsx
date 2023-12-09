@@ -3,9 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import uzaki from "/images/uzaki.png";
 import SearchForm from "./SearchForm";
 import { useCategories } from "../hooks/useCategories";
+import { useCategoryContext } from "../hooks/useCategoryContext";
 
 function CategoriesHeader() {
   const categories = useCategories();
+  const { setPageNumber } = useCategoryContext();
 
   return (
     <header className="flex flex-col items-center justify-center py-6 gap-[1em] custom-sm:px-[2em] custom-sm:pb-3">
@@ -17,7 +19,11 @@ function CategoriesHeader() {
       <nav>
         <ul className="flex gap-5">
           {categories.map(category => (
-            <NavLink key={category} to={category.toLowerCase()}>
+            <NavLink
+              key={category}
+              to={category.toLowerCase()}
+              onClick={() => setPageNumber(1)}
+            >
               {({ isActive }) => (
                 <span
                   className={`${
