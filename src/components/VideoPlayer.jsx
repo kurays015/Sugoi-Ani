@@ -62,7 +62,7 @@ function VideoPlayer({ qualities, downloadSrc }) {
       >
         <IoSettingsOutline
           onClick={handleQualitySettings}
-          className="cursor-pointer text-1xl absolute"
+          className="cursor-pointer text-1xl"
         />
       </div>
       <VideoInfo downloadSrc={downloadSrc} />

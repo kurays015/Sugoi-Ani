@@ -16,7 +16,7 @@ function Favorites() {
           <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-center">
             <h2 className="text-xl mb-2 text-violet-300">No favorites</h2>
             <img
-              src={spongebob}
+              src="/images/spongebob.png?url."
               alt="spongebob"
               className="w-full rounded-xl"
             />
