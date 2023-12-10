@@ -144,9 +144,8 @@ function Signup() {
         </div>
       </form>
       <h5 className="text-white text-xs text-center my-5">
-        Logging in and signing up may sometimes take longer due to server
-        issues. Please wait or try reloading the page Aayusin ko pa wait lang.
-        hahaha
+        I'm only using a free server deployment, that's why sometimes logging in
+        and signing up takes time. Please wait or reload the page.
       </h5>
     </div>
   );

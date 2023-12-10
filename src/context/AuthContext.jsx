@@ -14,7 +14,9 @@ function reducer(state, action) {
 }
 
 export function AuthContextProvider({ children }) {
-  const [user, dispatch] = useReducer(reducer, { user: null });
+  const [user, dispatch] = useReducer(reducer, {
+    user: sessionStorage.getItem("user") || null,
+  });
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -27,8 +29,6 @@ export function AuthContextProvider({ children }) {
       dispatch({ type: "LOGIN", payload: user });
     }
   }, []);
-
-  console.log(user);
 
   const value = {
     ...user,

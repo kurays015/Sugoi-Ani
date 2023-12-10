@@ -4,11 +4,13 @@ import axios from "axios";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Spinner } from "@chakra-ui/react";
+import { getAnimeDataInLocalStorage } from "../hooks/useLocalStorage";
 
 function Login() {
   const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
+  const anime = getAnimeDataInLocalStorage();
   const {
     dispatch,
     error,
@@ -18,7 +20,6 @@ function Login() {
     showLoginPassword,
     setShowLoginPassword,
   } = useAuthContext();
-  const anime = JSON.parse(localStorage.getItem("anime") || "[]");
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -113,9 +114,8 @@ function Login() {
         </div>
       </form>
       <h5 className="text-white text-xs text-center my-5">
-        Logging in and signing up may sometimes take longer due to server
-        issues. Please wait or try reloading the page Aayusin ko pa wait lang.
-        hahaha
+        I'm only using a free server deployment, that's why sometimes logging in
+        and signing up takes time. Please wait or reload the page.
       </h5>
     </div>
   );

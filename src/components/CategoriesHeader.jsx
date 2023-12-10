@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 //react icons
 import uzaki from "/images/uzaki.png";
 import SearchForm from "./SearchForm";
@@ -8,6 +8,7 @@ import { useCategoryContext } from "../hooks/useCategoryContext";
 function CategoriesHeader() {
   const categories = useCategories();
   const { setPageNumber } = useCategoryContext();
+  const location = useLocation();
 
   return (
     <header className="flex flex-col items-center justify-center py-6 gap-[1em] custom-sm:px-[2em] custom-sm:pb-3">

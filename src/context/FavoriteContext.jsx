@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FavoriteContext } from "../hooks/useFavorites";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -19,8 +18,6 @@ export function FavoriteContextProvider({ children }) {
       prevFavorites.filter(favorite => favorite.id !== id)
     );
   };
-
-  console.log(favorites);
 
   const value = {
     addToFavorites,

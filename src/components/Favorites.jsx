@@ -1,5 +1,5 @@
 import { useFavorites } from "../hooks/useFavorites";
-import spongebob from "../../public/images/spongebob.png";
+import spongebob from "../assets/spongebob.png";
 
 import Card from "./Card";
 
@@ -16,7 +16,7 @@ function Favorites() {
           <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-center">
             <h2 className="text-xl mb-2 text-violet-300">No favorites</h2>
             <img
-              src="/images/spongebob.png?url."
+              src={spongebob}
               alt="spongebob"
               className="w-full rounded-xl"
             />

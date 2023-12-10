@@ -20,6 +20,10 @@ import WatchLayout from "./components/Layouts/WatchLayout";
 function App() {
   const { user } = useAuthContext();
 
+  const PrivateRoute = ({ children }) => {
+    return user ? children : <Navigate to="/user/login" />;
+  };
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -37,11 +41,13 @@ function App() {
         <Route path="info/:id" element={<AnimeInfo />} />
       </Route>
 
-      {/* private/protected route - need to fix this bacause every reload it redirect to login page*/}
+      {/* Private Route */}
       <Route
         path="/watch"
         element={
-          user ? <WatchLayout /> : <Navigate to="/user/login" replace={true} />
+          <PrivateRoute>
+            <WatchLayout />
+          </PrivateRoute>
         }
       >
         <Route path=":episodeId" element={<WatchEpisode />} />
