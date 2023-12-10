@@ -81,7 +81,7 @@ function AnimeInfo() {
               </div>
               <div>Duration: {singleAnimeData.duration}</div>
               <div>
-                Synonyms:
+                Synonyms:{" "}
                 {singleAnimeData.synonyms.map(synonym => synonym).join(", ")}
               </div>
             </div>
