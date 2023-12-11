@@ -4,7 +4,7 @@ import { useCategoryContext } from "../hooks/useCategoryContext";
 import { ApiError } from "../components/Errors";
 
 function RecentEpisodes() {
-  const { pageNumbe, itemsPerPager } = useCategoryContext();
+  const { pageNumber, itemsPerPage } = useCategoryContext();
 
   const {
     data: recentEpisodes,
