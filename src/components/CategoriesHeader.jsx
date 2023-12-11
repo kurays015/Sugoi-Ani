@@ -41,6 +41,11 @@ function CategoriesHeader() {
         </ul>
       </nav>
       <SearchForm />
+      {location.pathname !== "/advance-search" && (
+        <Link className="text-xs text-violet-300" to="/advance-search">
+          Advance Search
+        </Link>
+      )}
     </header>
   );
 }

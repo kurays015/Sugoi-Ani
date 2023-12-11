@@ -8,7 +8,6 @@ const useWatchEpisode = id => {
       const { data } = await anime.get(`/watch/${id}`);
       return data;
     },
-    keepPreviousData: true,
   });
 };
 

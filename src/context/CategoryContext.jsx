@@ -4,9 +4,8 @@ export const CategoryContext = createContext();
 
 export function CategoryContextProvider({ children }) {
   const [pageNumber, setPageNumber] = useState(1);
-  const itemsPerPage = 20;
 
-  const value = { pageNumber, itemsPerPage, setPageNumber };
+  const value = { pageNumber, setPageNumber };
 
   return (
     <CategoryContext.Provider value={value}>

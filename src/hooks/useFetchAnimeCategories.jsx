@@ -1,13 +1,11 @@
 import anime from "../api/axios";
 import { useQuery } from "@tanstack/react-query";
 
-const useFetchAnimeCategories = (endpoint, pageNumber, itemsPerPage) => {
+const useFetchAnimeCategories = (endpoint, pageNumber) => {
   return useQuery({
-    queryKey: ["anime", { pageNumber, itemsPerPage }],
+    queryKey: ["anime", { pageNumber }],
     queryFn: async () => {
-      const { data } = await anime.get(
-        `/${endpoint}?page=${pageNumber}&perPage=${itemsPerPage}`
-      );
+      const { data } = await anime.get(`/${endpoint}?page=${pageNumber}`);
       return data;
     },
   });

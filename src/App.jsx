@@ -16,6 +16,8 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import Layout from "./components/Layouts/Layout";
 import AnimeLayout from "./components/Layouts/AnimeLayout";
 import WatchLayout from "./components/Layouts/WatchLayout";
+import AdvanceSearch from "./components/AdvanceSearch";
+import AdvanceSearchResult from "./components/AdvanceSearchResult";
 
 function App() {
   const { user } = useAuthContext();
@@ -35,6 +37,9 @@ function App() {
         <Route path="trending" element={<Trending />} />
         <Route path="recent" element={<RecentEpisodes />} />
         <Route path=":title" element={<SearchResult />} />
+        <Route path="advance-search" element={<AdvanceSearch />}>
+          <Route path=":genre" element={<AdvanceSearchResult />} />
+        </Route>
       </Route>
 
       <Route element={<AnimeLayout />}>

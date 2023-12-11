@@ -4,18 +4,17 @@ import GridCardContainer from "../components/GridCardContainer";
 import { ApiError } from "../components/Errors";
 
 function Popular() {
-  const { pageNumber, itemsPerPage } = useCategoryContext();
+  const { pageNumber } = useCategoryContext();
 
   const {
     data: popularAnime,
     isLoading,
     isError,
     error,
-  } = useFetchAnimeCategories("popular", pageNumber, itemsPerPage);
+  } = useFetchAnimeCategories("popular", pageNumber);
+  const animes = popularAnime?.results || [];
 
   if (isError) return <ApiError error={error} />;
-
-  const animes = popularAnime?.results || [];
 
   return <GridCardContainer isLoading={isLoading} animes={animes} />;
 }
