@@ -4,14 +4,14 @@ import { useCategoryContext } from "../hooks/useCategoryContext";
 import { ApiError } from "../components/Errors";
 
 function Trending() {
-  const { pageNumber } = useCategoryContext();
+  const { pageNumber, itemsPerPage } = useCategoryContext();
 
   const {
     data: trendingAnime,
     isLoading,
     isError,
     error,
-  } = useFetchAnimeCategories("trending", pageNumber);
+  } = useFetchAnimeCategories("trending", pageNumber, itemsPerPage);
 
   if (isError) return <ApiError error={error} />;
 

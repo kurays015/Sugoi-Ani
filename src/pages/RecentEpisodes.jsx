@@ -4,14 +4,14 @@ import { useCategoryContext } from "../hooks/useCategoryContext";
 import { ApiError } from "../components/Errors";
 
 function RecentEpisodes() {
-  const { pageNumber } = useCategoryContext();
+  const { pageNumbe, itemsPerPager } = useCategoryContext();
 
   const {
     data: recentEpisodes,
     isLoading,
     isError,
     error,
-  } = useFetchAnimeCategories("recent-episodes", pageNumber);
+  } = useFetchAnimeCategories("recent-episodes", pageNumber, itemsPerPage);
 
   if (isError) return <ApiError error={error} />;
 
