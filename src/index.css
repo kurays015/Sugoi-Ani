@@ -13,20 +13,24 @@
 body {
   background-color: #050505;
 }
+select,
 aside {
   scrollbar-width: thin;
   scrollbar-color: #777777 transparent;
 }
 /* For WebKit (Chrome, Safari, etc.) */
 /* Width & Height of the scrollbar */
-aside::-webkit-scrollbar {
+aside::-webkit-scrollbar,
+select::-webkit-scrollbar {
   width: 5px;
   height: 10px;
 }
 /* Color of the scrollbar */
-aside::-webkit-scrollbar-thumb {
+aside::-webkit-scrollbar-thumb,
+select::-webkit-scrollbar-thumb {
   background-color: #777777;
 }
-aside::-webkit-scrollbar-track {
+aside::-webkit-scrollbar-track,
+select::-webkit-scrollbar-track {
   background-color: transparent; /* Track color (background behind the scrollbar) */
 }

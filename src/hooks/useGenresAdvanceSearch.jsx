@@ -3,8 +3,6 @@ import anime from "../api/axios";
 
 //genres, year, season
 
-const genre = "Horror";
-
 export const useGenresAdvanceSearch = (type, value, pageNumber) => {
   return useQuery({
     queryKey: ["advance-search", { type, value, pageNumber }],

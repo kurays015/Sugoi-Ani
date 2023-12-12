@@ -41,7 +41,7 @@ function CategoriesHeader() {
         </ul>
       </nav>
       <SearchForm />
-      <Link className="text-xs text-violet-300" to="/advance-search">
+      <Link className="text-xs text-[#777777] order-3" to="/advance-search">
         Advance Search
       </Link>
     </header>

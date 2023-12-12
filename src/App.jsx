@@ -38,7 +38,7 @@ function App() {
         <Route path="recent" element={<RecentEpisodes />} />
         <Route path=":title" element={<SearchResult />} />
         <Route path="advance-search" element={<AdvanceSearch />}>
-          <Route path=":genre" element={<AdvanceSearchResult />} />
+          <Route path=":type/:query" element={<AdvanceSearchResult />} />
         </Route>
       </Route>
 

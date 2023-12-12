@@ -5,11 +5,11 @@ import { useCategoryContext } from "../../hooks/useCategoryContext";
 import { ApiError } from "../../components/Errors";
 
 function AdvanceSearchResult() {
-  const { genre } = useParams();
+  const { type, query } = useParams();
   const { pageNumber } = useCategoryContext();
   const { data, isLoading, isError, error } = useGenresAdvanceSearch(
-    "genres",
-    `["${genre}"]`,
+    `${type}`,
+    `${type === "genres" ? `["${query}"]` : query}`,
     pageNumber
   );
   const animes = data?.results || [];
