@@ -16,7 +16,6 @@ function AdvanceSearchResult() {
 
   if (isError) return <ApiError error={error} />;
 
-  console.log(data);
   return <GridCardContainer isLoading={isLoading} animes={animes} />;
 }
 
