@@ -1,7 +1,7 @@
-import useFetchAnimeCategories from "../hooks/useFetchAnimeCategories";
-import { useCategoryContext } from "../hooks/useCategoryContext";
-import GridCardContainer from "../components/GridCardContainer";
-import { ApiError } from "../components/Errors";
+import useFetchAnimeCategories from "../../hooks/useFetchAnimeCategories";
+import { useCategoryContext } from "../../hooks/useCategoryContext";
+import GridCardContainer from "../../components/GridCardContainer";
+import { ApiError } from "../../components/Errors";
 
 function Popular() {
   const { pageNumber, itemsPerPage } = useCategoryContext();

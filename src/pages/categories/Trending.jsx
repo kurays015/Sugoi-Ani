@@ -1,7 +1,7 @@
-import useFetchAnimeCategories from "../hooks/useFetchAnimeCategories";
-import GridCardContainer from "../components/GridCardContainer";
-import { useCategoryContext } from "../hooks/useCategoryContext";
-import { ApiError } from "../components/Errors";
+import useFetchAnimeCategories from "../../hooks/useFetchAnimeCategories";
+import GridCardContainer from "../../components/GridCardContainer";
+import { useCategoryContext } from "../../hooks/useCategoryContext";
+import { ApiError } from "../../components/Errors";
 
 function Trending() {
   const { pageNumber, itemsPerPage } = useCategoryContext();

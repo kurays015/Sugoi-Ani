@@ -1,34 +1,43 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import axios from "axios";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Spinner } from "@chakra-ui/react";
-import { getAnimeDataInLocalStorage } from "../hooks/useLocalStorage";
 
-function Login() {
+function Signup() {
   const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const anime = getAnimeDataInLocalStorage();
+  const confirmPasswordRef = useRef();
   const {
     dispatch,
     error,
     setError,
+    showPassword,
+    setShowPassword,
+    showConfirmPassword,
+    setShowConfirmPassword,
     isPending,
     setIsPending,
-    showLoginPassword,
-    setShowLoginPassword,
   } = useAuthContext();
 
-  async function handleLogin(e) {
+  async function handleSignup(e) {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
+    const confirmPassword = confirmPasswordRef.current.value;
+
+    if (confirmPassword !== password) {
+      setError("Passwords don't match");
+      return;
+    }
+
     try {
       setIsPending(true);
       const { data: credentials } = await axios.post(
-        "https://sugoiserver.onrender.com/user/login",
+        "https://sugoiserver.onrender.com/user/signup",
+
         {
           email,
           password,
@@ -37,10 +46,9 @@ function Login() {
       if (credentials) {
         sessionStorage.setItem("user", JSON.stringify(credentials));
         dispatch({ type: "LOGIN", payload: credentials });
-        navigate(`/watch/${anime.episodes[0]?.id}`);
+        navigate("/");
       }
     } catch (err) {
-      console.log(err);
       setError(err.response.data.error);
       setIsPending(false);
       console.log(err.response.data.error);
@@ -51,14 +59,14 @@ function Login() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 custom-sm:p-3">
       <form
         className="p-5 max-w-md w-full bg-gray-800 rounded-md"
-        onSubmit={handleLogin}
+        onSubmit={handleSignup}
       >
         <h5 className="text-white font-semibold text-1xl text-center mb-4">
-          You need to login first...
+          Thanks for signing up!
         </h5>
         <div className="mb-4">
           <label htmlFor="email" className="text-white block mb-1">
-            Email:
+            Email:{" "}
           </label>
           <input
             ref={emailRef}
@@ -74,16 +82,38 @@ function Login() {
           </label>
           <input
             ref={passwordRef}
-            type={`${showLoginPassword ? "text" : "password"}`}
+            type={`${showPassword ? "text" : "password"}`}
             placeholder="Enter your password"
             id="password"
             className="w-full py-2 px-3 bg-gray-700 text-white rounded-md outline-none"
           />
           <div
             className="absolute right-2 top-[57%]"
-            onClick={() => setShowLoginPassword(prev => !prev)}
+            onClick={() => setShowPassword(prev => !prev)}
           >
-            {showLoginPassword ? (
+            {showPassword ? (
+              <FaEye className="text-gray-400 cursor-pointer" />
+            ) : (
+              <FaEyeSlash className="text-gray-400 cursor-pointer" />
+            )}
+          </div>
+        </div>
+        <div className="mb-4 relative">
+          <label htmlFor="confirmPassword" className="text-white block mb-1">
+            Confirm Password:
+          </label>
+          <input
+            type={`${showConfirmPassword ? "text" : "password"}`}
+            ref={confirmPasswordRef}
+            placeholder="Confirm your password"
+            id="confirmPassword"
+            className="w-full py-2 px-3 bg-gray-700 text-white rounded-sm outline-none"
+          />
+          <div
+            className="absolute right-2 top-[57%]"
+            onClick={() => setShowConfirmPassword(prev => !prev)}
+          >
+            {showConfirmPassword ? (
               <FaEye className="text-gray-400 cursor-pointer" />
             ) : (
               <FaEyeSlash className="text-gray-400 cursor-pointer" />
@@ -92,10 +122,10 @@ function Login() {
         </div>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <div className="text-gray-300 text-sm mb-4">
-          Don't have an account?{" "}
-          <Link to="/user/signup" className="text-violet-300">
-            Sign Up
-          </Link>
+          Already have an account?
+          <span className="text-violet-300">
+            <Link to="/user/login"> Login</Link>
+          </span>
         </div>
         <div className="flex justify-center min-h-[40px]">
           <button
@@ -108,7 +138,7 @@ function Login() {
             {isPending ? (
               <Spinner color="white" speed="2s" size="xs" />
             ) : (
-              "Login"
+              "Signup"
             )}
           </button>
         </div>
@@ -121,4 +151,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

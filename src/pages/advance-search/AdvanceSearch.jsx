@@ -1,8 +1,8 @@
 import { Button, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa6";
 import { Link, Outlet } from "react-router-dom";
-import { useAdvanceSearchArray } from "../hooks/useAdvanceSearchArray";
-import { useCategoryContext } from "../hooks/useCategoryContext";
+import { useAdvanceSearchArray } from "../../hooks/useAdvanceSearchArray";
+import { useCategoryContext } from "../../hooks/useCategoryContext";
 
 function AdvanceSearch() {
   const { genres, type } = useAdvanceSearchArray();

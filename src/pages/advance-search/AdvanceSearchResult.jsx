@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useGenresAdvanceSearch } from "../hooks/useGenresAdvanceSearch";
-import GridCardContainer from "./GridCardContainer";
-import { useCategoryContext } from "../hooks/useCategoryContext";
-import { ApiError } from "./Errors";
+import { useGenresAdvanceSearch } from "../../hooks/useGenresAdvanceSearch";
+import GridCardContainer from "../../components/GridCardContainer";
+import { useCategoryContext } from "../../hooks/useCategoryContext";
+import { ApiError } from "../../components/Errors";
 
 function AdvanceSearchResult() {
   const { genre } = useParams();

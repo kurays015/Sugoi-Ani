@@ -1,11 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 //components
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
 import Home from "./pages/Home";
-import Popular from "./pages/Popular";
-import Trending from "./pages/Trending";
-import RecentEpisodes from "./pages/RecentEpisodes";
+import Popular from "./pages/categories/Popular";
+import Trending from "./pages/categories/Trending";
+import RecentEpisodes from "./pages/categories/RecentEpisodes";
 import AnimeInfo from "./pages/AnimeInfo";
 import WatchEpisode from "./pages/WatchEpisode";
 import SearchResult from "./components/SearchResult";
@@ -16,8 +16,8 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import Layout from "./components/Layouts/Layout";
 import AnimeLayout from "./components/Layouts/AnimeLayout";
 import WatchLayout from "./components/Layouts/WatchLayout";
-import AdvanceSearch from "./components/AdvanceSearch";
-import AdvanceSearchResult from "./components/AdvanceSearchResult";
+import AdvanceSearch from "./pages/advance-search/AdvanceSearch";
+import AdvanceSearchResult from "./pages/advance-search/AdvanceSearchResult";
 
 function App() {
   const { user } = useAuthContext();
