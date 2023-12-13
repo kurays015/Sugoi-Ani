@@ -13,6 +13,6 @@ export const useLocalStorage = (key, initialValue) => {
   return [value, setValue];
 };
 
-export const getAnimeDataInLocalStorage = () => {
+export const useGetAnimeDataInLocalStorage = () => {
   return JSON.parse(localStorage.getItem("anime") || "[]");
 };

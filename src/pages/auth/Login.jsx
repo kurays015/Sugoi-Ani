@@ -4,13 +4,13 @@ import axios from "axios";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Spinner } from "@chakra-ui/react";
-import { getAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
+import { useGetAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
 
 function Login() {
   const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const anime = getAnimeDataInLocalStorage();
+  const anime = useGetAnimeDataInLocalStorage();
   const {
     dispatch,
     error,

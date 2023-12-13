@@ -2,11 +2,11 @@ import { Outlet } from "react-router-dom";
 import AnimeInfoHeader from "../AnimeInfoHeader";
 import AnimeEpisodes from "../AnimeEpisodes";
 import Related from "../Related";
-import { getAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
+import { useGetAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
 import UserCurrentWatchingAnimeInfo from "../UserCurrentWatchingAnimeInfo";
 
 function WatchLayout() {
-  const anime = getAnimeDataInLocalStorage();
+  const anime = useGetAnimeDataInLocalStorage();
 
   return (
     <main className="relative">

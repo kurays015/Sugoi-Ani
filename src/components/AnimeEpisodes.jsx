@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import {
-  getAnimeDataInLocalStorage,
+  useGetAnimeDataInLocalStorage,
   useLocalStorage,
 } from "../hooks/useLocalStorage";
 
 function AnimeEpisodes() {
-  const anime = getAnimeDataInLocalStorage();
+  const anime = useGetAnimeDataInLocalStorage();
   const [isAlreadySelected, setIsAlreadySelected] = useLocalStorage(
     "isAlreadySelected",
     {}

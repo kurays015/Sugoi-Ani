@@ -1,8 +1,8 @@
-import { getAnimeDataInLocalStorage } from "../hooks/useLocalStorage";
+import { useGetAnimeDataInLocalStorage } from "../hooks/useLocalStorage";
 import titleHandler from "../utils/titleHandler";
 
 function UserCurrentWatchingAnimeInfo() {
-  const anime = getAnimeDataInLocalStorage();
+  const anime = useGetAnimeDataInLocalStorage();
   return (
     <div className="text-gray-600 w-full flex justify-center my-5 gap-3 md:gap-10 md:my-10 xl:gap-3 xl:my-0 custom-xxl:justify-start custom-xxl:w-[40%]">
       <img
