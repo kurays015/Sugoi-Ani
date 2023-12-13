@@ -20,10 +20,12 @@ export function EpisodeError() {
 
 export function SingleAnimeDataError() {
   return (
-    <h1 className="text-white text-xl text-center">
-      Something went wrong! It's either the anime has no data or server error,
-      try reloading the page.
-    </h1>
+    <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] ">
+      <h1 className="text-[#777777] text-xl text-center">
+        Something went wrong! <br /> It's either the anime has no data or server
+        error (especially one piece), try again later.
+      </h1>
+    </div>
   );
 }
 

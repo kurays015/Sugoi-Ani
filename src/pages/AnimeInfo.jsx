@@ -21,8 +21,8 @@ function AnimeInfo() {
   }, [singleAnimeData]);
 
   if (isLoading) return <AnimeInfoSkeleton />;
-  if (isError) return <ApiError error={error} />;
   if (!singleAnimeData) return <SingleAnimeDataError />;
+  if (isError) return <ApiError error={error} />;
 
   return (
     <main className="bg-[#242424] py-5 custom-sm:px-2 md:px-14 md:py-12 lg:px-28 xl:px-48 ">
