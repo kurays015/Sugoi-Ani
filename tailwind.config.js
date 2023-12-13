@@ -36,7 +36,6 @@ export default {
       },
       colors: {
         primary: "#777777",
-        customPurple: "#5A2E98",
       },
     },
   },

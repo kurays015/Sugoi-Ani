@@ -35,7 +35,7 @@ function AnimeEpisodes() {
                   index % 2 === 0 ? "bg-[#0F0F0F]" : "bg-[#171717]"
                 } flex gap-2 p-3 text-[#777777] text-xs
            ${isAlreadySelected[episode.id] ? "bg-[#1F1232]" : ""} ${
-                  currentEpisode === episode.id ? "bg-customPurple" : ""
+                  currentEpisode === episode.id ? "bg-[#5A2E98]" : ""
                 }`}
               >
                 <div className="font-semibold">{episode.number}. </div>
