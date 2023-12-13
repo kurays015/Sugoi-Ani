@@ -28,7 +28,7 @@ function Login() {
     try {
       setIsPending(true);
       const { data: credentials } = await axios.post(
-        "https://sugoiserver.onrender.com/user/login",
+        `${import.meta.env.VITE_BACKEND_BASEURL}/user/login`,
         {
           email,
           password,
