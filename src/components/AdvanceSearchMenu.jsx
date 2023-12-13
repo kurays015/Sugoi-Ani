@@ -19,7 +19,7 @@ function AdvanceSearchMenu({ type, queries }) {
       <select
         name="queries"
         id="queries"
-        className="bg-[#1B1B1B] text-[#777777] outline-none p-1 rounded-md custom-sm:text-xs md:text-base"
+        className="bg-[#1B1B1B] text-primary outline-none p-1 rounded-md custom-sm:text-xs md:text-base"
         onChange={handleQueryClick}
       >
         <option value="">{capitalFirstLetter(type)}</option>

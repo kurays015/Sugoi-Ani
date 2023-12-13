@@ -21,7 +21,7 @@ export function EpisodeError() {
 export function SingleAnimeDataError() {
   return (
     <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] ">
-      <h1 className="text-[#777777] text-xl text-center">
+      <h1 className="text-primary text-xl text-center">
         Something went wrong! <br /> It's either the anime has no data or server
         error (especially one piece), try again later.
       </h1>

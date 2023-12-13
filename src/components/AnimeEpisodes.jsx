@@ -25,7 +25,7 @@ function AnimeEpisodes() {
       {anime.episodes.length ? (
         <aside className="p-2 bg-[#1C1C1C]   overflow-y-auto custom-sm:mx-auto custom-sm:h-[500px] custom-sm:w-full custom-sm:order-2 xl:w-[300px] xl:-order-1 custom-xxl:mx-0">
           <div className="flex flex-col">
-            <h4 className="text-[#777777] font-semibold my-1">Episodes:</h4>
+            <h4 className="text-primary font-semibold my-1">Episodes:</h4>
             {anime?.episodes.map((episode, index) => (
               <Link
                 to={`/watch/${episode.id}`}
@@ -45,7 +45,7 @@ function AnimeEpisodes() {
           </div>
         </aside>
       ) : (
-        <div className="text-[#777777] text-center custom-sm:order-2 xl:-order-1 w-full xl:text-start">
+        <div className="text-primary text-center custom-sm:order-2 xl:-order-1 w-full xl:text-start">
           No episodes available for this anime...
         </div>
       )}

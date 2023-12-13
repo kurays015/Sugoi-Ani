@@ -35,7 +35,8 @@ export default {
         "custom-xxl": "1440px",
       },
       colors: {
-        customPurple: "#5A2E98", // Define your custom color
+        primary: "#777777",
+        customPurple: "#5A2E98",
       },
     },
   },

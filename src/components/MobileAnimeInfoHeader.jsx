@@ -11,7 +11,7 @@ function MobileAnimeInfoHeader() {
   return (
     <>
       {/* mobile resppnsibe below */}
-      <div className="text-[1.5rem] custom-sm:text-[#777777] md:hidden">
+      <div className="text-[1.5rem] custom-sm:text-primary md:hidden">
         <GiHamburgerMenu onClick={() => setShowNav(prev => !prev)} />
       </div>
       <SearchForm />

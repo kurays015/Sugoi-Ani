@@ -10,7 +10,7 @@ function UserCurrentWatchingAnimeInfo() {
         alt={anime.title.english}
         className="h-[20%] custom-sm:w-[30%]  custom-xxl:w-[30%]"
       />
-      <div className="text-[#777777]">
+      <div className="text-primary">
         <h5 className="mb-2 md:mb-5 md:text-2xl">
           {titleHandler(anime.title)}
         </h5>

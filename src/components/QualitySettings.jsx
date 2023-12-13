@@ -19,7 +19,7 @@ function QualitySettings({
           onClick={() =>
             handleQualityClick(qualityOption.quality, qualityOption.url)
           }
-          className={`text-[#777777] px-2 text-xs ${
+          className={`text-primary px-2 text-xs ${
             index % 2 === 0 ? "bg-[#0F0F0F]" : "bg-[#171717]"
           }`}
         >
