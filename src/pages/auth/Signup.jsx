@@ -36,7 +36,7 @@ function Signup() {
     try {
       setIsPending(true);
       const { data: credentials } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_SIGNUP}/user/signup`,
+        `${import.meta.env.VITE_BACKEND_SIGNUP}`,
 
         {
           email,

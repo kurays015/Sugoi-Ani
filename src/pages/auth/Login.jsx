@@ -28,7 +28,7 @@ function Login() {
     try {
       setIsPending(true);
       const { data: credentials } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_LOGIN}/user/login`,
+        `${import.meta.env.VITE_BACKEND_LOGIN}`,
         {
           email,
           password,
