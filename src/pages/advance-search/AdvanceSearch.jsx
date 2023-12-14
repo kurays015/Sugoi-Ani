@@ -12,7 +12,7 @@ function AdvanceSearch() {
           <AdvanceSearchMenu type={type} queries={queries} key={type} />
         ))}
       </div>
-      <p className="text-white">in progress...</p>
+      {/* <p className="text-white">in progress...</p> */}
       <Outlet />
     </main>
   );
