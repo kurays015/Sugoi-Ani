@@ -31,6 +31,21 @@ export const useAdvanceSearchArray = () => {
         type: "season",
         queries: ["FALL", "SUMMER", "WINTER", "SPRING"],
       },
+      //asdsadsd
+      {
+        type: "status",
+        queries: [
+          "RELEASING",
+          "NOT_YET_RELEASED",
+          "FINISHED",
+          "CANCELLED",
+          "HIATUS",
+        ],
+      },
+      {
+        type: "format",
+        queries: ["TV", "TV_SHORT", "OVA", "ONA", "MOVIE", "SPECIAL", "MUSIC"],
+      },
     ],
   };
 };

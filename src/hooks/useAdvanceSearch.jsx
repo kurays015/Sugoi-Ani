@@ -3,7 +3,7 @@ import anime from "../api/axios";
 
 //genres, year, season
 
-export const useGenresAdvanceSearch = (type, value, pageNumber) => {
+export const useAdvanceSearch = (type, value, pageNumber) => {
   return useQuery({
     queryKey: ["advance-search", { type, value, pageNumber }],
     queryFn: async () => {

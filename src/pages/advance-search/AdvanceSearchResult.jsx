@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useGenresAdvanceSearch } from "../../hooks/useGenresAdvanceSearch";
+import { useAdvanceSearch } from "../../hooks/useAdvanceSearch";
 import GridCardContainer from "../../components/GridCardContainer";
 import { useCategoryContext } from "../../hooks/useCategoryContext";
 import { ApiError } from "../../components/Errors";
@@ -7,7 +7,7 @@ import { ApiError } from "../../components/Errors";
 function AdvanceSearchResult() {
   const { type, query } = useParams();
   const { pageNumber } = useCategoryContext();
-  const { data, isLoading, isError, error } = useGenresAdvanceSearch(
+  const { data, isLoading, isError, error } = useAdvanceSearch(
     `${type}`,
     `${type === "genres" ? `["${query}"]` : query}`,
     pageNumber
