@@ -7,11 +7,11 @@ import { ApiError } from "../../components/Errors";
 function AdvanceSearchResult() {
   const { type, query } = useParams();
   const { pageNumber } = useCategoryContext();
-  const { data, isLoading, isError, error } = useAdvanceSearch(
-    `${type}`,
-    `${type === "genres" ? `["${query}"]` : query}`,
-    pageNumber
-  );
+  const { data, isLoading, isError, error } = useAdvanceSearch({
+    type,
+    query,
+    pageNumber,
+  });
   const animes = data?.results || [];
 
   if (isError) return <ApiError error={error} />;
