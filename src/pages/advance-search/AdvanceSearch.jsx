@@ -7,7 +7,7 @@ function AdvanceSearch() {
 
   return (
     <main className="text-center">
-      <div className=" flex items-center justify-center gap-5 my-3">
+      <div className="grid grid-cols-2 gap-2 custom-sm:px-[2em] lg:flex lg:justify-center lg:gap-5">
         {types.map(({ type, queries }) => (
           <AdvanceSearchMenu type={type} queries={queries} key={type} />
         ))}
