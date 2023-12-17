@@ -8,12 +8,18 @@ function AdvanceSearchMenu({ type, queries }) {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const handleQueryClick = e => {
-    const { value } = e.target;
     setPageNumber(1);
-    // Update or append the selected query parameter
-    searchParams.set(type, type === "genres" ? `["${value}"]` : value);
-    // Update the URL with the new search parameters
-    navigate(`result?${searchParams.toString()}`);
+    const { value } = e.target;
+    const queryParams = type === "genres" ? `["${value}"]` : value;
+    // const hasType = value ? type : "";
+    // Update or append the selected query parameter in select, option
+    searchParams.set(type, queryParams);
+    // navigate to the URL with appended query parameter
+    if (value) {
+      navigate(`result?${searchParams.toString()}`);
+    } else {
+      navigate(`result?`);
+    }
   };
 
   return (
@@ -31,38 +37,6 @@ function AdvanceSearchMenu({ type, queries }) {
           </option>
         ))}
       </select>
-
-      {/* <select name="genresQueryParams" id="genresQueryParams">
-        <option value="romance">Romance</option>
-        <option value="action">Action</option>
-        <option value="horror">Horror</option>
-      </select>
-
-      <select name="seasonQueryParams" id="seasonQueryParams">
-        <option value="FALL">FALL</option>
-        <option value="SPRING">SPRING</option>
-        <option value="SUMMER">SUMMER</option>
-        <option value="WINTER">WINTER</option>
-      </select>
-
-      <select name="yearQueryParams" id="yearQueryParams">
-        <option value="2020">2020</option>
-        <option value="2021">2021</option>
-        <option value="2022">2022</option>
-      </select>
-
-      <select name="status" id="status">
-        <option value="Finished">Finished</option>
-        <option value="Compeleted">Compeleted</option>
-        <option value="Ongoing">Ongoing</option>
-      </select>
-
-      <select name="format" id="format">
-        <option value="TV">TV</option>
-        <option value="Movie">Movie</option>
-        <option value="OVA">OVA</option>
-        <option value="ONA">ONA</option>
-      </select> */}
     </div>
   );
 }
