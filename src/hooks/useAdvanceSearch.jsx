@@ -1,16 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import anime from "../api/axios";
 
-//genres, year, season
+//fix genre to be like this `["${genre}"]`
 
-export const useAdvanceSearch = ({ type, query, pageNumber }) => {
+export const useAdvanceSearch = searchParams => {
   return useQuery({
-    queryKey: ["advance-search", { type, query, pageNumber }],
+    queryKey: ["advance-search", searchParams.toString()],
     queryFn: async () => {
       const { data } = await anime.get(
-        `/advanced-search?${type}=${
-          type === "genres" ? `["${query}"]` : query
-        }&page=${pageNumber}
+        `/advanced-search?${searchParams.toString()}
 `
       );
       return data;

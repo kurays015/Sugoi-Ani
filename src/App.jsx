@@ -1,5 +1,15 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-//components
+//hooks
+import { useAuthContext } from "./hooks/useAuthContext";
+//layouts component
+import Layout from "./components/Layouts/Layout";
+import AnimeLayout from "./components/Layouts/AnimeLayout";
+import WatchLayout from "./components/Layouts/WatchLayout";
+import SearchResult from "./components/SearchResult";
+import NotFound from "./components/NotFound";
+//pages
+import AdvanceSearch from "./pages/advance-search/AdvanceSearch";
+import AdvanceSearchResult from "./pages/advance-search/AdvanceSearchResult";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Home from "./pages/Home";
@@ -8,16 +18,6 @@ import Trending from "./pages/categories/Trending";
 import RecentEpisodes from "./pages/categories/RecentEpisodes";
 import AnimeInfo from "./pages/AnimeInfo";
 import WatchEpisode from "./pages/WatchEpisode";
-import SearchResult from "./components/SearchResult";
-import NotFound from "./components/NotFound";
-//hooks
-import { useAuthContext } from "./hooks/useAuthContext";
-//layouts component
-import Layout from "./components/Layouts/Layout";
-import AnimeLayout from "./components/Layouts/AnimeLayout";
-import WatchLayout from "./components/Layouts/WatchLayout";
-import AdvanceSearch from "./pages/advance-search/AdvanceSearch";
-import AdvanceSearchResult from "./pages/advance-search/AdvanceSearchResult";
 
 function App() {
   const { user } = useAuthContext();
@@ -37,8 +37,8 @@ function App() {
         <Route path="trending" element={<Trending />} />
         <Route path="recent" element={<RecentEpisodes />} />
         <Route path=":title" element={<SearchResult />} />
-        <Route path="advance-search" element={<AdvanceSearch />}>
-          <Route path=":type/:query" element={<AdvanceSearchResult />} />
+        <Route path="advanced-search" element={<AdvanceSearch />}>
+          <Route path="result" element={<AdvanceSearchResult />} />
         </Route>
       </Route>
 

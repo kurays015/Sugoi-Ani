@@ -1,18 +1,20 @@
-import { useParams } from "react-router-dom";
 import { useAdvanceSearch } from "../../hooks/useAdvanceSearch";
 import GridCardContainer from "../../components/GridCardContainer";
 import { useCategoryContext } from "../../hooks/useCategoryContext";
 import { ApiError } from "../../components/Errors";
+import { useSearchParams } from "react-router-dom";
 
 function AdvanceSearchResult() {
-  const { type, query } = useParams();
   const { pageNumber } = useCategoryContext();
-  const { data, isLoading, isError, error } = useAdvanceSearch({
-    type,
-    query,
-    pageNumber,
-  });
+  const [searchParams] = useSearchParams();
+
+  const { data, isLoading, isError, error } = useAdvanceSearch(
+    searchParams,
+    pageNumber
+  );
   const animes = data?.results || [];
+
+  console.log(data);
 
   if (isError) return <ApiError error={error} />;
 

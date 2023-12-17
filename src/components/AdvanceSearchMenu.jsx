@@ -1,18 +1,19 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCategoryContext } from "../hooks/useCategoryContext";
 import { capitalFirstLetter } from "../utils/capitalFirstLetter";
 import { lowerCaseLetters } from "../utils/lowerCaseLetters";
 
 function AdvanceSearchMenu({ type, queries }) {
   const { setPageNumber } = useCategoryContext();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-
   const handleQueryClick = e => {
     const { value } = e.target;
     setPageNumber(1);
-    if (value) {
-      navigate(`/advance-search/${type}/${value}`);
-    }
+    // Update or append the selected query parameter
+    searchParams.set(type, type === "genres" ? `["${value}"]` : value);
+    // Update the URL with the new search parameters
+    navigate(`result?${searchParams.toString()}`);
   };
 
   return (

@@ -43,7 +43,7 @@ export const useAdvanceSearchArray = () => {
         ],
       },
       {
-        type: "Type",
+        type: "format",
         queries: ["TV", "TV_SHORT", "OVA", "ONA", "MOVIE", "SPECIAL", "MUSIC"],
       },
     ],
