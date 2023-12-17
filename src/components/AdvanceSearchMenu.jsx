@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useCategoryContext } from "../hooks/useCategoryContext";
 import { capitalFirstLetter } from "../utils/capitalFirstLetter";
+import { lowerCaseLetters } from "../utils/lowerCaseLetters";
 
 function AdvanceSearchMenu({ type, queries }) {
   const { setPageNumber } = useCategoryContext();
@@ -25,7 +26,7 @@ function AdvanceSearchMenu({ type, queries }) {
         <option value="">{capitalFirstLetter(type)}</option>
         {queries.map(query => (
           <option value={query} key={query}>
-            {query}
+            {type !== "year" ? lowerCaseLetters(query) : query}
           </option>
         ))}
       </select>
