@@ -1,6 +1,7 @@
 import { Tag, TagLabel, TagCloseButton, HStack } from "@chakra-ui/react";
 import { FaTags } from "react-icons/fa6";
-function CurrentFilter({ currentFilters, filterQueryParams }) {
+function CurrentFilter({ currentFilters, filterQueryParams, searchParams }) {
+  const genre = searchParams.get("genres");
   return (
     <HStack
       gap={4}
@@ -26,7 +27,9 @@ function CurrentFilter({ currentFilters, filterQueryParams }) {
           justifyContent="center"
           maxWidth="100px"
         >
-          <TagLabel fontSize={{ base: ".7rem" }}>{value}</TagLabel>
+          <TagLabel fontSize={{ base: ".7rem" }}>
+            {genre ? value.replace(/[\[\]"]+/g, "") : value}
+          </TagLabel>
           <TagCloseButton onClick={() => filterQueryParams(value)} />
         </Tag>
       ))}

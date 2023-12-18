@@ -5,7 +5,7 @@ import { lowerCaseLetters } from "../utils/lowerCaseLetters";
 
 function AdvanceSearchMenu({ type, queries }) {
   const { setPageNumber } = useCategoryContext();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const handleQueryClick = e => {

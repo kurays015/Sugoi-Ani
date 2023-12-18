@@ -35,6 +35,7 @@ function AdvanceSearchResult() {
       <CurrentFilter
         currentFilters={currentFilters}
         filterQueryParams={filterQueryParams}
+        searchParams={searchParams}
       />
       <SearchAndFilterNotFound
         isSearching={isSearching}
