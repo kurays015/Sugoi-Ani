@@ -32,5 +32,5 @@ select::-webkit-scrollbar-thumb {
 }
 aside::-webkit-scrollbar-track,
 select::-webkit-scrollbar-track {
-  background-color: transparent; /* Track color (background behind the scrollbar) */
+  background-color: transparent;
 }

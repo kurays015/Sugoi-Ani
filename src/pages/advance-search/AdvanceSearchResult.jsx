@@ -1,13 +1,15 @@
 import { useAdvanceSearch } from "../../hooks/useAdvanceSearch";
 import GridCardContainer from "../../components/GridCardContainer";
 import { useCategoryContext } from "../../hooks/useCategoryContext";
-import { ApiError } from "../../components/Errors";
+import { ApiError, SearchError } from "../../components/Errors";
 import { useSearchParams } from "react-router-dom";
 import SearchAndFilterNotFound from "../../components/SearchAndFilterNotFound";
+import CurrentFilter from "../../components/CurrentFilter";
 
 function AdvanceSearchResult() {
   const { pageNumber } = useCategoryContext();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentFilters = Array.from(searchParams.values());
 
   const { data, isLoading, isError, error } = useAdvanceSearch(
     searchParams,
@@ -17,10 +19,23 @@ function AdvanceSearchResult() {
   const searchResult = !isLoading && !animes.length;
   const isSearching = isLoading && !animes.length;
 
+  if (!animes) return <SearchError />;
   if (isError) return <ApiError error={error} />;
+
+  const filterQueryParams = value => {
+    // get the URL and remove the selected value
+    const filterParams = Array.from(searchParams.entries()).filter(
+      ([_, val]) => val !== value
+    );
+    setSearchParams(filterParams);
+  };
 
   return (
     <>
+      <CurrentFilter
+        currentFilters={currentFilters}
+        filterQueryParams={filterQueryParams}
+      />
       <SearchAndFilterNotFound
         isSearching={isSearching}
         searchResult={searchResult}
