@@ -22,7 +22,7 @@ function AdvanceSearchSelect({ type, queries }) {
 
   return (
     <div>
-      <div className="text-primary text-xs mb-1">
+      <div className="text-primary text-xs mb-1 text-center">
         {capitalFirstLetter(type)}
       </div>
       <select
