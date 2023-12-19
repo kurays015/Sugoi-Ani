@@ -11,11 +11,44 @@ function VideoPlayer({ qualities, downloadSrc }) {
   let hls = null;
 
   useEffect(() => {
+    const storedPlaybackState = JSON.parse(
+      localStorage.getItem("videoPlaybackState")
+    );
+
     const defaultSource = qualities.find(q => q.quality === selectedQuality);
     if (defaultSource) {
       loadSource(defaultSource.url);
     }
+
+    if (storedPlaybackState && videoRef.current) {
+      videoRef.current.currentTime = storedPlaybackState.currentTime;
+      if (storedPlaybackState.isPlaying) {
+        videoRef.current.play();
+      }
+    }
   }, [qualities, selectedQuality]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      const savePlaybackState = () => {
+        localStorage.setItem(
+          "videoPlaybackState",
+          JSON.stringify({
+            currentTime: videoRef.current.currentTime,
+            isPlaying: !videoRef.current.paused,
+          })
+        );
+      };
+
+      videoRef.current.addEventListener("pause", savePlaybackState);
+      videoRef.current.addEventListener("seeked", savePlaybackState);
+
+      return () => {
+        videoRef.current.removeEventListener("pause", savePlaybackState);
+        videoRef.current.removeEventListener("seeked", savePlaybackState);
+      };
+    }
+  }, []);
 
   const loadSource = selectedSourceUrl => {
     if (!selectedSourceUrl || !videoRef.current) return;
