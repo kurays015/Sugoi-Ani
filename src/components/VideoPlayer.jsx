@@ -44,8 +44,11 @@ function VideoPlayer({ qualities, downloadSrc }) {
       videoRef.current.addEventListener("seeked", savePlaybackState);
 
       return () => {
-        videoRef.current.removeEventListener("pause", savePlaybackState);
-        videoRef.current.removeEventListener("seeked", savePlaybackState);
+        // Check if videoRef.current exists before removing event listeners
+        if (videoRef.current) {
+          videoRef.current.removeEventListener("pause", savePlaybackState);
+          videoRef.current.removeEventListener("seeked", savePlaybackState);
+        }
       };
     }
   }, []);
