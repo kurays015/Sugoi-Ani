@@ -41,14 +41,6 @@ function CategoriesHeader() {
         </ul>
       </nav>
       <SearchForm />
-      <Link
-        className={`text-xs text-primary order-3 ${
-          location.pathname.startsWith("/advanced-search") ? "hidden" : "block"
-        }`}
-        to="/advanced-search"
-      >
-        Advance Search
-      </Link>
     </header>
   );
 }
