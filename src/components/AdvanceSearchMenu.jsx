@@ -1,42 +1,23 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useCategoryContext } from "../hooks/useCategoryContext";
-import { capitalFirstLetter } from "../utils/capitalFirstLetter";
-import { lowerCaseLetters } from "../utils/lowerCaseLetters";
+import { useSearchParams } from "react-router-dom";
+import { useAdvanceSearchArray } from "../hooks/useAdvanceSearchArray";
+import AdvanceSearchSelect from "./AdvanceSearchSelect";
 
-function AdvanceSearchMenu({ type, queries }) {
-  const { setPageNumber } = useCategoryContext();
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-
-  const handleQueryClick = e => {
-    setPageNumber(1);
-    const { value } = e.target;
-    const queryParams = type === "genres" ? `["${value}"]` : value;
-    // Update or append the selected query parameter in select, option
-    searchParams.set(type, queryParams);
-    // navigate to the URL with appended query parameter
-    if (value) {
-      navigate(`result?${searchParams.toString()}`);
-    }
-  };
+function AdvanceSearchMenu() {
+  const { types } = useAdvanceSearchArray();
+  const [_, setSearchParams] = useSearchParams();
 
   return (
-    <div>
-      <div className="text-primary text-xs mb-1">
-        {capitalFirstLetter(type)}
-      </div>
-      <select
-        name="queries"
-        id="queries"
-        className="bg-[#1B1B1B] text-primary outline-none p-1 rounded-md custom-sm:text-xs custom-sm:w-full md:text-base"
-        onChange={handleQueryClick}
+    <div className="grid grid-cols-2 items-end gap-2 my-3 custom-sm:px-[2em] md:grid-cols-3 lg:flex lg:justify-center lg:gap-5">
+      {types.map(({ type, queries }) => (
+        <AdvanceSearchSelect type={type} queries={queries} key={type} />
+      ))}
+      <button
+        className="text-primary text-xs 
+        pb-2 lg:text-sm"
+        onClick={() => setSearchParams({})}
       >
-        {queries.map(query => (
-          <option value={query} key={query}>
-            {type !== "year" ? lowerCaseLetters(query) : query}
-          </option>
-        ))}
-      </select>
+        Clear All Filter
+      </button>
     </div>
   );
 }

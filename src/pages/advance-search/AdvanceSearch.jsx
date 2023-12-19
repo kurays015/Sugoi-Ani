@@ -1,26 +1,46 @@
-import { Outlet, useSearchParams } from "react-router-dom";
-import AdvanceSearchMenu from "../../components/AdvanceSearchMenu";
-import { useAdvanceSearchArray } from "../../hooks/useAdvanceSearchArray";
+import { useAdvanceSearch } from "../../hooks/useAdvanceSearch";
+import GridCardContainer from "../../components/GridCardContainer";
+import { useCategoryContext } from "../../hooks/useCategoryContext";
+import { ApiError, SearchError } from "../../components/Errors";
+import { useSearchParams } from "react-router-dom";
+import SearchAndFilterNotFound from "../../components/SearchAndFilterNotFound";
+import CurrentFilter from "../../components/CurrentFilter";
+
 function AdvanceSearch() {
-  const { types } = useAdvanceSearchArray();
-  const [_, setSearchParams] = useSearchParams();
+  const { pageNumber } = useCategoryContext();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentFilters = Array.from(searchParams.values());
+
+  const { data, isLoading, isError, error } = useAdvanceSearch(
+    searchParams,
+    pageNumber
+  );
+  const animes = data?.results || [];
+  const searchResult = !isLoading && !animes.length;
+  const isSearching = isLoading && !animes.length;
+
+  if (!animes) return <SearchError />;
+  if (isError) return <ApiError error={error} />;
+
+  const filterQueryParams = value => {
+    // get the URL and remove the selected value
+    const filterParams = Array.from(searchParams.entries()).filter(
+      ([_, val]) => val !== value
+    );
+    setSearchParams(filterParams);
+  };
   return (
     <main className="text-center">
-      <div className="grid grid-cols-2 items-end gap-2 my-3 custom-sm:px-[2em] md:grid-cols-3 lg:flex lg:justify-center lg:gap-5">
-        {types.map(({ type, queries }) => (
-          <AdvanceSearchMenu type={type} queries={queries} key={type} />
-        ))}
-        <button
-          className="text-primary text-xs 
-        pb-2 lg:text-sm"
-          onClick={() => setSearchParams({})}
-        >
-          Clear All Filter
-        </button>
-      </div>
-      <Outlet />
-      {/* display something here */}
-      <p className="text-primary">in progress...</p>
+      <CurrentFilter
+        currentFilters={currentFilters}
+        filterQueryParams={filterQueryParams}
+        searchParams={searchParams}
+      />
+      <SearchAndFilterNotFound
+        isSearching={isSearching}
+        searchResult={searchResult}
+      />
+      <GridCardContainer isLoading={isLoading} animes={animes} />
     </main>
   );
 }

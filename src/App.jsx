@@ -9,7 +9,6 @@ import SearchResult from "./components/SearchResult";
 import NotFound from "./components/NotFound";
 //pages
 import AdvanceSearch from "./pages/advance-search/AdvanceSearch";
-import AdvanceSearchResult from "./pages/advance-search/AdvanceSearchResult";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Home from "./pages/Home";
@@ -37,9 +36,7 @@ function App() {
         <Route path="trending" element={<Trending />} />
         <Route path="recent" element={<RecentEpisodes />} />
         <Route path=":title" element={<SearchResult />} />
-        <Route path="advanced-search" element={<AdvanceSearch />}>
-          <Route path="result" element={<AdvanceSearchResult />} />
-        </Route>
+        <Route path="advanced-search" element={<AdvanceSearch />} />
       </Route>
 
       <Route element={<AnimeLayout />}>
