@@ -13,7 +13,7 @@ function Trending() {
     error,
   } = useFetchAnimeCategories("trending", pageNumber, itemsPerPage);
 
-  if (isError) return <ApiError error={error} />;
+  if (isError) return <ApiError error={error.message} />;
 
   const animes = trendingAnime?.results || [];
 

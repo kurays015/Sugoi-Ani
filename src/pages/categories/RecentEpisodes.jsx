@@ -13,7 +13,7 @@ function RecentEpisodes() {
     error,
   } = useFetchAnimeCategories("recent-episodes", pageNumber, itemsPerPage);
 
-  if (isError) return <ApiError error={error} />;
+  if (isError) return <ApiError error={error.message} />;
 
   const filteredAnime =
     recentEpisodes?.results.filter(

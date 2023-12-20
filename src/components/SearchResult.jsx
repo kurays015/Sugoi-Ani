@@ -13,7 +13,7 @@ function SearchResult() {
   const searchResult = !isLoading && !searchedAnime.length;
   const isSearching = isLoading && !searchedAnime.length;
 
-  if (isError) return <ApiError error={error} />;
+  if (isError) return <ApiError error={error.message} />;
   if (!searchedAnime) return <SearchError />;
 
   return (

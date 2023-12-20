@@ -14,7 +14,7 @@ function Popular() {
   } = useFetchAnimeCategories("popular", pageNumber, itemsPerPage);
   const animes = popularAnime?.results || [];
 
-  if (isError) return <ApiError error={error} />;
+  if (isError) return <ApiError error={error.message} />;
 
   return <GridCardContainer isLoading={isLoading} animes={animes} />;
 }

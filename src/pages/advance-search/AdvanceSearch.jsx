@@ -20,7 +20,7 @@ function AdvanceSearch() {
   const isSearching = isLoading && !animes.length;
 
   if (!animes) return <SearchError />;
-  if (isError) return <ApiError error={error} />;
+  if (isError) return <ApiError error={error.message} />;
 
   const filterQueryParams = value => {
     // get the URL and remove the selected value

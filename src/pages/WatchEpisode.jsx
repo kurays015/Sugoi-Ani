@@ -15,7 +15,7 @@ function WatchEpisode() {
 
   if (isLoading) return <VideoSkeleton />;
   if (!videoSources) return <EpisodeError />;
-  if (isError) return <ApiError error={error} />;
+  if (isError) return <ApiError error={error.message} />;
 
   return (
     <VideoPlayer
