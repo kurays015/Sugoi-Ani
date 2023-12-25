@@ -4,6 +4,7 @@ import axios from "axios";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Spinner } from "@chakra-ui/react";
+import Cookies from "js-cookie";
 
 function Signup() {
   const navigate = useNavigate();
@@ -44,7 +45,8 @@ function Signup() {
         }
       );
       if (credentials) {
-        sessionStorage.setItem("user", JSON.stringify(credentials));
+        Cookies.set("user", credentials);
+        // sessionStorage.setItem("user", JSON.stringify(credentials));
         dispatch({ type: "LOGIN", payload: credentials });
         navigate("/");
       }

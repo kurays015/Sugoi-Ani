@@ -1,4 +1,5 @@
 import { createContext, useReducer, useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
@@ -15,7 +16,7 @@ function reducer(state, action) {
 
 export function AuthContextProvider({ children }) {
   const [user, dispatch] = useReducer(reducer, {
-    user: sessionStorage.getItem("user") || null,
+    user: Cookies.get("user") || null,
   });
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -24,11 +25,14 @@ export function AuthContextProvider({ children }) {
   const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
-    const user = JSON.parse(sessionStorage.getItem("user"));
+    const user = Cookies.get("user");
+    // JSON.parse(sessionStorage.getItem("user"));
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
     }
   }, []);
+
+  console.log(user);
 
   const value = {
     ...user,

@@ -4,10 +4,12 @@ import uzaki from "/images/uzaki.png";
 import SearchForm from "./SearchForm";
 import { useCategories } from "../hooks/useCategories";
 import { useCategoryContext } from "../hooks/useCategoryContext";
+import useLogout from "../hooks/useLogout";
 
 function CategoriesHeader() {
   const categories = useCategories();
   const { setPageNumber } = useCategoryContext();
+  const { logout } = useLogout();
 
   return (
     <header className="flex flex-col items-center justify-center py-6 gap-[1em] custom-sm:px-[2em] custom-sm:pb-3">
@@ -40,6 +42,9 @@ function CategoriesHeader() {
         </ul>
       </nav>
       <SearchForm />
+      {/* <button onClick={logout} className="text-white bg-blue-300">
+        Logout
+      </button> */}
     </header>
   );
 }

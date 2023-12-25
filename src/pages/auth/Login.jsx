@@ -5,6 +5,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Spinner } from "@chakra-ui/react";
 import { useGetAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
+import Cookies from "js-cookie";
 
 function Login() {
   const navigate = useNavigate();
@@ -35,7 +36,8 @@ function Login() {
         }
       );
       if (credentials) {
-        sessionStorage.setItem("user", JSON.stringify(credentials));
+        Cookies.set("user", credentials);
+        // sessionStorage.setItem("user", JSON.stringify(credentials));
         dispatch({ type: "LOGIN", payload: credentials });
         navigate(`/watch/${anime.episodes[0]?.id}`);
       }
