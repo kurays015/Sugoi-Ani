@@ -54,7 +54,6 @@ export function VideoSkeleton() {
         endColor="#7A5EB9"
         w="100%"
         mx="auto"
-        mt="4"
       />
       <img
         src="/images/pika.gif"
