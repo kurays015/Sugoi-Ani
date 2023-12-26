@@ -11,47 +11,11 @@ function VideoPlayer({ qualities, downloadSrc }) {
   let hls = null;
 
   useEffect(() => {
-    const storedPlaybackState = JSON.parse(
-      localStorage.getItem("videoPlaybackState")
-    );
-
     const defaultSource = qualities.find(q => q.quality === selectedQuality);
     if (defaultSource) {
       loadSource(defaultSource.url);
     }
-
-    if (storedPlaybackState && videoRef.current) {
-      videoRef.current.currentTime = storedPlaybackState.currentTime;
-      if (storedPlaybackState.isPlaying) {
-        videoRef.current.play();
-      }
-    }
   }, [qualities, selectedQuality]);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      const savePlaybackState = () => {
-        localStorage.setItem(
-          "videoPlaybackState",
-          JSON.stringify({
-            currentTime: videoRef.current.currentTime,
-            isPlaying: !videoRef.current.paused,
-          })
-        );
-      };
-
-      videoRef.current.addEventListener("pause", savePlaybackState);
-      videoRef.current.addEventListener("seeked", savePlaybackState);
-
-      return () => {
-        // Check if videoRef.current exists before removing event listeners
-        if (videoRef.current) {
-          videoRef.current.removeEventListener("pause", savePlaybackState);
-          videoRef.current.removeEventListener("seeked", savePlaybackState);
-        }
-      };
-    }
-  }, []);
 
   const loadSource = selectedSourceUrl => {
     if (!selectedSourceUrl || !videoRef.current) return;
@@ -79,7 +43,7 @@ function VideoPlayer({ qualities, downloadSrc }) {
   };
 
   return (
-    <div className="relative group custom-sm:w-full group xl:w-full  custom-xxl:w-[40%]">
+    <div className="relative group custom-sm:w-full group xl:w-[20%]  custom-xxl:w-[40%] ">
       <video
         controls
         ref={videoRef}

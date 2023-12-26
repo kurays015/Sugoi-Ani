@@ -31,8 +31,6 @@ export function AuthContextProvider({ children }) {
     }
   }, []);
 
-  console.log(user);
-
   const value = {
     ...user,
     dispatch,
