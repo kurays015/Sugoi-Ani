@@ -26,7 +26,6 @@ export function AuthContextProvider({ children }) {
 
   useEffect(() => {
     const user = Cookies.get("user");
-    // JSON.parse(sessionStorage.getItem("user"));
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
     }

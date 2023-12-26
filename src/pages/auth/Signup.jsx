@@ -45,8 +45,7 @@ function Signup() {
         }
       );
       if (credentials) {
-        Cookies.set("user", credentials);
-        // sessionStorage.setItem("user", JSON.stringify(credentials));
+        Cookies.set("user", credentials, { expires: 7 });
         dispatch({ type: "LOGIN", payload: credentials });
         navigate("/");
       }

@@ -36,16 +36,13 @@ function Login() {
         }
       );
       if (credentials) {
-        Cookies.set("user", credentials);
-        // sessionStorage.setItem("user", JSON.stringify(credentials));
+        Cookies.set("user", credentials, { expires: 7 });
         dispatch({ type: "LOGIN", payload: credentials });
         navigate(`/watch/${anime.episodes[0]?.id}`);
       }
     } catch (err) {
-      console.log(err);
-      setError(err.response.data.error);
+      setError(err.message);
       setIsPending(false);
-      console.log(err.response.data.error);
     }
   }
 
