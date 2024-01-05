@@ -3,7 +3,7 @@ import { useRef } from "react";
 import axios from "axios";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Spinner } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import Cookies from "js-cookie";
 
 function Signup() {
@@ -129,19 +129,16 @@ function Signup() {
           </span>
         </div>
         <div className="flex justify-center min-h-[40px]">
-          <button
+          <Button
+            bg="#813DF0"
+            color="white"
+            isLoading={isPending}
+            loadingText="Please wait..."
             disabled={isPending}
             type="submit"
-            className={`bg-indigo-800 hover:bg-indigo-700 text-white py-2 px-4 rounded-md transition-all ease-in-out duration-300 w-[50%] flex items-center justify-center ${
-              isPending ? "opacity-50" : ""
-            }`}
           >
-            {isPending ? (
-              <Spinner color="white" speed="2s" size="xs" />
-            ) : (
-              "Signup"
-            )}
-          </button>
+            Signup
+          </Button>
         </div>
       </form>
       <h5 className="text-white text-xs text-center my-5">

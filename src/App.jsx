@@ -22,7 +22,7 @@ function App() {
   const { user } = useAuthContext();
 
   const PrivateRoute = ({ children }) => {
-    return user ? children : <Navigate to="/user/login" />;
+    return user ? children : <Navigate to="/user/login" replace={true} />;
   };
 
   return (
