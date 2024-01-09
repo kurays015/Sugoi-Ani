@@ -25,13 +25,12 @@ export const useAdvanceSearchArray = () => {
       },
       {
         type: "year",
-        queries: Array.from({ length: 26 }, (_, i) => 1998 + i),
+        queries: Array.from({ length: 27 }, (_, i) => 1998 + i),
       },
       {
         type: "season",
         queries: ["FALL", "SUMMER", "WINTER", "SPRING"],
       },
-      //asdsadsd
       {
         type: "status",
         queries: [

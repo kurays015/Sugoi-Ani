@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 //hooks
 import { useAuthContext } from "./hooks/useAuthContext";
 //layouts component
@@ -17,9 +17,17 @@ import Trending from "./pages/categories/Trending";
 import RecentEpisodes from "./pages/categories/RecentEpisodes";
 import AnimeInfo from "./pages/AnimeInfo";
 import WatchEpisode from "./pages/WatchEpisode";
+import { useEffect } from "react";
 
 function App() {
   const { user } = useAuthContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/recent");
+    }
+  }, []);
 
   const PrivateRoute = ({ children }) => {
     return user ? children : <Navigate to="/user/login" replace={true} />;

@@ -77,10 +77,12 @@ function Signup() {
             className="w-full py-2 px-3 bg-gray-700 text-white rounded-md outline-none"
           />
         </div>
+
         <div className="mb-4 relative">
           <label htmlFor="password" className="text-white">
             Password:{" "}
           </label>
+
           <input
             ref={passwordRef}
             type={`${showPassword ? "text" : "password"}`}

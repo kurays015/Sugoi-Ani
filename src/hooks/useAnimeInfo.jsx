@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import anime from "../api/axios";
-const useAnimeInfo = id => {
+export default function useAnimeInfo(id) {
   return useQuery({
     queryKey: ["id", { id }],
     queryFn: async () => {
@@ -8,6 +8,4 @@ const useAnimeInfo = id => {
       return data;
     },
   });
-};
-
-export default useAnimeInfo;
+}

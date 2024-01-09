@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import anime from "../api/axios";
 
-export const useAdvanceSearch = (searchParams, pageNumber) => {
+export default function useAdvanceSearch(searchParams, pageNumber) {
   return useQuery({
     queryKey: ["advance-search", searchParams.toString(), { pageNumber }],
     queryFn: async () => {
@@ -12,4 +12,4 @@ export const useAdvanceSearch = (searchParams, pageNumber) => {
       return data;
     },
   });
-};
+}

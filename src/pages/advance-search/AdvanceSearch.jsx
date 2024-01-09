@@ -1,4 +1,4 @@
-import { useAdvanceSearch } from "../../hooks/useAdvanceSearch";
+import useAdvanceSearch from "../../hooks/useAdvanceSearch";
 import GridCardContainer from "../../components/GridCardContainer";
 import { useCategoryContext } from "../../hooks/useCategoryContext";
 import { ApiError, SearchError } from "../../components/Errors";
