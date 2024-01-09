@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
+import { removeEmailDomain } from "../utils/removeEmailDomain";
 
 export default function useSignUp() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function useSignUp() {
       navigate("/");
       Cookies.set("user", JSON.stringify(credentials), { expires: 7 });
       toast({
-        title: "Welcome and enjoy! -christ",
+        title: `Welcome ${removeEmailDomain(credentials?.email)} and enjoy! -christ`,
         status: "success",
         isClosable: true,
         duration: 2000,

@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import { useGetAnimeDataInLocalStorage } from "./useLocalStorage";
+import { removeEmailDomain } from "../utils/removeEmailDomain";
 
 export default function useLogin() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function useLogin() {
       navigate(`/watch/${anime.episodes[0]?.id}`);
       Cookies.set("user", JSON.stringify(credentials), { expires: 7 });
       toast({
-        title: "Welcome back!",
+        title: `Welcome back! ${removeEmailDomain(credentials?.email)}`,
         status: "success",
         isClosable: true,
         duration: 2000,
