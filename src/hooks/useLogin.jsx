@@ -16,7 +16,7 @@ export default function useLogin() {
       navigate(`/watch/${anime.episodes[0]?.id}`);
       Cookies.set("user", JSON.stringify(credentials), { expires: 7 });
       toast({
-        title: "Logged in",
+        title: "Welcome back!",
         status: "success",
         isClosable: true,
         duration: 2000,
