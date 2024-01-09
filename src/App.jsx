@@ -1,6 +1,4 @@
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-//hooks
-import { useAuthContext } from "./hooks/useAuthContext";
 //layouts component
 import Layout from "./components/Layouts/Layout";
 import AnimeLayout from "./components/Layouts/AnimeLayout";
