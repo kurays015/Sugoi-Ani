@@ -1,14 +1,13 @@
-import { createContext, useReducer, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import useLogin from "../hooks/useLogin";
+import useSignUp from "../hooks/useSignup";
 
 export const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-  const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showLoginPassword, setShowLoginPassword] = useState(false);
-  const [isPending, setIsPending] = useState(false);
 
   const {
     mutateAsync: login,
@@ -17,21 +16,28 @@ export function AuthContextProvider({ children }) {
     error: loginError,
   } = useLogin();
 
+  const {
+    mutateAsync: signUp,
+    error: signUpError,
+    isError: signUpIsError,
+    isPending: signUpIsPending,
+  } = useSignUp();
+
   const value = {
-    error,
-    setError,
     showPassword,
     setShowPassword,
     showConfirmPassword,
     setShowConfirmPassword,
-    isPending,
-    setIsPending,
     showLoginPassword,
     setShowLoginPassword,
     login,
     loginPending,
     loginIsError,
     loginError,
+    signUp,
+    signUpError,
+    signUpIsError,
+    signUpIsPending,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

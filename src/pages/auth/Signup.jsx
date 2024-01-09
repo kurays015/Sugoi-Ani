@@ -1,59 +1,35 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useRef } from "react";
-import axios from "axios";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button } from "@chakra-ui/react";
-import Cookies from "js-cookie";
 
 function Signup() {
-  const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+
   const {
-    dispatch,
-    error,
-    setError,
     showPassword,
     setShowPassword,
     showConfirmPassword,
     setShowConfirmPassword,
-    isPending,
-    setIsPending,
+    signUp,
+    signUpError,
+    signUpIsError,
+    signUpIsPending,
   } = useAuthContext();
 
   async function handleSignup(e) {
     e.preventDefault();
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-    const confirmPassword = confirmPasswordRef.current.value;
-
-    if (confirmPassword !== password) {
-      setError("Passwords don't match");
+    if (passwordRef.current.value === "" || emailRef.current.value === "") {
       return;
     }
-
-    try {
-      setIsPending(true);
-      const { data: credentials } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_SIGNUP}`,
-
-        {
-          email,
-          password,
-        }
-      );
-      if (credentials) {
-        Cookies.set("user", credentials, { expires: 7 });
-        dispatch({ type: "LOGIN", payload: credentials });
-        navigate("/");
-      }
-    } catch (err) {
-      setError(err.response.data.error);
-      setIsPending(false);
-      console.log(err.response.data.error);
-    }
+    await signUp({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      confirmPassword: confirmPasswordRef.current.value,
+    });
   }
 
   return (
@@ -70,6 +46,7 @@ function Signup() {
             Email:{" "}
           </label>
           <input
+            disabled={signUpIsPending}
             ref={emailRef}
             type="email"
             placeholder="Enter your email"
@@ -84,6 +61,7 @@ function Signup() {
           </label>
 
           <input
+            disabled={signUpIsPending}
             ref={passwordRef}
             type={`${showPassword ? "text" : "password"}`}
             placeholder="Enter your password"
@@ -123,7 +101,11 @@ function Signup() {
             )}
           </div>
         </div>
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {signUpIsError && (
+          <p className="text-red-500 mb-4">
+            {signUpError?.response?.data?.error}
+          </p>
+        )}
         <div className="text-gray-300 text-sm mb-4">
           Already have an account?
           <span className="text-violet-300">
@@ -134,9 +116,9 @@ function Signup() {
           <Button
             bg="#813DF0"
             color="white"
-            isLoading={isPending}
+            isLoading={signUpIsPending}
             loadingText="Please wait..."
-            disabled={isPending}
+            disabled={signUpIsPending}
             type="submit"
           >
             Signup
