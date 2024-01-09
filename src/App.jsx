@@ -18,10 +18,11 @@ import RecentEpisodes from "./pages/categories/RecentEpisodes";
 import AnimeInfo from "./pages/AnimeInfo";
 import WatchEpisode from "./pages/WatchEpisode";
 import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 function App() {
-  const { user } = useAuthContext();
   const navigate = useNavigate();
+  const user = Cookies.get("user");
 
   useEffect(() => {
     if (user) {

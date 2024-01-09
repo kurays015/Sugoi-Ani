@@ -1,49 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import axios from "axios";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button } from "@chakra-ui/react";
-import { useGetAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
-import Cookies from "js-cookie";
 
 function Login() {
-  const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const anime = useGetAnimeDataInLocalStorage();
   const {
-    dispatch,
-    error,
-    setError,
-    isPending,
-    setIsPending,
     showLoginPassword,
     setShowLoginPassword,
+    login,
+    loginPending,
+    loginIsError,
+    loginError,
   } = useAuthContext();
 
   async function handleLogin(e) {
     e.preventDefault();
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-    try {
-      setIsPending(true);
-      const { data: credentials } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_LOGIN}`,
-        {
-          email,
-          password,
-        }
-      );
-      if (credentials) {
-        Cookies.set("user", credentials, { expires: 7 });
-        dispatch({ type: "LOGIN", payload: credentials });
-        navigate(`/watch/${anime.episodes[0]?.id}`);
-      }
-    } catch (err) {
-      setError(err.message);
-      setIsPending(false);
+    if (passwordRef.current.value === "" || emailRef.current.value === "") {
+      return;
     }
+    await login({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
   }
 
   return (
@@ -60,6 +41,7 @@ function Login() {
             Email:
           </label>
           <input
+            disabled={loginPending}
             ref={emailRef}
             type="email"
             placeholder="Enter your email"
@@ -72,6 +54,7 @@ function Login() {
             Password:{" "}
           </label>
           <input
+            disabled={loginPending}
             ref={passwordRef}
             type={`${showLoginPassword ? "text" : "password"}`}
             placeholder="Enter your password"
@@ -89,7 +72,11 @@ function Login() {
             )}
           </div>
         </div>
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {loginIsError && (
+          <p className="text-red-500 mb-4 text-center">
+            {loginError?.response?.data?.error}
+          </p>
+        )}
         <div className="text-gray-300 text-sm mb-4">
           Don't have an account?{" "}
           <Link to="/user/signup" className="text-violet-300">
@@ -100,9 +87,9 @@ function Login() {
           <Button
             bg="#813DF0"
             color="white"
-            isLoading={isPending}
+            isLoading={loginPending}
             loadingText="Please wait..."
-            disabled={isPending}
+            disabled={loginPending}
             type="submit"
           >
             Login
