@@ -19,7 +19,6 @@ import Cookies from "js-cookie";
 
 function App() {
   const user = JSON.parse(Cookies.get("user") || null);
-  console.log("user", user)
 
   const PrivateRoute = ({ children }) => {
     return user ? children : <Navigate to="/user/login" replace={true} />;
