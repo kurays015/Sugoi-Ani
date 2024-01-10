@@ -15,18 +15,11 @@ import Trending from "./pages/categories/Trending";
 import RecentEpisodes from "./pages/categories/RecentEpisodes";
 import AnimeInfo from "./pages/AnimeInfo";
 import WatchEpisode from "./pages/WatchEpisode";
-import { useEffect } from "react";
 import Cookies from "js-cookie";
 
 function App() {
-  const navigate = useNavigate();
-  const user = Cookies.get("user");
-
-  useEffect(() => {
-    if (user) {
-      navigate("/recent");
-    }
-  }, []);
+  const user = JSON.parse(Cookies.get("user") || null);
+  console.log("user", user)
 
   const PrivateRoute = ({ children }) => {
     return user ? children : <Navigate to="/user/login" replace={true} />;
