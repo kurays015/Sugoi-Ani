@@ -9,6 +9,7 @@ import { CategoryContextProvider } from "./context/CategoryContext.jsx";
 import { SearchContextProvider } from "./context/SearchContext.jsx";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { FavoriteContextProvider } from "./context/FavoriteContext.jsx";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const queryClient = new QueryClient();
 
@@ -25,25 +26,28 @@ const breakpoints = {
 };
 
 const theme = extendTheme({ breakpoints });
+const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <AuthContextProvider>
-          <SearchContextProvider>
-            <FavoriteContextProvider>
-              <CategoryContextProvider>
-                <ChakraProvider
-                  theme={theme}
-                  resetCSS={false}
-                  disableGlobalStyle={true}
-                >
-                  <App />
-                </ChakraProvider>
-              </CategoryContextProvider>
-            </FavoriteContextProvider>
-          </SearchContextProvider>
+          <GoogleOAuthProvider clientId={clientId}>
+            <SearchContextProvider>
+              <FavoriteContextProvider>
+                <CategoryContextProvider>
+                  <ChakraProvider
+                    theme={theme}
+                    resetCSS={false}
+                    disableGlobalStyle={true}
+                  >
+                    <App />
+                  </ChakraProvider>
+                </CategoryContextProvider>
+              </FavoriteContextProvider>
+            </SearchContextProvider>
+          </GoogleOAuthProvider>
         </AuthContextProvider>
       </BrowserRouter>
     </QueryClientProvider>

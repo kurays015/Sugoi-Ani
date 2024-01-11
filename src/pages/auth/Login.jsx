@@ -1,20 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Button } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
+import { GoogleLogin } from "@react-oauth/google";
+import { useGetAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
+import { jwtDecode } from "jwt-decode";
+import { removeEmailDomain } from "../../utils/removeEmailDomain";
 
 function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const {
-    showLoginPassword,
-    setShowLoginPassword,
-    login,
-    loginPending,
-    loginIsError,
-    loginError,
-  } = useAuthContext();
+  const navigate = useNavigate();
+  const anime = useGetAnimeDataInLocalStorage();
+  const toast = useToast();
+
+  const { showLoginPassword, setShowLoginPassword, login, loginPending } =
+    useAuthContext();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -72,11 +74,6 @@ function Login() {
             )}
           </div>
         </div>
-        {loginIsError && (
-          <p className="text-red-500 mb-4 text-center">
-            {loginError?.response?.data?.error}
-          </p>
-        )}
         <div className="text-gray-300 text-sm mb-4">
           Don't have an account?{" "}
           <Link to="/user/signup" className="text-violet-300">
@@ -94,6 +91,34 @@ function Login() {
           >
             Login
           </Button>
+        </div>
+        <div className="flex items-center justify-between my-5">
+          <hr className="w-full border-gray-300 border-1" />
+          <span className="text-sm text-gray-400 px-4">or</span>
+          <hr className="w-full border-gray-300 border-1" />
+        </div>
+        <div className="text-center flex justify-center">
+          <GoogleLogin
+            onSuccess={credentialResponse => {
+              const decoded = jwtDecode(credentialResponse.credential);
+              navigate(`/watch/${anime.episodes[0]?.id}`);
+              toast({
+                title: `Welcome back! ${removeEmailDomain(decoded?.email)}`,
+                status: "success",
+                isClosable: true,
+                duration: 2000,
+              });
+            }}
+            onError={() => {
+              toast({
+                title: "Something went wrong.",
+                status: "error",
+                isClosable: true,
+                duration: 4000,
+              });
+            }}
+            useOneTap
+          />
         </div>
       </form>
       <h5 className="text-white text-xs text-center my-5">

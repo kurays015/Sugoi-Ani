@@ -23,5 +23,13 @@ export default function useLogin() {
         duration: 2000,
       });
     },
+    onError: ({ response }) => {
+      toast({
+        title: `Oops! ${response.data.error}`,
+        status: "error",
+        isClosable: true,
+        duration: 4000,
+      });
+    },
   });
 }

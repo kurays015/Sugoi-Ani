@@ -15,10 +15,20 @@ export default function useSignUp() {
       navigate("/");
       Cookies.set("user", JSON.stringify(credentials), { expires: 7 });
       toast({
-        title: `Welcome ${removeEmailDomain(credentials?.email)} and enjoy! -christ`,
+        title: `Welcome ${removeEmailDomain(
+          credentials?.email
+        )} and enjoy! -christ`,
         status: "success",
         isClosable: true,
         duration: 2000,
+      });
+    },
+    onError: ({ response }) => {
+      toast({
+        title: `Oops! ${response.data.error}`,
+        status: "error",
+        isClosable: true,
+        duration: 4000,
       });
     },
   });
