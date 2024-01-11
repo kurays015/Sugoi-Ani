@@ -5,8 +5,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button, useToast } from "@chakra-ui/react";
 import { GoogleLogin } from "@react-oauth/google";
 import { useGetAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
-import { jwtDecode } from "jwt-decode";
-import { removeEmailDomain } from "../../utils/removeEmailDomain";
 
 function Login() {
   const emailRef = useRef();
@@ -99,15 +97,8 @@ function Login() {
         </div>
         <div className="text-center flex justify-center">
           <GoogleLogin
-            onSuccess={credentialResponse => {
-              const decoded = jwtDecode(credentialResponse.credential);
+            onSuccess={_ => {
               navigate(`/watch/${anime.episodes[0]?.id}`);
-              toast({
-                title: `Welcome back! ${removeEmailDomain(decoded?.email)}`,
-                status: "success",
-                isClosable: true,
-                duration: 2000,
-              });
             }}
             onError={() => {
               toast({
@@ -117,7 +108,6 @@ function Login() {
                 duration: 4000,
               });
             }}
-            useOneTap
           />
         </div>
       </form>

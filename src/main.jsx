@@ -33,7 +33,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <AuthContextProvider>
-          <GoogleOAuthProvider clientId={clientId}>
+          <GoogleOAuthProvider clientId={`${clientId}`}>
             <SearchContextProvider>
               <FavoriteContextProvider>
                 <CategoryContextProvider>
