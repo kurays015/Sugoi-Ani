@@ -2,12 +2,11 @@ import { Link } from "react-router-dom";
 import MobileAnimeInfoHeader from "./MobileAnimeInfoHeader";
 import { useCategories } from "../hooks/useCategories";
 import useLogout from "../hooks/useLogout";
-import Cookies from "js-cookie";
+import { getCookies } from "../hooks/useCookies";
 
 function AnimeInfoHeader() {
   const { logout } = useLogout();
-  const user =
-    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
+  const user = getCookies("user") || getCookies("googleUser") || null;
 
   const categories = useCategories();
   return (

@@ -4,15 +4,14 @@ import SearchForm from "./SearchForm";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useCategories } from "../hooks/useCategories";
 import useLogout from "../hooks/useLogout";
-import Cookies from "js-cookie";
+import { getCookies } from "../hooks/useCookies";
 
 function MobileAnimeInfoHeader() {
   const [showNav, setShowNav] = useState(false);
   const categories = useCategories();
 
   const { logout } = useLogout();
-  const user =
-    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
+  const user = getCookies("user") || getCookies("googleUser") || null;
 
   return (
     <>

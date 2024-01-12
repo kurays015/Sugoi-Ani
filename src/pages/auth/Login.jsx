@@ -4,8 +4,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button, useToast } from "@chakra-ui/react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useGetAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
-import Cookies from "js-cookie";
 import { FaGoogle } from "react-icons/fa";
+import { setCookies } from "../../hooks/useCookies";
 
 function Login() {
   const navigate = useNavigate();
@@ -28,9 +28,9 @@ function Login() {
 
   const googleLogin = useGoogleLogin({
     onSuccess: res => {
-      Cookies.set("googleUser", res.access_token, { expires: 7 });
+      setCookies("googleUser", res.access_token);
       navigate(`/watch/${anime.episodes[0]?.id}`);
-      window.location.reload();
+      // window.location.reload();
     },
     onError: () => {
       toast({

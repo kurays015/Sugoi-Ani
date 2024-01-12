@@ -1,10 +1,9 @@
-import Cookies from "js-cookie";
 import { Navigate, useLocation } from "react-router-dom";
+import { getCookies } from "./useCookies";
 
 export default function useProtectedRoute() {
   const location = useLocation();
-  const user =
-    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
+  const user = getCookies("user") || getCookies("googleUser") || null;
 
   const ProtectedWatchLayoutRoute = ({ children }) => {
     return user ? children : <Navigate to="/user/login" replace={true} />;

@@ -1,11 +1,11 @@
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { removeCookies } from "./useCookies";
 
 const useLogout = () => {
   const navigate = useNavigate();
   const logout = () => {
-    Cookies.remove("user");
-    Cookies.remove("googleUser");
+    removeCookies("user");
+    removeCookies("googleUser");
     navigate("/user/login");
   };
 

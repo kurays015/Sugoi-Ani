@@ -1,10 +1,10 @@
 import { useToast } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import { useGetAnimeDataInLocalStorage } from "./useLocalStorage";
 import { removeEmailDomain } from "../utils/removeEmailDomain";
+import { setCookies } from "./useCookies";
 
 export default function useLogin() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ export default function useLogin() {
       await axios.post(`${import.meta.env.VITE_BACKEND_LOGIN}`, credentials),
     onSuccess: ({ data: credentials }) => {
       navigate(`/watch/${anime.episodes[0]?.id}`);
-      Cookies.set("user", JSON.stringify(credentials), { expires: 7 });
+      setCookies("user", credentials?.email);
       toast({
         title: `Welcome back! ${removeEmailDomain(credentials?.email)}`,
         status: "success",
