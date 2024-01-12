@@ -1,11 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button, useToast } from "@chakra-ui/react";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import { useGetAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
 import Cookies from "js-cookie";
+import { FaGoogle } from "react-icons/fa";
 
 function Login() {
   const emailRef = useRef();
@@ -13,6 +14,8 @@ function Login() {
   const navigate = useNavigate();
   const anime = useGetAnimeDataInLocalStorage();
   const toast = useToast();
+  const user =
+    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
 
   const { showLoginPassword, setShowLoginPassword, login, loginPending } =
     useAuthContext();
@@ -29,12 +32,26 @@ function Login() {
   }
 
   const googleLogin = useGoogleLogin({
-    onSuccess: tokenResponse => {
-      Cookies.set("googleUser", tokenResponse, { expires: 7 });
+    onSuccess: res => {
+      Cookies.set("googleUser", JSON.stringify(res), { expires: 7 });
       navigate(`/watch/${anime.episodes[0]?.id}`);
+      window.location.reload();
     },
-    flow: "auth-code",
+    onError: () => {
+      toast({
+        title: "Something went wrong.",
+        status: "error",
+        isClosable: true,
+        duration: 4000,
+      });
+    },
   });
+
+  useEffect(() => {
+    if (user) {
+      navigate("/recent");
+    }
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 custom-sm:p-3">
@@ -105,21 +122,14 @@ function Login() {
           <hr className="w-full border-gray-300 border-1" />
         </div>
         <div className="text-center flex justify-center">
-          {/* <GoogleLogin
-            onSuccess={googleResponse => {
-              console.log(googleResponse);
-              navigate(`/watch/${anime.episodes[0]?.id}`);
-            }}
-            onError={() => {
-              toast({
-                title: "Something went wrong.",
-                status: "error",
-                isClosable: true,
-                duration: 4000,
-              });
-            }}
-          /> */}
-          <button onClick={() => googleLogin()}>googleLogin</button>
+          <Button
+            onClick={() => googleLogin()}
+            variant="unstyled"
+            rightIcon={<FaGoogle />}
+            color="gray"
+          >
+            Sign in with
+          </Button>
         </div>
       </form>
       <h5 className="text-white text-xs text-center my-5">

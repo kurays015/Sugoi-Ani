@@ -25,6 +25,8 @@ function AnimeInfo() {
   if (!singleAnimeData) return <SingleAnimeDataError />;
   if (isError) return <ApiError error={error.message} />;
 
+  console.log(user);
+
   return (
     <main className="bg-[#242424] py-5 custom-sm:px-2 md:px-14 md:py-12 lg:px-28 xl:px-48 ">
       <section
