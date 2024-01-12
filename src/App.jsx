@@ -25,10 +25,21 @@ function App() {
     return user ? element : <Navigate to="/user/login" replace={true} />;
   };
 
+  const HideLogin = ({ children }) => {
+    return !user ? children : <Navigate to="/recent" replace={true} />;
+  };
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/user/login" element={user ? <NotFound /> : <Login />} />
+      <Route
+        path="/user/login"
+        element={
+          <HideLogin>
+            <Login />
+          </HideLogin>
+        }
+      />
       <Route path="/user/signup" element={<Signup />} />
 
       <Route element={<Layout />}>
