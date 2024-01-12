@@ -107,6 +107,7 @@ function Signup() {
           <Button
             bg="#813DF0"
             color="white"
+            colorScheme="purple"
             isLoading={signUpIsPending}
             loadingText="Please wait..."
             disabled={signUpIsPending}
