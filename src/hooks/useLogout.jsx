@@ -1,12 +1,12 @@
-import { useAuthContext } from "../hooks/useAuthContext";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const useLogout = () => {
-  const { dispatch } = useAuthContext();
-
+  const navigate = useNavigate();
   const logout = () => {
     Cookies.remove("user");
-    dispatch({ type: "LOGOUT" });
+    Cookies.remove("googleUser");
+    navigate("/recent");
   };
 
   return { logout };

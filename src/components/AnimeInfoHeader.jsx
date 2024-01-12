@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import MobileAnimeInfoHeader from "./MobileAnimeInfoHeader";
 import { useCategories } from "../hooks/useCategories";
+import useLogout from "../hooks/useLogout";
+import Cookies from "js-cookie";
 
 function AnimeInfoHeader() {
+  const { logout } = useLogout();
+  const user =
+    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
+
   const categories = useCategories();
   return (
     <header className="bg-[#1C1C1C] relative py-3 px-16 flex items-center justify-between gap-2 custom-sm:px-3 custom-sm:gap-5 custom-xxl:px-10">
@@ -21,6 +27,11 @@ function AnimeInfoHeader() {
               </Link>
             </li>
           ))}
+          {user && (
+            <button onClick={logout} className="text-[#AAAAAA]">
+              Logout
+            </button>
+          )}
         </ul>
       </nav>
       {/* responsive header */}

@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useCategories } from "../hooks/useCategories";
+import useLogout from "../hooks/useLogout";
+import Cookies from "js-cookie";
 
 function MobileAnimeInfoHeader() {
   const [showNav, setShowNav] = useState(false);
   const categories = useCategories();
+
+  const { logout } = useLogout();
+  const user =
+    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
 
   return (
     <>
@@ -33,6 +39,11 @@ function MobileAnimeInfoHeader() {
             </Link>
           </li>
         ))}
+        {user && (
+          <button onClick={logout} className="text-[#AAAAAA] text-start">
+            Logout
+          </button>
+        )}
       </ul>
     </>
   );
