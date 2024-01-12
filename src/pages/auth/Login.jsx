@@ -116,9 +116,12 @@ function Login() {
             onClick={() => googleLogin()}
             variant="outline"
             colorScheme="gray"
-            leftIcon={<FaGoogle />}
+            rightIcon={<FaGoogle />}
             _hover={{ bgColor: "gray.500", color: "white" }}
             color="gray.400"
+            borderRadius="30px"
+            fontSize=".8rem"
+            padding="5px 30px"
           >
             Sign in with Google
           </Button>
