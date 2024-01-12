@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 //layouts component
 import Layout from "./components/Layouts/Layout";
 import AnimeLayout from "./components/Layouts/AnimeLayout";
@@ -15,34 +15,20 @@ import Trending from "./pages/categories/Trending";
 import RecentEpisodes from "./pages/categories/RecentEpisodes";
 import AnimeInfo from "./pages/AnimeInfo";
 import WatchEpisode from "./pages/WatchEpisode";
-import Cookies from "js-cookie";
+import useProtectedRoute from "./hooks/useProtectedRoute";
 
 function App() {
-  const location = useLocation();
-  const user =
-    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
-
-  const PrivateRoute = ({ children }) => {
-    return user ? children : <Navigate to="/user/login" replace={true} />;
-  };
-
-  const HideLogin = ({ children }) => {
-    return !user && location.pathname === "/user/login" ? (
-      children
-    ) : (
-      <Navigate to="/recent" replace={true} />
-    );
-  };
-
+  const { ProtectedWatchLayoutRoute, ProtectedLoginRoute } =
+    useProtectedRoute();
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route
         path="/user/login"
         element={
-          <HideLogin>
+          <ProtectedLoginRoute>
             <Login />
-          </HideLogin>
+          </ProtectedLoginRoute>
         }
       />
       <Route path="/user/signup" element={<Signup />} />
@@ -63,9 +49,9 @@ function App() {
       <Route
         path="/watch"
         element={
-          <PrivateRoute>
+          <ProtectedWatchLayoutRoute>
             <WatchLayout />
-          </PrivateRoute>
+          </ProtectedWatchLayoutRoute>
         }
       >
         <Route path=":episodeId" element={<WatchEpisode />} />
