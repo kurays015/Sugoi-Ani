@@ -54,7 +54,7 @@ function Login() {
         onSubmit={handleLogin}
       >
         <h5 className="text-white font-semibold text-1xl text-center mb-4">
-          You need to login first...
+          Welcome back!
         </h5>
         <div className="mb-4">
           <label htmlFor="email" className="text-white block mb-1">
@@ -113,17 +113,19 @@ function Login() {
         </div>
         <div className="flex items-center justify-between my-5">
           <hr className="w-full border-gray-300 border-1" />
-          <span className="text-sm text-gray-400 px-4">or</span>
+          <span className="text-sm text-gray-300 px-4">or</span>
           <hr className="w-full border-gray-300 border-1" />
         </div>
         <div className="text-center flex justify-center">
           <Button
             onClick={() => googleLogin()}
-            variant="unstyled"
-            rightIcon={<FaGoogle />}
-            color="gray"
+            variant="outline"
+            colorScheme="gray"
+            leftIcon={<FaGoogle />}
+            _hover={{ bgColor: "gray.500", color: "white" }}
+            color="gray.400"
           >
-            Sign in with
+            Sign in with Google
           </Button>
         </div>
       </form>
