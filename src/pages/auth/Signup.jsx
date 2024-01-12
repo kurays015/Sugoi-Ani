@@ -11,8 +11,6 @@ function Signup() {
     showConfirmPassword,
     setShowConfirmPassword,
     signUp,
-    signUpError,
-    signUpIsError,
     signUpIsPending,
     emailRef,
     passwordRef,
@@ -100,11 +98,6 @@ function Signup() {
             )}
           </div>
         </div>
-        {signUpIsError && (
-          <p className="text-red-500 mb-4">
-            {signUpError?.response?.data?.error}
-          </p>
-        )}
         <div className="text-gray-300 text-sm mb-4">
           Already have an account?
           <span className="text-violet-300">

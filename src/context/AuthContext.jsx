@@ -12,19 +12,9 @@ export function AuthContextProvider({ children }) {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
-  const {
-    mutateAsync: login,
-    isPending: loginPending,
-    isError: loginIsError,
-    error: loginError,
-  } = useLogin();
+  const { mutateAsync: login, isPending: loginPending } = useLogin();
 
-  const {
-    mutateAsync: signUp,
-    error: signUpError,
-    isError: signUpIsError,
-    isPending: signUpIsPending,
-  } = useSignUp();
+  const { mutateAsync: signUp, isPending: signUpIsPending } = useSignUp();
 
   const value = {
     showPassword,
@@ -35,11 +25,7 @@ export function AuthContextProvider({ children }) {
     setShowLoginPassword,
     login,
     loginPending,
-    loginIsError,
-    loginError,
     signUp,
-    signUpError,
-    signUpIsError,
     signUpIsPending,
     emailRef,
     passwordRef,
