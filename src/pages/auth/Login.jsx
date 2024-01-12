@@ -11,12 +11,7 @@ function Login() {
   const navigate = useNavigate();
   const anime = useGetAnimeDataInLocalStorage();
   const toast = useToast();
-
   const { emailRef, passwordRef } = useAuthContext();
-
-  const user =
-    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
-
   const { showLoginPassword, setShowLoginPassword, login, loginPending } =
     useAuthContext();
 
