@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button } from "@chakra-ui/react";

@@ -102,6 +102,7 @@ function Login() {
           <Button
             bg="#813DF0"
             color="white"
+            colorScheme="purple"
             isLoading={loginPending}
             loadingText="Please wait..."
             disabled={loginPending}
