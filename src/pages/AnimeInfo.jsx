@@ -5,13 +5,14 @@ import Related from "../components/Related";
 import { useEffect } from "react";
 import titleHandler from "../utils/titleHandler";
 import { AnimeInfoSkeleton } from "../components/SkeletonLoader";
-import { useAuthContext } from "../hooks/useAuthContext";
 import { SingleAnimeDataError, ApiError } from "../components/Errors";
+import Cookies from "js-cookie";
 
 function AnimeInfo() {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useAnimeInfo(id);
-  const { user } = useAuthContext();
+  const user =
+    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
   const singleAnimeData = data || null;
 
   useEffect(() => {

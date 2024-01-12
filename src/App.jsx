@@ -16,9 +16,11 @@ import RecentEpisodes from "./pages/categories/RecentEpisodes";
 import AnimeInfo from "./pages/AnimeInfo";
 import WatchEpisode from "./pages/WatchEpisode";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
 
 function App() {
-  const user = JSON.parse(Cookies.get("user") || null);
+  const user =
+    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
 
   const PrivateRoute = ({ children }) => {
     return user ? children : <Navigate to="/user/login" replace={true} />;

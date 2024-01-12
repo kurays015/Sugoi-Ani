@@ -3,8 +3,9 @@ import { useRef } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button, useToast } from "@chakra-ui/react";
-import { GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { useGetAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
+import Cookies from "js-cookie";
 
 function Login() {
   const emailRef = useRef();
@@ -26,6 +27,14 @@ function Login() {
       password: passwordRef.current.value,
     });
   }
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: tokenResponse => {
+      Cookies.set("googleUser", tokenResponse, { expires: 7 });
+      navigate(`/watch/${anime.episodes[0]?.id}`);
+    },
+    flow: "auth-code",
+  });
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 custom-sm:p-3">
@@ -96,8 +105,9 @@ function Login() {
           <hr className="w-full border-gray-300 border-1" />
         </div>
         <div className="text-center flex justify-center">
-          <GoogleLogin
-            onSuccess={_ => {
+          {/* <GoogleLogin
+            onSuccess={googleResponse => {
+              console.log(googleResponse);
               navigate(`/watch/${anime.episodes[0]?.id}`);
             }}
             onError={() => {
@@ -108,7 +118,8 @@ function Login() {
                 duration: 4000,
               });
             }}
-          />
+          /> */}
+          <button onClick={() => googleLogin()}>googleLogin</button>
         </div>
       </form>
       <h5 className="text-white text-xs text-center my-5">
