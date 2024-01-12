@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import { Navigate, useLocation } from "react-router-dom";
 
-export default function useProtectedRoute(props) {
+export default function useProtectedRoute() {
   const location = useLocation();
   const user =
     JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
