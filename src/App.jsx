@@ -21,8 +21,8 @@ function App() {
   const user =
     JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
 
-  const PrivateRoute = ({ children }) => {
-    return user ? children : <Navigate to="/user/login" replace={true} />;
+  const PrivateRoute = ({ element }) => {
+    return user ? element : <Navigate to="/user/login" replace={true} />;
   };
 
   return (
@@ -44,14 +44,7 @@ function App() {
       </Route>
 
       {/* Private Route */}
-      <Route
-        path="/watch"
-        element={
-          <PrivateRoute>
-            <WatchLayout />
-          </PrivateRoute>
-        }
-      >
+      <Route path="/watch" element={<PrivateRoute element={<WatchLayout />} />}>
         <Route path=":episodeId" element={<WatchEpisode />} />
       </Route>
 

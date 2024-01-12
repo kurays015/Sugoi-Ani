@@ -5,10 +5,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button } from "@chakra-ui/react";
 
 function Signup() {
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
-
   const {
     showPassword,
     setShowPassword,
@@ -18,6 +14,9 @@ function Signup() {
     signUpError,
     signUpIsError,
     signUpIsPending,
+    emailRef,
+    passwordRef,
+    confirmPasswordRef,
   } = useAuthContext();
 
   async function handleSignup(e) {

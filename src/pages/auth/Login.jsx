@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useRef } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button, useToast } from "@chakra-ui/react";
@@ -9,11 +8,14 @@ import Cookies from "js-cookie";
 import { FaGoogle } from "react-icons/fa";
 
 function Login() {
-  const emailRef = useRef();
-  const passwordRef = useRef();
   const navigate = useNavigate();
   const anime = useGetAnimeDataInLocalStorage();
   const toast = useToast();
+
+  const { emailRef, passwordRef } = useAuthContext();
+
+  const user =
+    JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
 
   const { showLoginPassword, setShowLoginPassword, login, loginPending } =
     useAuthContext();

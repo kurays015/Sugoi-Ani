@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 import useLogin from "../hooks/useLogin";
 import useSignUp from "../hooks/useSignup";
 
@@ -8,6 +8,9 @@ export function AuthContextProvider({ children }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
 
   const {
     mutateAsync: login,
@@ -38,6 +41,9 @@ export function AuthContextProvider({ children }) {
     signUpError,
     signUpIsError,
     signUpIsPending,
+    emailRef,
+    passwordRef,
+    confirmPasswordRef,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -6,7 +6,7 @@ const useLogout = () => {
   const logout = () => {
     Cookies.remove("user");
     Cookies.remove("googleUser");
-    navigate("/recent");
+    navigate("/user/login");
   };
 
   return { logout };
