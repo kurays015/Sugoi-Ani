@@ -33,7 +33,7 @@ function Login() {
 
   const googleLogin = useGoogleLogin({
     onSuccess: res => {
-      Cookies.set("googleUser", JSON.stringify(res), { expires: 7 });
+      Cookies.set("googleUser", res.access_token, { expires: 7 });
       navigate(`/watch/${anime.episodes[0]?.id}`);
       window.location.reload();
     },
@@ -46,12 +46,6 @@ function Login() {
       });
     },
   });
-
-  useEffect(() => {
-    if (user) {
-      navigate("/recent");
-    }
-  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 custom-sm:p-3">
