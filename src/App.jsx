@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 //layouts component
 import Layout from "./components/Layouts/Layout";
 import AnimeLayout from "./components/Layouts/AnimeLayout";
@@ -18,15 +18,20 @@ import WatchEpisode from "./pages/WatchEpisode";
 import Cookies from "js-cookie";
 
 function App() {
+  const location = useLocation();
   const user =
     JSON.parse(Cookies.get("user") || null) || Cookies.get("googleUser");
 
-  const PrivateRoute = ({ element }) => {
-    return user ? element : <Navigate to="/user/login" replace={true} />;
+  const PrivateRoute = ({ children }) => {
+    return user ? children : <Navigate to="/user/login" replace={true} />;
   };
 
   const HideLogin = ({ children }) => {
-    return !user ? children : <Navigate to="/recent" replace={true} />;
+    return !user && location.pathname === "/user/login" ? (
+      children
+    ) : (
+      <Navigate to="/recent" replace={true} />
+    );
   };
 
   return (
@@ -55,7 +60,14 @@ function App() {
       </Route>
 
       {/* Private Route */}
-      <Route path="/watch" element={<PrivateRoute element={<WatchLayout />} />}>
+      <Route
+        path="/watch"
+        element={
+          <PrivateRoute>
+            <WatchLayout />
+          </PrivateRoute>
+        }
+      >
         <Route path=":episodeId" element={<WatchEpisode />} />
       </Route>
 
