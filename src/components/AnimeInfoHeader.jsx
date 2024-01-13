@@ -3,6 +3,14 @@ import MobileAnimeInfoHeader from "./MobileAnimeInfoHeader";
 import { useCategories } from "../hooks/useCategories";
 import useLogout from "../hooks/useLogout";
 import { getCookies } from "../hooks/useCookies";
+import { IoMdArrowDropdown } from "react-icons/io";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
+} from "@chakra-ui/react";
 
 function AnimeInfoHeader() {
   const { logout } = useLogout();
@@ -15,7 +23,7 @@ function AnimeInfoHeader() {
         <img src="/images/uzaki.png" className="w-[80px]" alt="logo" />
       </Link>
       <nav className="custom-sm:hidden md:block md:order-3">
-        <ul className="flex gap-[1em]">
+        <ul className="flex items-center gap-[1em]">
           {categories.map(category => (
             <li key={category}>
               <Link
@@ -27,9 +35,24 @@ function AnimeInfoHeader() {
             </li>
           ))}
           {user && (
-            <button onClick={logout} className="text-[#AAAAAA]">
-              Logout
-            </button>
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label="Options"
+                icon={<IoMdArrowDropdown className="text-primary" />}
+                variant="unstyled"
+              />
+              <MenuList bg="#1c1c1c" borderColor="gray">
+                <MenuItem
+                  bg="#1c1c1c"
+                  color="white"
+                  _hover={{ backgroundColor: "#777777" }}
+                  onClick={logout}
+                >
+                  Logout
+                </MenuItem>
+              </MenuList>
+            </Menu>
           )}
         </ul>
       </nav>
