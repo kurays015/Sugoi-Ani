@@ -1,5 +1,5 @@
 import { useFavorites } from "../hooks/useFavorites";
-import spongebob from "../assets/spongebob.png";
+import spongebob from "../../public/images/spongebob.png  ";
 
 import Card from "./Card";
 
