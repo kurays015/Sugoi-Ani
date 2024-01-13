@@ -1,19 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Button, useToast } from "@chakra-ui/react";
-import { useGoogleLogin } from "@react-oauth/google";
-import { useGetAnimeDataInLocalStorage } from "../../hooks/useLocalStorage";
+import { Button } from "@chakra-ui/react";
 import { FaGoogle } from "react-icons/fa";
-import { setCookies } from "../../hooks/useCookies";
+import useGoogleCredentials from "../../hooks/useGoogleCredentials";
 
 function Login() {
-  const navigate = useNavigate();
-  const anime = useGetAnimeDataInLocalStorage();
-  const toast = useToast();
   const { emailRef, passwordRef } = useAuthContext();
   const { showLoginPassword, setShowLoginPassword, login, loginPending } =
     useAuthContext();
+  const googleLogin = useGoogleCredentials();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -25,22 +21,6 @@ function Login() {
       password: passwordRef.current.value,
     });
   }
-
-  const googleLogin = useGoogleLogin({
-    onSuccess: res => {
-      setCookies("googleUser", res.access_token);
-      navigate(`/watch/${anime.episodes[0]?.id}`);
-      // window.location.reload();
-    },
-    onError: () => {
-      toast({
-        title: "Something went wrong.",
-        status: "error",
-        isClosable: true,
-        duration: 4000,
-      });
-    },
-  });
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 custom-sm:p-3">
