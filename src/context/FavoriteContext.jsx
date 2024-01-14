@@ -24,6 +24,8 @@ export function FavoriteContextProvider({ children }) {
     handleAddToFavorite,
     handleRemoveToFavorites,
     favorites,
+    setFavorites,
+    setAddToFavorites,
   };
   return (
     <FavoriteContext.Provider value={value}>

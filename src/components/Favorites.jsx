@@ -3,11 +3,20 @@ import Card from "./Card";
 import spongebob from "/images/spongebob.png";
 
 function Favorites() {
-  const { favorites } = useFavorites();
+  const { favorites, setFavorites, setAddToFavorites } = useFavorites();
 
   return (
     <>
       <h1 className="mb-5 text-center text-xl">My Favorites</h1>
+      <button
+        className="text-end w-full hover:text-violet-300"
+        onClick={() => {
+          setAddToFavorites(false);
+          setFavorites([]);
+        }}
+      >
+        Clear All
+      </button>
       <div className="grid grid-cols-2 gap-5">
         {favorites.length ? (
           <Card animes={favorites} />
