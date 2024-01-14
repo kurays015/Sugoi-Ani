@@ -1,6 +1,6 @@
 import { useFavorites } from "../hooks/useFavorites";
 import Card from "./Card";
-import spongebob from "../../public/images/spongebob.png";
+import spongebob from "/images/spongebob.png";
 
 function Favorites() {
   const { favorites } = useFavorites();
