@@ -11,10 +11,12 @@ import {
 } from "@chakra-ui/react";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import Favorites from "./Favorites";
+import { useFavorites } from "../hooks/useFavorites";
 
 function AddToFavorites() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
+  const { favorites } = useFavorites();
 
   return (
     <>
@@ -25,8 +27,14 @@ function AddToFavorites() {
           onClick={onOpen}
           bg="#777777"
           fontSize="xs"
+          position="relative"
           leftIcon={<FaLongArrowAltLeft />}
         >
+          {favorites.length > 0 && (
+            <span className="absolute -top-1 -left-3 h-5 w-5 bg-violet-400 rounded-full flex items-center justify-center p-3">
+              {favorites.length}
+            </span>
+          )}
           Favorites
         </Button>
       </Box>
