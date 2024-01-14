@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import Footer from "../components/Footer";
-import { FaFacebook } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 
 function Home() {
@@ -31,20 +29,6 @@ function Home() {
           <Link to="https://github.com/kurays015" target="blank">
             <FaGithub className="text-3xl text-[#d1c7c7] hover:-translate-y-1 duration-300 ease-in-out" />
           </Link>
-        </div>
-        <div className=" mt-5 custom-sm:mt-0">
-          <h2 className="text-[#808080]">Get in touch</h2>
-          <div className="flex items-center justify-center gap-5 mt-3">
-            <Link
-              to="https://www.facebook.com/illidanstormrageee/"
-              target="blank"
-            >
-              <FaFacebook className="cursor-pointer text-3xl text-[#d1c7c7] hover:-translate-y-1 duration-300 ease-in-out" />
-            </Link>
-            <Link to="https://twitter.com/ChristNarvarte" target="blank">
-              <FaXTwitter className="cursor-pointer text-3xl text-[#d1c7c7] hover:-translate-y-1 duration-300 ease-in-out" />
-            </Link>
-          </div>
         </div>
       </div>
       <Footer />
