@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useWatchEpisode from "../hooks/useWatchEpisode";
-import VideoPlayer from "../components/VideoPlayer";
+import VideoPlayer from "../components/ArtPlayer";
 import { EpisodeError, ApiError } from "../components/Errors";
 import { VideoSkeleton } from "../components/SkeletonLoader";
 

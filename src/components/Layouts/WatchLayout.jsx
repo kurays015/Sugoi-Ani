@@ -13,7 +13,7 @@ function WatchLayout() {
       <AnimeInfoHeader />
       <div
         className="flex items-start
-      py-5 pt-0 custom-sm:flex-col custom-sm:gap-0 custom-sm:p-2  xl:p-5 xl:flex-row xl:gap-5 custom-xxl:border custom-xxl:border-primary custom-xxl:rounded-xl custom-xxl:max-w-[90%] custom-xxl:mx-auto custom-xxl:mt-20"
+      py-5 pt-0 custom-sm:flex-col custom-sm:gap-0 custom-sm:p-2 xl:p-5 xl:flex-row xl:gap-5 custom-xxl:border custom-xxl:border-primary custom-xxl:rounded-xl custom-xxl:max-w-[90%] custom-xxl:mx-auto custom-xxl:mt-20"
       >
         <AnimeEpisodes />
         <Outlet />
