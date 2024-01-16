@@ -46,44 +46,76 @@ function AnimeInfo() {
             Watch Now
           </Link>
         </div>
-        <div className="flex-1 custom-sm:p-3 md:p-5">
+        <div className="flex-1 custom-sm:p-3 md:p-5 purp-span">
           <h1 className="text-3xl font-semibold mb-4 text-white custom-sm:text-md">
-            {titleHandler(singleAnimeData.title)}
+            <span>{titleHandler(singleAnimeData.title)}</span>
           </h1>
           <p className="text-sm italic text-gray-400 mb-6 custom-sm:text-xs md:text-sm">
-            Alias: {singleAnimeData.title.english},
-            {singleAnimeData.title.romaji}, {singleAnimeData.title.native}
+            Alias:{" "}
+            <span>
+              {singleAnimeData.title.english},{singleAnimeData.title.romaji},{" "}
+              {singleAnimeData.title.native}
+            </span>
           </p>
-          <p className="text-lg leading-7 text-gray-300 mb-6 custom-sm:text-xs custom-sm:leading-5 md:text-base md:leading-8">
+          <p className="text-lg leading-7 text-gray-400 mb-6 custom-sm:text-xs custom-sm:leading-5 md:text-base md:leading-8">
             {singleAnimeData.description}
           </p>
           <div className="text-xs text-gray-400">
             <div className="grid grid-cols-2 gap-2 custom-sm:text-[.7rem] md:text-base md:gap-5">
-              <div>Type: {singleAnimeData.type}</div>
-              <div>Country of Origin: {singleAnimeData.countryOfOrigin}</div>
-              <div>Season: {singleAnimeData.season}</div>
-              <div>Release Date: {singleAnimeData.releaseDate}</div>
-              <div>Status: {singleAnimeData.status}</div>
               <div>
-                Start Date: {singleAnimeData.startDate.year}-
-                {singleAnimeData.startDate.month}-
-                {singleAnimeData.startDate.day}
+                Type: <span>{singleAnimeData.type}</span>
               </div>
-              <div>Popularity: {singleAnimeData.popularity}</div>
               <div>
-                End Date: {singleAnimeData.endDate.year}-
-                {singleAnimeData.endDate.month}-{singleAnimeData.endDate.day}
+                Country of Origin:{" "}
+                <span>{singleAnimeData.countryOfOrigin}</span>
               </div>
-              <div>Rating: {singleAnimeData.rating}</div>
-              <div>Total Episodes: {singleAnimeData.totalEpisodes}</div>
+              <div>
+                Season: <span>{singleAnimeData.season}</span>
+              </div>
+              <div>
+                Release Date: <span>{singleAnimeData.releaseDate}</span>
+              </div>
+              <div>
+                Status: <span>{singleAnimeData.status}</span>
+              </div>
+              <div>
+                Start Date:{" "}
+                <span>
+                  {singleAnimeData.startDate.year}-
+                  {singleAnimeData.startDate.month}-
+                  {singleAnimeData.startDate.day}
+                </span>
+              </div>
+              <div>
+                Popularity: <span>{singleAnimeData.popularity}</span>
+              </div>
+              <div>
+                End Date:{" "}
+                <span>
+                  {singleAnimeData.endDate.year}-{singleAnimeData.endDate.month}
+                  -{singleAnimeData.endDate.day}
+                </span>
+              </div>
+              <div>
+                Rating: <span>{singleAnimeData.rating}</span>
+              </div>
+              <div>
+                Total Episodes: <span>{singleAnimeData.totalEpisodes}</span>
+              </div>
               <div>
                 Studios:{" "}
-                {singleAnimeData.studios.map(studio => studio).join(", ")}
+                <span>
+                  {singleAnimeData.studios.map(studio => studio).join(", ")}
+                </span>
               </div>
-              <div>Duration: {singleAnimeData.duration}</div>
+              <div>
+                Duration: <span>{singleAnimeData.duration}</span>
+              </div>
               <div>
                 Synonyms:{" "}
-                {singleAnimeData.synonyms.map(synonym => synonym).join(", ")}
+                <span>
+                  {singleAnimeData.synonyms.map(synonym => synonym).join(", ")}
+                </span>
               </div>
             </div>
           </div>
@@ -93,7 +125,9 @@ function AnimeInfo() {
               Genres:
             </p>
             <p className="text-[#d6f1c9] text-xs custom-sm:text-[.7rem] md:text-sm">
-              {singleAnimeData.genres.map(genre => genre).join(", ")}
+              <span>
+                {singleAnimeData.genres.map(genre => genre).join(", ")}
+              </span>
             </p>
           </ul>
         </div>
