@@ -23,7 +23,7 @@ function AnimeEpisodes() {
   return (
     <>
       {anime.episodes.length ? (
-        <aside className="p-2 bg-[#1C1C1C] overflow-y-auto h-[500px] custom-sm:w-full lg:w-[25%]">
+        <aside className="p-2 bg-[#1C1C1C] overflow-y-auto max-h-[500px] custom-sm:w-full lg:w-[25%]">
           <div className="flex flex-col">
             <h4 className="text-primary font-semibold my-1">Episodes:</h4>
             {anime?.episodes.map((episode, index) => (
