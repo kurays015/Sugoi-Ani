@@ -20,7 +20,9 @@ function WatchLayout() {
         <div className="custom-sm:px-2 xl:px-5 custom-xxl:p-0">
           {anime.relations.length && <Related relations={anime.relations} />}
         </div>
-        <div className="text-center text-primary">Made by Christ 💜</div>
+        <div className="text-center text-primary m-y">
+          Made with 💜 by Christ
+        </div>
       </section>
     </main>
   );

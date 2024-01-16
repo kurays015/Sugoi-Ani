@@ -27,9 +27,6 @@ function Pagination() {
           Next
         </button>
       </div>
-      <div className="text-center text-xs text-primary py-2">
-        Made by Christ 💜
-      </div>
     </>
   );
 }

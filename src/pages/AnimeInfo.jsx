@@ -108,7 +108,6 @@ function AnimeInfo() {
       ) : (
         ""
       )}
-      <div className="text-center text-primary">Made by Christ 💜</div>
     </main>
   );
 }

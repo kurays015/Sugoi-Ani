@@ -7,6 +7,9 @@ function AnimeLayout() {
     <>
       <AnimeInfoHeader />
       <Outlet />
+      <div className="text-center text-xs text-primary my-2">
+        Made with 💜 by Christ
+      </div>
     </>
   );
 }
