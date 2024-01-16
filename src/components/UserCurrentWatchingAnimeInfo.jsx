@@ -29,9 +29,10 @@ function UserCurrentWatchingAnimeInfo() {
               {anime.title.english}, {anime.title.romaji}, {anime.title.native}
             </span>{" "}
             <br />
-            You can{" "}
+            <br />
             <Link to={downloadSrc} target="_blank">
-              <span className="text-violet-400">Download</span> it here.
+              You can <span className="text-violet-400 ">Download</span> it
+              here.
             </Link>
           </div>
           <p className="mt-5 custom-sm:hidden md:block">{anime.description}</p>
