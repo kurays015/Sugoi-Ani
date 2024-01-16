@@ -50,7 +50,6 @@ export function VideoSkeleton() {
           xxl: "100%",
           "2xxl": "100%",
         }}
-        h="100%"
         startColor="#7A5EB9"
         endColor="#7A5EB9"
         w="100%"
