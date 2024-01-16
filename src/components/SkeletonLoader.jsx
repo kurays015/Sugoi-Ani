@@ -38,18 +38,18 @@ export function AnimeCategoriesSkeleton() {
 
 export function VideoSkeleton() {
   return (
-    <div className="w-full relative ml-9">
+    <div className="w-full relative">
       <Skeleton
-        // height={{
-        //   base: "280px",
-        //   sm: "160px",
-        //   xs: "250px",
-        //   md: "350px",
-        //   lg: "550px",
-        //   xl: "350px",
-        //   xxl: "300px",
-        //   "2xxl": "500px",
-        // }}
+        height={{
+          base: "280px",
+          sm: "160px",
+          xs: "250px",
+          md: "350px",
+          lg: "100%",
+          xl: "100%",
+          xxl: "100%",
+          "2xxl": "100%",
+        }}
         h="100%"
         startColor="#7A5EB9"
         endColor="#7A5EB9"

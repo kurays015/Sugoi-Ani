@@ -23,7 +23,7 @@ function WatchEpisode() {
     }
   }, [videoSources?.download]);
 
-  if (isLoading) return <VideoSkeleton />;
+  if (!isLoading) return <VideoSkeleton />;
   if (!videoSources) return <EpisodeError />;
   if (isError) return <ApiError error={error.message} />;
 
