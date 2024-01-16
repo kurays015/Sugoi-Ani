@@ -14,7 +14,8 @@ body {
   background-color: #050505;
 }
 select,
-aside {
+aside,
+body {
   scrollbar-width: thin;
   scrollbar-color: #777777 transparent;
 }
@@ -34,6 +35,27 @@ aside::-webkit-scrollbar-track,
 select::-webkit-scrollbar-track {
   background-color: transparent;
 }
+/* For WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+
+/* For Firefox */
+/* Set the width and color of the scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: gray;
+}
+
+/* Set the color of the scrollbar thumb (handle) */
+html::-moz-scrollbar-thumb {
+  background-color: gray;
+}
+
 @layer components {
   .purp-span span {
     @apply text-violet-300;
