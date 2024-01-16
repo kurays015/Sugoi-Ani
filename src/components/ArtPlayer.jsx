@@ -81,7 +81,6 @@ export default function VideoPlayer({ qualities }) {
           isLive: false,
           autoSize: true,
           fullscreen: true,
-          theme: "#e20611",
           hotkey: true,
           miniProgressBar: true,
           playsInline: true,
