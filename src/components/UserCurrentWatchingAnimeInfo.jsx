@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
-import { useGetAnimeDataInLocalStorage } from "../hooks/useLocalStorage";
+import {
+  useDownloadSrc,
+  useGetAnimeDataInLocalStorage,
+} from "../hooks/useLocalStorage";
 import titleHandler from "../utils/titleHandler";
 
 function UserCurrentWatchingAnimeInfo() {
   const anime = useGetAnimeDataInLocalStorage();
+  const downloadSrc = useDownloadSrc();
   return (
     <>
       <div
@@ -26,7 +30,7 @@ function UserCurrentWatchingAnimeInfo() {
             </span>{" "}
             <br />
             You can{" "}
-            <Link>
+            <Link to={downloadSrc} target="_blank">
               <span className="text-violet-400">Download</span> it here.
             </Link>
           </div>
