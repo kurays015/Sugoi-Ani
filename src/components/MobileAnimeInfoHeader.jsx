@@ -24,7 +24,7 @@ function MobileAnimeInfoHeader() {
         <img src="/images/uzaki.png" className="w-[150px]" alt="logo" />
       </Link>
       <ul
-        className={`md:hidden custom-sm:z-50 absolute flex flex-col gap-3 bg-[#1C1C1C] -bottom-[154px] left-0 p-5 rounded-md transition-all duration-300 ease-in-out ${
+        className={`md:hidden z-[99999] absolute flex flex-col gap-3 bg-[#1C1C1C] -bottom-[154px] left-0 p-5 rounded-md transition-all duration-300 ease-in-out ${
           showNav ? "custom-sm:flex" : "custom-sm:hidden"
         }`}
       >
