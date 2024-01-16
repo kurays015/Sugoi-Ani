@@ -83,7 +83,7 @@ function UserCurrentWatchingAnimeInfo() {
               <span>{anime.synonyms.map(synonym => synonym).join(", ")}</span>
             </div>
             <div className="text-[#d6f1c9] text-xs">
-              <span> {anime.genres.map(genre => genre).join(", ")}</span>
+              {anime.genres.map(genre => genre).join(", ")}
             </div>
           </div>
         </div>

@@ -125,9 +125,7 @@ function AnimeInfo() {
               Genres:
             </p>
             <p className="text-[#d6f1c9] text-xs custom-sm:text-[.7rem] md:text-sm">
-              <span>
-                {singleAnimeData.genres.map(genre => genre).join(", ")}
-              </span>
+              {singleAnimeData.genres.map(genre => genre).join(", ")}
             </p>
           </ul>
         </div>
