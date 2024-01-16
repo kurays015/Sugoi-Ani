@@ -23,7 +23,7 @@ function AnimeEpisodes() {
   return (
     <>
       {anime.episodes.length ? (
-        <aside className="p-2 bg-[#1C1C1C] overflow-y-auto custom-sm:mx-auto custom-sm:h-[500px] custom-sm:w-full custom-sm:order-2 xl:w-[300px] xl:-order-1 custom-xxl:mx-0">
+        <aside className="p-2 bg-[#1C1C1C] overflow-y-auto h-[500px] custom-sm:w-full lg:w-[25%]">
           <div className="flex flex-col">
             <h4 className="text-primary font-semibold my-1">Episodes:</h4>
             {anime?.episodes.map((episode, index) => (
@@ -33,8 +33,8 @@ function AnimeEpisodes() {
                 key={episode.id}
                 className={`${
                   index % 2 === 0 ? "bg-[#0F0F0F]" : "bg-[#171717]"
-                } flex gap-2 p-3 text-primary text-xs
-           ${isAlreadySelected[episode.id] ? "bg-[#1F1232]" : ""} ${
+                } flex gap-2 p-3 text-primary text-xs hover:bg-[#AAAAAA] hover:text-gray-50 transition-colors
+           ${isAlreadySelected[episode?.id] ? "bg-[#1F1232]" : ""} ${
                   currentEpisode === episode.id ? "bg-[#5A2E98]" : ""
                 }`}
               >

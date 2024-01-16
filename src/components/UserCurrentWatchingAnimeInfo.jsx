@@ -1,46 +1,89 @@
+import { Link } from "react-router-dom";
 import { useGetAnimeDataInLocalStorage } from "../hooks/useLocalStorage";
 import titleHandler from "../utils/titleHandler";
 
 function UserCurrentWatchingAnimeInfo() {
   const anime = useGetAnimeDataInLocalStorage();
   return (
-    <div className="text-gray-600 w-full flex justify-center my-5 gap-3 md:gap-10 md:my-10 xl:gap-3 xl:my-0 custom-xxl:justify-start custom-xxl:w-[40%]">
-      <img
-        src={anime.image}
-        alt={anime.title.english}
-        className="h-[20%] custom-sm:w-[30%]  custom-xxl:w-[30%]"
-      />
-      <div className="text-primary">
-        <h5 className="mb-2 md:mb-5 md:text-2xl">
-          {titleHandler(anime.title)}
-        </h5>
-        <div className="grid grid-cols-2 text-xs gap-1 md:gap-3 md:text-sm">
-          <div>
-            From: {anime.startDate.year}-{anime.startDate.month}-
-            {anime.startDate.day}
+    <>
+      <div
+        className="text-gray-600 flex gap-5 custom-sm:p-2 
+      custom-sm:flex-col md:flex-row md:px-0 custom-sm:py-5"
+      >
+        <img
+          src={anime.image}
+          alt={anime.title.english}
+          className="h-[20%] rounded-md custom-sm:w-full md:w-[40%] custom-xxl:w-[20%]"
+        />
+        <div className="text-primary text-center purp-span">
+          <h5 className="mb-2 md:mb-5 md:text-2xl">
+            {titleHandler(anime.title)}
+          </h5>
+          <div className="text-sm italic text-gray-400 custom-sm:text-xs md:text-sm">
+            Alias:{" "}
+            <span>
+              {anime.title.english}, {anime.title.romaji}, {anime.title.native}
+            </span>{" "}
+            <br />
+            You can{" "}
+            <Link>
+              <span className="text-violet-400">Download</span> it here.
+            </Link>
           </div>
-          <div>
-            To: {anime.endDate.year}-{anime.endDate.month}-{anime.endDate.day}
-          </div>
-          <div>Popularity: {anime.popularity}</div>
-          <div>Type: {anime.type}</div>
-          <div>Country of Origin: {anime.countryOfOrigin}</div>
-          <div>Season: {anime.season}</div>
-          <div>Status: {anime.status}</div>
-          <div>Rating: {anime.rating}</div>
-          <div>Total Episodes: {anime.totalEpisodes}</div>
-          <div>Studios: {anime.studios.map(studio => studio).join(", ")}</div>
-          <div>Duration: {anime.duration}</div>
-          <div className="custom-sm:hidden">
-            Synonyms:
-            {anime.synonyms.map(synonym => synonym).join(", ")}
-          </div>
-          <div className="text-[#d6f1c9] text-xs">
-            {anime.genres.map(genre => genre).join(", ")}
+          <p className="mt-5 custom-sm:hidden md:block">{anime.description}</p>
+          <div className="grid grid-cols-2 text-xs gap-1 md:gap-3 md:text-sm custom-xxl:text-base mt-5">
+            <div>
+              From:{" "}
+              <span>
+                {anime.startDate.year}-{anime.startDate.month}-
+                {anime.startDate.day}
+              </span>
+            </div>
+            <div>
+              To:{" "}
+              <span>
+                {anime.endDate.year}-{anime.endDate.month}-{anime.endDate.day}
+              </span>
+            </div>
+            <div>
+              Popularity: <span>{anime.popularity}</span>
+            </div>
+            <div>
+              Type: <span>{anime.type}</span>
+            </div>
+            <div>
+              Country of Origin: <span>{anime.countryOfOrigin}</span>
+            </div>
+            <div>
+              Season: <span>{anime.season}</span>
+            </div>
+            <div>
+              Status: <span>{anime.status}</span>
+            </div>
+            <div>
+              Rating: <span>{anime.rating}</span>
+            </div>
+            <div>
+              Total Episodes: <span>{anime.totalEpisodes}</span>
+            </div>
+            <div>
+              Studios:{" "}
+              <span>{anime.studios.map(studio => studio).join(", ")}</span>
+            </div>
+            <div>
+              Duration: <span>{anime.duration}</span>
+            </div>
+            <div className="custom-sm:hidden">
+              Synonyms:
+              <span>{anime.synonyms.map(synonym => synonym).join(", ")}</span>
+            </div>
+            <div className="text-[#d6f1c9] text-xs">
+              <span> {anime.genres.map(genre => genre).join(", ")}</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

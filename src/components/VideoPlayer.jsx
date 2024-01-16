@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import Hls from "hls.js";
 import { IoSettingsOutline } from "react-icons/io5";
 import QualitySettings from "./QualitySettings";
-import VideoInfo from "./VideoInfo";
+import DownloadButton from "./DownloadButton";
 
 function VideoPlayer({ qualities, downloadSrc }) {
   const [selectedQuality, setSelectedQuality] = useState("default");
@@ -65,7 +65,7 @@ function VideoPlayer({ qualities, downloadSrc }) {
           className="cursor-pointer text-1xl"
         />
       </div>
-      <VideoInfo downloadSrc={downloadSrc} />
+      <DownloadButton downloadSrc={downloadSrc} />
     </div>
   );
 }

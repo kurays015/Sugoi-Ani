@@ -1,7 +1,6 @@
 import Artplayer from "artplayer";
 import Hls from "hls.js";
 import { useEffect, useRef } from "react";
-import VideoInfo from "./VideoInfo";
 
 function playM3u8(video, url, art) {
   if (Hls.isSupported()) {
@@ -41,43 +40,34 @@ const Player = ({ option, getInstance, ...rest }) => {
   return <div ref={artRef} {...rest}></div>;
 };
 
-export default function VideoPlayer({ qualities, downloadSrc }) {
-  const transformedArray = qualities.map(item => {
+export default function VideoPlayer({ qualities }) {
+  const sources = qualities.map(item => {
     const { url, quality } = item;
-    const newObj = {
+    const videoSrc = {
       html: quality.toUpperCase(),
       url,
     };
-    return newObj;
+    return videoSrc;
   });
 
-  const defaultObject = transformedArray?.find(
-    item => item.html === "720P" || item.html === "DEFAULT"
+  const definition = sources.find(
+    item => item.html === "DEFAULT" || item.html === "720P"
   );
 
   return (
-    <div className="relative max-w-full custom-sm:pt-[56.25%] custom-sm:w-full xl:w-[70%] xl:pt-[30%]">
+    <div className="relative max-w-full custom-sm:pt-[56.25%] lg:pt-[30%] custom-sm:w-full xl:pt-0">
       <Player
         option={{
           layers: [
             {
               html: "",
-              style: {
-                position: "absolute",
-                left: 0,
-                top: 0,
-                right: 0,
-                bottom: 0,
-                width: "100%",
-                height: "100%",
-              },
               disable: !Artplayer.utils.isMobile,
               click: function () {
                 art.toggle();
               },
             },
           ],
-          url: defaultObject?.url || "",
+          url: definition.url || "",
           type: "m3u8",
           customType: {
             m3u8: playM3u8,
@@ -86,7 +76,7 @@ export default function VideoPlayer({ qualities, downloadSrc }) {
           playbackRate: true,
           aspectRatio: true,
           subtitleOffset: true,
-          quality: transformedArray || [],
+          quality: sources || [],
           volume: 0.7,
           isLive: false,
           autoSize: true,
@@ -104,11 +94,11 @@ export default function VideoPlayer({ qualities, downloadSrc }) {
           position: "absolute",
           top: 0,
           left: 0,
+          right: 0,
           width: "100%",
           height: "100%",
         }}
       />
-      <VideoInfo downloadSrc={downloadSrc} />
     </div>
   );
 }

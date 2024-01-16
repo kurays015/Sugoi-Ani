@@ -34,3 +34,8 @@ aside::-webkit-scrollbar-track,
 select::-webkit-scrollbar-track {
   background-color: transparent;
 }
+@layer components {
+  .purp-span span {
+    @apply text-violet-300;
+  }
+}

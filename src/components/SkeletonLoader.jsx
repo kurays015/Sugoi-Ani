@@ -38,18 +38,19 @@ export function AnimeCategoriesSkeleton() {
 
 export function VideoSkeleton() {
   return (
-    <div className="relative group custom-sm:w-full group xl:w-full  custom-xxl:w-[40%]">
+    <div className="w-full relative ml-9">
       <Skeleton
-        height={{
-          base: "280px",
-          sm: "160px",
-          xs: "250px",
-          md: "350px",
-          lg: "550px",
-          xl: "350px",
-          xxl: "300px",
-          "2xxl": "350px",
-        }}
+        // height={{
+        //   base: "280px",
+        //   sm: "160px",
+        //   xs: "250px",
+        //   md: "350px",
+        //   lg: "550px",
+        //   xl: "350px",
+        //   xxl: "300px",
+        //   "2xxl": "500px",
+        // }}
+        h="100%"
         startColor="#7A5EB9"
         endColor="#7A5EB9"
         w="100%"
@@ -58,7 +59,7 @@ export function VideoSkeleton() {
       <img
         src="/images/pika.gif"
         alt="pikachu loader"
-        className="absolute top-[50%] left-[50%] -translate-x-[50%] w-[60px]"
+        className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[60px]"
       />
     </div>
   );

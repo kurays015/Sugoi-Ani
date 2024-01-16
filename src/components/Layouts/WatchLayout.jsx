@@ -9,20 +9,19 @@ function WatchLayout() {
   const anime = useGetAnimeDataInLocalStorage();
 
   return (
-    <main className="relative">
+    <main>
       <AnimeInfoHeader />
-      <div
-        className="flex items-start
-      py-5 pt-0 custom-sm:flex-col custom-sm:gap-0 custom-sm:p-2 xl:p-5 xl:flex-row xl:gap-5 custom-xxl:border custom-xxl:border-primary custom-xxl:rounded-xl custom-xxl:max-w-[90%] custom-xxl:mx-auto custom-xxl:mt-20"
-      >
-        <AnimeEpisodes />
-        <Outlet />
+      <section className="max-w-7xl mx-auto md:p-3 xl:px-0">
+        <div className="max-w-7xl mx-auto flex custom-sm:flex-col-reverse custom-sm:mt-0 custom-sm:gap-3 xl:my-7 lg:flex-row">
+          <AnimeEpisodes />
+          <Outlet />
+        </div>
         <UserCurrentWatchingAnimeInfo />
-      </div>
-      <div className="custom-sm:px-2 xl:px-5 custom-xxl:p-0 custom-xxl:max-w-[90%] custom-xxl:mx-auto ">
-        {anime.relations.length && <Related relations={anime.relations} />}
-      </div>
-      <div className="text-center text-primary">Made by Christ 💜</div>
+        <div className="custom-sm:px-2 xl:px-5 custom-xxl:p-0">
+          {anime.relations.length && <Related relations={anime.relations} />}
+        </div>
+        <div className="text-center text-primary">Made by Christ 💜</div>
+      </section>
     </main>
   );
 }
