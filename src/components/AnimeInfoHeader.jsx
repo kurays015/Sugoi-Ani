@@ -42,7 +42,7 @@ function AnimeInfoHeader() {
                 icon={<IoMdArrowDropdown className="text-primary" />}
                 variant="unstyled"
               />
-              <MenuList bg="#1c1c1c" borderColor="gray">
+              <MenuList bg="#1c1c1c" zIndex="99" borderColor="gray">
                 <MenuItem
                   bg="#1c1c1c"
                   color="white"

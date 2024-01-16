@@ -56,7 +56,7 @@ export default function VideoPlayer({ qualities, downloadSrc }) {
   );
 
   return (
-    <div className="relative max-w-full z-10 custom-sm:pt-[56.25%] custom-sm:w-full xl:w-[70%] xl:pt-[30%]">
+    <div className="relative max-w-full custom-sm:pt-[56.25%] custom-sm:w-full xl:w-[70%] xl:pt-[30%]">
       <Player
         option={{
           layers: [
@@ -108,7 +108,7 @@ export default function VideoPlayer({ qualities, downloadSrc }) {
           height: "100%",
         }}
       />
-      {/* <VideoInfo downloadSrc={downloadSrc} /> */}
+      <VideoInfo downloadSrc={downloadSrc} />
     </div>
   );
 }
