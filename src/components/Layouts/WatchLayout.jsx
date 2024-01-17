@@ -18,9 +18,11 @@ function WatchLayout() {
         </div>
         <UserCurrentWatchingAnimeInfo />
         <div className="custom-sm:px-2 xl:px-5 custom-xxl:p-0">
-          {anime.relations.length && <Related relations={anime.relations} />}
+          {anime.relations.length > 0 && (
+            <Related relations={anime.relations} />
+          )}
         </div>
-        <div className="text-center text-primary m-y">
+        <div className="text-center text-primary text-xs mt-28">
           Made with 💜 by Christ
         </div>
       </section>

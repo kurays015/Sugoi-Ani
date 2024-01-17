@@ -11,7 +11,7 @@ function Layout() {
       <AdvanceSearchMenu />
       <Outlet />
       <Pagination />
-      <div className="text-center text-xs text-primary m-y">
+      <div className="text-center text-xs text-primary py-12">
         Made with 💜 by Christ
       </div>
     </main>
