@@ -9,7 +9,7 @@ function WatchLayout() {
   const anime = useGetAnimeDataInLocalStorage();
 
   return (
-    <main>
+    <main className="bg-[#242424]">
       <AnimeInfoHeader />
       <section className="max-w-7xl mx-auto md:p-3 xl:px-0">
         <div className="max-w-7xl mx-auto flex custom-sm:flex-col-reverse custom-sm:mt-0 custom-sm:gap-3 xl:my-7 lg:flex-row">
