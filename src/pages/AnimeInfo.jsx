@@ -47,8 +47,8 @@ function AnimeInfo() {
           </Link>
         </div>
         <div className="flex-1 custom-sm:p-3 md:p-5 purp-span">
-          <h1 className="text-3xl font-semibold mb-4 text-white custom-sm:text-md">
-            <span>{titleHandler(singleAnimeData.title)}</span>
+          <h1 className="text-3xl font-semibold mb-4 text-gray-400 custom-sm:text-md ">
+            {titleHandler(singleAnimeData.title)}
           </h1>
           <p className="text-sm italic text-gray-400 mb-6 custom-sm:text-xs md:text-sm">
             Alias:{" "}
