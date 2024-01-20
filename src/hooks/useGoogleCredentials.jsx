@@ -13,11 +13,10 @@ export default function useGoogleCredentials() {
   const googleLogin = useGoogleLogin({
     onSuccess: async res => {
       setCookies("googleUser", res.access_token);
-      await axios.post(`${import.meta.env.VITE_BACKEND_GOOGLE}`, {
-        access_token: res.access_token,
-      });
+      // await axios.post(`${import.meta.env.VITE_BACKEND_GOOGLE}`, {
+      //   access_token: res.access_token,
+      // });
       navigate(`/watch/${anime.episodes[0]?.id}`);
-      // window.location.reload();
     },
     onError: () => {
       toast({
