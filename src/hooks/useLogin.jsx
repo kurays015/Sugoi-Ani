@@ -1,7 +1,7 @@
 import { useToast } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import axios from "../api/axios";
+import axios from "axios";
 import { useGetAnimeDataInLocalStorage } from "./useLocalStorage";
 import { removeEmailDomain } from "../utils/removeEmailDomain";
 import { setCookies } from "./useCookies";

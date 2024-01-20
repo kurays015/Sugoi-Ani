@@ -18,6 +18,16 @@ function AnimeEpisodes() {
   const selectedEpisode = id => {
     setIsAlreadySelected(prev => ({ ...prev, [id]: true }));
     setCurrentEpisode(id);
+    setTimeout(() => {
+      console.log(
+        "id:",
+        id,
+        "currentEpisode:",
+        currentEpisode,
+        "isAlreadySelected:",
+        isAlreadySelected[id]
+      );
+    }, 0);
   };
 
   return (

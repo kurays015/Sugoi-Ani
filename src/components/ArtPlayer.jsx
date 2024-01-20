@@ -55,7 +55,7 @@ export default function VideoPlayer({ qualities }) {
   );
 
   return (
-    <div className="relative max-w-full custom-sm:pt-[56.25%] lg:pt-[30%] custom-sm:w-full xl:pt-0">
+    <div className="relative max-w-full custom-sm:pt-[56.25%] lg:pt-[30%] custom-sm:w-full xl:pt-0 w-[700px]">
       <Player
         option={{
           layers: [
