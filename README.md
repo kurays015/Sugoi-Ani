@@ -10,7 +10,9 @@ A streaming app for watching trending, recent, and classic anime, updated in rea
 - **Simple Authentication:** Basic user authentication to personalize the experience (I will improve this soon).
 
 
-![Example Image](public/images/spongebob.png)
+![Home Page](public/images/home-page.png)
+![Anime Info Page](public/images/animeinfo-page.png)
+![Watch Page](public/images/watch-page.png)
 
 
 
