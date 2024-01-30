@@ -9,9 +9,13 @@ A streaming app for watching trending, recent, and classic anime, updated in rea
 - **Add to Favorites:** Save your favorite anime for easy access.
 - **Simple Authentication:** Basic user authentication to personalize the experience (I will improve this soon).
 
-
+## Home Page
 ![Home Page](public/images/home-page.png)
+
+## Anime Info Page
 ![Anime Info Page](public/images/animeinfo-page.png)
+
+## Watch Page
 ![Watch Page](public/images/watch-page.png)
 
 
