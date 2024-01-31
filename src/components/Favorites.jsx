@@ -8,15 +8,17 @@ function Favorites() {
   return (
     <>
       <h1 className="mb-5 text-center text-xl">My Favorites</h1>
-      <button
-        className="text-end w-full hover:text-violet-300"
-        onClick={() => {
-          setAddToFavorites(false);
-          setFavorites([]);
-        }}
-      >
-        Clear All
-      </button>
+      {favorites.length > 0 && (
+        <button
+          className="text-end w-full hover:text-violet-300"
+          onClick={() => {
+            setAddToFavorites(false);
+            setFavorites([]);
+          }}
+        >
+          Clear All
+        </button>
+      )}
       <div className="grid grid-cols-2 gap-5">
         {favorites.length ? (
           <Card animes={favorites} />

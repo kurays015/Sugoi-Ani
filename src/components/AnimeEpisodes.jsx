@@ -18,21 +18,11 @@ function AnimeEpisodes() {
   const selectedEpisode = id => {
     setIsAlreadySelected(prev => ({ ...prev, [id]: true }));
     setCurrentEpisode(id);
-    setTimeout(() => {
-      console.log(
-        "id:",
-        id,
-        "currentEpisode:",
-        currentEpisode,
-        "isAlreadySelected:",
-        isAlreadySelected[id]
-      );
-    }, 0);
   };
 
   return (
     <>
-      {anime.episodes.length ? (
+      {anime?.episodes?.length ? (
         <aside className="p-2 bg-[#1C1C1C] overflow-y-auto custom-sm:max-h-[500px] lg:h-[500px] custom-sm:w-full lg:w-[25%]">
           <div className="flex flex-col">
             <span className="text-gray-400 text-center my-2">

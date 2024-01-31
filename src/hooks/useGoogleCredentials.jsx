@@ -11,11 +11,11 @@ export default function useGoogleCredentials() {
   const anime = useGetAnimeDataInLocalStorage();
 
   const googleLogin = useGoogleLogin({
-    onSuccess: async res => {
-      setCookies("googleUser", res.access_token);
+    onSuccess: res => {
       // await axios.post(`${import.meta.env.VITE_BACKEND_GOOGLE}`, {
       //   access_token: res.access_token,
       // });
+      setCookies("googleUser", res.access_token);
       navigate(`/watch/${anime.episodes[0]?.id}`);
     },
     onError: () => {
