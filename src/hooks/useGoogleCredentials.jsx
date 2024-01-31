@@ -3,7 +3,6 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { setCookies } from "./useCookies";
 import { useGetAnimeDataInLocalStorage } from "./useLocalStorage";
-import axios from "axios";
 
 export default function useGoogleCredentials() {
   const navigate = useNavigate();
