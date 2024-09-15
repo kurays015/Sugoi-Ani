@@ -23,7 +23,11 @@ function Card({ animes }) {
           <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
             <CiPlay1 className="text-white text-2xl opacity-0 group-hover:opacity-100" />
           </div>
-          <img src={image} className="h-full w-full" alt={title.english} />
+          <img
+            src={image}
+            className="h-full w-full text-white"
+            alt={title.english}
+          />
           <div className="absolute bottom-0 bg-customBlack w-full text-center custom-sm:p-1.5 z-20">
             <h5 className="text-white custom-sm:text-xs custom-sl:text-sm ">
               {titleHandler(title)}
